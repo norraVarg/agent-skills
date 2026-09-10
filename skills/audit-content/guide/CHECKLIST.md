@@ -15,6 +15,14 @@ knows from context.
   to before saying anything about the ticket itself.
 - Flag any sentence, bullet, or section that could be deleted without losing information
   the reader needs.
+- Avoid: content under a heading that isn't actually about what the heading promises, or
+  that contradicts it — check each section against its own heading, not only the
+  document as a whole. The mismatch could mean the content is misplaced, or that the
+  heading itself is wrong; flag it without assuming which.
+- Avoid: content aimed at a different audience than the document actually serves — a
+  user-facing document carrying contributor or implementation detail, or the reverse.
+  Accurate, well-written content can still not belong, because it's answering a
+  question this document's actual reader never asked.
 
 ## Redundant, repeated
 

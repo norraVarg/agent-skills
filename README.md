@@ -11,7 +11,7 @@ onto one platform's concrete mechanisms. Claude Code is the first provider suppo
 - [code-better](skills/code-better/README.md)
 - [git](skills/git/README.md)
 
-## Install on a new computer
+## How to install a skill
 
 Two commands:
 
@@ -23,30 +23,27 @@ git clone <repository-url> ~/agent-skills
 ~/agent-skills/install.sh <skill-name> claude-code
 ```
 
-For example: `~/agent-skills/install.sh audit-content claude-code`.
-
-The installer reports what it changed. To update later: `git pull`, then re-run the
-same install command. It is idempotent.
-
-## Repository map
-
-```
-skills/<skill-name>/
-  guide/                      Provider-neutral — the only thing a review/audit checks against
-  adapters/<provider>/        Per-provider entry point; may only read guide/, never change it
-install.sh                    ./install.sh <skill-name> <provider>
-```
+The installer reports what it changed.
 
 ## Adding a skill
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the rules and structure every skill in
 this repository follows.
 
-## Keeping machines in sync
+## Keeping skills updated
 
-Changes to any skill are ordinary commits. Commit and push from the machine where a
-change was made; on every other machine, `git pull` and re-run the install command for
-whichever skills you use there.
+```bash
+git pull
+```
+
+Updates any skill already installed on a machine — `install.sh` symlinks rather than
+copies.
+
+```bash
+~/agent-skills/install.sh <skill-name> claude-code
+```
+
+Also run this for a skill that machine doesn't have yet.
 
 ## Privacy
 
