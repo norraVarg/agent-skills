@@ -1,7 +1,9 @@
-# Adding a skill
+# Adding or adopting a skill
 
-This is what an agent asked to add a new skill to this repository needs to know.
-Follow this exactly; do not invent a different structure.
+This is what an agent asked to add a new skill to this repository — or to adopt one
+that already exists elsewhere, in whatever shape it currently has — needs to know.
+Read this file in full before starting; do not act from memory of an earlier read,
+and do not invent a different structure.
 
 ## The core split
 
@@ -67,7 +69,13 @@ the Claude Code provider specifically, that means the adapter's own `install.sh`
 A new provider's adapter follows the same shape, adapted to wherever and however that
 provider actually finds an invocable skill.
 
-## Steps to add a new skill
+## Steps to add or adopt a skill
+
+If the skill already exists somewhere else — a different repo, a different agent's
+format, a rough draft the user hands over — port its actual substance into `guide/`
+and rebuild `adapters/claude-code/` from scratch to this repo's contract. Do not carry
+over the source's file layout, naming, or adapter mechanics just because that is how
+it arrived.
 
 1. Write `skills/<name>/guide/` — the procedure and rules, naming no specific tool.
 2. Write `skills/<name>/adapters/claude-code/` — the entry point, the symlink, and an
@@ -78,6 +86,12 @@ provider actually finds an invocable skill.
    its own `README.md`. No description there, the skill's own README carries that.
 5. Install it (`~/agent-skills/install.sh <name> claude-code`) and invoke it once to
    confirm it actually resolves and runs before considering it done.
+6. Compare the result against the other skills in `skills/` — file layout,
+   `PROCEDURE.md`'s capability-detection-with-fallback pattern, `rules/user-rules.md`'s
+   format and header wording, `README.md`'s section order — and propose reconciling,
+   with the developer's confirmation, any place it drifts without good reason.
+   Matching an existing skill's shape is not optional polish; it is what lets a
+   developer use any skill in this repo without relearning conventions per skill.
 
 ## Privacy
 
