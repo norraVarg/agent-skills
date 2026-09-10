@@ -1,0 +1,16 @@
+CONTRIBUTING.md
+  h_ba9e79e0477686 1-71
+README.md
+  h_ba9e79e0477686 10-11,41-54
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "71c81b8ae3dfe023234a83afd72ba31166978eb4",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
