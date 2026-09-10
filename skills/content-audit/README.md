@@ -45,8 +45,9 @@ whatever needs a pass. It:
    told to.
 6. Occasionally proposes a rule, when a finding reveals a genuine gap.
 
-**When it proposes a rule**, it sends one short message: the rule and why — content-
-audit has only one rule layer, so there is no target to choose. Answer with one word:
+**When it proposes a rule**, it sends one short message: the rule and why —
+content-audit has only one rule layer, so there is no target to choose. Answer with
+one word:
 
 | Answer | Effect |
 | --- | --- |
@@ -63,5 +64,5 @@ what has not earned its place.
 ## How to extend
 
 **Add a provider adapter.** Follow the general steps in the repository root's
-[CONTRIBUTING.md](../../CONTRIBUTING.md); map `guide/PROCEDURE.md`'s three
-capabilities onto whatever that provider actually has.
+[CONTRIBUTING.md](../../CONTRIBUTING.md); map `guide/PROCEDURE.md`'s capabilities
+onto whatever that provider actually has.

@@ -61,5 +61,5 @@ fill it in, and add one row to the Language table in `guide/CLASSIFY.md`.
 **Add a domain.** Same with `guide/domains/_TEMPLATE.md` and the Domain table.
 
 **Add a provider adapter.** Follow the general steps in the repository root's
-[CONTRIBUTING.md](../../CONTRIBUTING.md); map `guide/PROCEDURE.md`'s two capabilities
+[CONTRIBUTING.md](../../CONTRIBUTING.md); map `guide/PROCEDURE.md`'s capabilities
 onto whatever that provider actually has.

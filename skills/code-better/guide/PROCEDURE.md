@@ -3,7 +3,7 @@
 This is the whole procedure for reviewing a set of code changes against the guide.
 It is written for any agent to follow, on any platform: it names no specific tool,
 because no specific tool exists on every platform. Each provider's entry point
-(`adapters/<provider>/`) tells you what concretely fulfils the three capabilities named
+(`adapters/<provider>/`) tells you what concretely fulfils the capabilities named
 in step 0, on that platform. Everything else below is identical everywhere.
 
 ## Step 0 — Detect capabilities

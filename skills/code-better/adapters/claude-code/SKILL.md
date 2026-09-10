@@ -8,7 +8,7 @@ description: Guide the agent to produce code that follows industry best practice
 The guide lives at `${CLAUDE_SKILL_DIR}/guide/`. Read
 `${CLAUDE_SKILL_DIR}/guide/PROCEDURE.md` and follow it exactly, step by step.
 
-On this platform, the three capabilities `PROCEDURE.md` step 0 asks you to detect are all
+On this platform, the capabilities `PROCEDURE.md` step 0 asks you to detect are all
 available:
 
 - **Independent check (step 4).** For each candidate finding, make one separate
