@@ -1,0 +1,19 @@
+CONTRIBUTING.md
+  s_fdff4b3029c2eb::t_390141b9562e30 4-5,14-17,58-62,83-104,125-130
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "000a89d0f82c3c162d02f2eaf4b53bdb8af1fa06",
+  "prompts": {},
+  "sessions": {
+    "s_fdff4b3029c2eb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02ba4847-2b58-464e-9b51-77a9e5e845a9",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
