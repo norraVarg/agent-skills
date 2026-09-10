@@ -1,0 +1,33 @@
+CONTRIBUTING.md
+  s_fdff4b3029c2eb::t_e1c4a22175c23e 110-118,120,122,124,126
+README.md
+  s_fdff4b3029c2eb::t_f28fa1fbf8c9f4 10,26
+install.sh
+  s_fdff4b3029c2eb::t_765f1f56b93d30 4
+skills/audit-content/README.md
+  s_fdff4b3029c2eb::t_5d9fd4c1deac29 1,21,29,49
+skills/audit-content/adapters/claude-code/SKILL.md
+  s_fdff4b3029c2eb::t_26b4e145c5cfb0 2,6
+skills/audit-content/adapters/claude-code/install.sh
+  s_fdff4b3029c2eb::t_9f8ccf73ae550e 2,12,14,20,22
+skills/audit-content/guide/LEARNING.md
+  s_fdff4b3029c2eb::t_ce13b54a955195 35
+skills/audit-content/guide/PROCEDURE.md
+  s_fdff4b3029c2eb::t_c01c58d230cd66 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "87b93c457a7754c4184f3079defef11ceb7510e4",
+  "prompts": {},
+  "sessions": {
+    "s_fdff4b3029c2eb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02ba4847-2b58-464e-9b51-77a9e5e845a9",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
