@@ -1,0 +1,25 @@
+README.md
+  s_fdff4b3029c2eb::t_7c5248adacf0ca 50
+skills/audit-content/README.md
+  s_fdff4b3029c2eb::t_50a70003725aaa 20-22,67-68
+skills/code-better/README.md
+  s_fdff4b3029c2eb::t_c9a9e90692ca17 16-18,64-65
+skills/git/README.md
+  s_fdff4b3029c2eb::t_500d2e90d32d44 17-19,46-47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "358d9d0363e83cdd86600bc059015e3fdeb0b996",
+  "prompts": {},
+  "sessions": {
+    "s_fdff4b3029c2eb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02ba4847-2b58-464e-9b51-77a9e5e845a9",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
