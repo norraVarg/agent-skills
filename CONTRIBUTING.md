@@ -6,6 +6,17 @@ a different agent's format, an existing skill with no repo of its own — needs 
 Read this file in full before starting; do not act from memory of an earlier read,
 and do not invent a different structure.
 
+## Privacy
+
+Nothing in this repository may identify a person, an employer, or a specific
+machine, in any skill, in any layer: no names, gendered pronouns describing a
+specific person, emails, employers, or machine paths — and no real project detail
+smuggled in through a worked example, a file path, a feature name, or a skill's own
+accumulated state. This applies to every skill added here, not only the ones already present, and to
+any edit, not only adding a new one. It matters most right here, though, at the
+moment new content enters the repo. Before committing, search the whole repository
+for anything that would identify you or your organization.
+
 ## The core split
 
 Every skill has two parts, and they are never mixed:
@@ -97,8 +108,8 @@ to reword sentences, not just move files.
 Scrub the source for anything the Privacy rule forbids before it lands in `guide/` —
 not only names and pronouns, but worked examples, file paths, and any state the
 source already accumulated (a learned-command table, cached values) that might
-carry real project detail — see the root README.md's Privacy section for the full
-rule. A mechanical port is the likeliest place to miss this, because the temptation
+carry real project detail — see the Privacy section above for the full rule. A
+mechanical port is the likeliest place to miss this, because the temptation
 is to copy content wholesale rather than write it fresh.
 
 Porting is also the moment to fix a genuine gap in the source's own logic if one turns
