@@ -49,6 +49,5 @@ whichever skills you use there.
 
 ## Privacy
 
-This repository contains no personal information, in any skill, and must stay that
-way: no names, emails, employers, or machine paths. Before committing, search the
-repository for anything that identifies you.
+See [CONTRIBUTING.md](CONTRIBUTING.md)'s Privacy section for what may not appear in
+this repository.

@@ -1,7 +1,9 @@
 # Checklist
 
-Ten categories, checked in this order. `rules/user-rules.md` applies on top of all of
-them, with the highest precedence.
+Five categories, checked in this order — covering content that is unused,
+irrelevant, unnecessary, redundant, repeated, conflicting, misleading, wrong,
+unclear, or written in a way that's hard for a human reader to follow.
+`rules/user-rules.md` applies on top of all of them, with the highest precedence.
 
 ## Unused, irrelevant, unnecessary
 

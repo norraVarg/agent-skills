@@ -32,7 +32,7 @@ Every skill has two parts, and they are never mixed:
 
 Every skill directory is fully independent. Nothing is shared between skills, and
 nothing skill-specific belongs at the repository root beyond the install dispatcher
-and the one-line pointer to it in the root `README.md`.
+and each skill's one-line entry in the root `README.md`'s Skills list.
 
 ## The install contract
 
@@ -65,7 +65,7 @@ provider actually finds an invocable skill.
 
 ## Privacy
 
-Nothing in this repository may identify a person, an employer, or a specific machine,
-in any skill, in any layer. This applies to every skill added here, not only the ones
-already present. Before committing, search the whole repository for anything that
-would identify you.
+Nothing in this repository may identify a person, an employer, or a specific
+machine, in any skill, in any layer: no names, emails, employers, or machine paths.
+This applies to every skill added here, not only the ones already present. Before
+committing, search the whole repository for anything that would identify you.

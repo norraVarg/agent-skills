@@ -38,7 +38,8 @@ Invoke the skill after making changes, staged, unstaged, or both. It:
 7. Occasionally proposes a rule, when a finding reveals a genuine gap.
 
 **When it proposes a rule**, it sends one short message: the rule, the target file,
-and why. Answer with one word:
+and why — the target is `rules/user-rules.md` for a personal preference, or the
+matching language/domain/universal file for a general rule. Answer with one word:
 
 | Answer | Effect |
 | --- | --- |
