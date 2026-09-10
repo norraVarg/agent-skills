@@ -47,5 +47,5 @@ Also run this for a skill that machine doesn't have yet.
 
 ## Privacy
 
-See [CONTRIBUTING.md](CONTRIBUTING.md)'s Privacy section for what may not appear in
+See [CONTRIBUTING.md](CONTRIBUTING.md#privacy)'s Privacy section for what may not appear in
 this repository.

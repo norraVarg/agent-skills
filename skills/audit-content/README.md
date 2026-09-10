@@ -17,9 +17,9 @@ consistency — never against outside facts.
 - A **learning loop**: when a finding recurs, or a disagreement reveals a rule was
   wrong or missing, the skill proposes a rule. You decide whether it is kept.
 
-See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md) for how `guide/`
-and `adapters/` relate to each other; this file only covers what `audit-content`
-itself does.
+See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md#the-core-split) for
+how `guide/` and `adapters/` relate to each other; this file only covers what
+`audit-content` itself does.
 
 ## How to install
 
@@ -64,5 +64,5 @@ what has not earned its place.
 ## How to extend
 
 **Add a provider adapter.** Follow the general steps in the repository root's
-[CONTRIBUTING.md](../../CONTRIBUTING.md); map `guide/PROCEDURE.md`'s capabilities
-onto whatever that provider actually has.
+[CONTRIBUTING.md](../../CONTRIBUTING.md#steps-to-add-or-adopt-a-skill); map
+`guide/PROCEDURE.md`'s capabilities onto whatever that provider actually has.

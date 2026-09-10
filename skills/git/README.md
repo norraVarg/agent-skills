@@ -14,8 +14,9 @@ conventions, whether that is one commit or several split by topic.
   the fix command per repo for next time.
 - Never commits or pushes without confirmation first.
 
-See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md) for how `guide/`
-and `adapters/` relate to each other; this file only covers what `git` itself does.
+See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md#the-core-split) for
+how `guide/` and `adapters/` relate to each other; this file only covers what `git`
+itself does.
 
 ## How to install
 
@@ -42,5 +43,5 @@ Invoke the skill whenever there's something to commit or push. It:
 ## How to extend
 
 **Add a provider adapter.** Follow the general steps in the repository root's
-[CONTRIBUTING.md](../../CONTRIBUTING.md); map `guide/PROCEDURE.md`'s capability onto
-whatever that provider actually has.
+[CONTRIBUTING.md](../../CONTRIBUTING.md#steps-to-add-or-adopt-a-skill); map
+`guide/PROCEDURE.md`'s capability onto whatever that provider actually has.

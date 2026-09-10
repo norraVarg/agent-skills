@@ -13,9 +13,9 @@ guide.
 - A **learning loop**: when a finding recurs, or a disagreement reveals a rule was
   wrong or missing, the skill proposes a rule. You decide whether it is kept.
 
-See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md) for how `guide/`
-and `adapters/` relate to each other; this file only covers what `code-better` itself
-does.
+See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md#the-core-split) for
+how `guide/` and `adapters/` relate to each other; this file only covers what
+`code-better` itself does.
 
 ## How to install
 
@@ -61,5 +61,5 @@ fill it in, and add one row to the Language table in `guide/CLASSIFY.md`.
 **Add a domain.** Same with `guide/domains/_TEMPLATE.md` and the Domain table.
 
 **Add a provider adapter.** Follow the general steps in the repository root's
-[CONTRIBUTING.md](../../CONTRIBUTING.md); map `guide/PROCEDURE.md`'s capabilities
-onto whatever that provider actually has.
+[CONTRIBUTING.md](../../CONTRIBUTING.md#steps-to-add-or-adopt-a-skill); map
+`guide/PROCEDURE.md`'s capabilities onto whatever that provider actually has.
