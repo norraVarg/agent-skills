@@ -1,0 +1,31 @@
+skills/code-better/guide/PROCEDURE.md
+  s_fdff4b3029c2eb::t_a308fc2a1f2c2b 80-83
+skills/code-better/guide/domains/backend.md
+  s_fdff4b3029c2eb::t_c425a34e261005 12-13,21-22,34-38,43,48-49,56-57,60-62,64-65,72-76,81-83
+skills/code-better/guide/domains/frontend.md
+  s_fdff4b3029c2eb::t_9d98826678d436 15,22-23,26-27,58-69
+skills/code-better/guide/languages/typescript-javascript.md
+  s_fdff4b3029c2eb::t_e4c8912af30485 47-48,63-65
+skills/code-better/guide/universal/correctness.md
+  s_fdff4b3029c2eb::t_7affd79ba0841f 12-14,25
+skills/code-better/guide/universal/principles.md
+  s_fdff4b3029c2eb::t_c293328e7c02d7 18-20,47-48
+skills/code-better/guide/universal/simplicity.md
+  s_fdff4b3029c2eb::t_8f36b556721544 19-22,38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "2ba29158e4198aaa3290e8c36ecbbc262f83be10",
+  "prompts": {},
+  "sessions": {
+    "s_fdff4b3029c2eb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02ba4847-2b58-464e-9b51-77a9e5e845a9",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
