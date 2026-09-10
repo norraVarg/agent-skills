@@ -8,7 +8,7 @@ conventions, whether that is one commit or several split by topic.
   are genuinely separate topics.
 - Detects each repo's own commit convention (ticket-prefixed subjects or not,
   feature-branch-required or not) from its own history, asking only when it's
-  genuinely unclear.
+  unclear.
 - Checks staged changes for redundant or unnecessary comments before committing.
 - Auto-fixes and retries once on a failed prettier/lint pre-commit hook, and learns
   the fix command per repo for next time.
@@ -17,7 +17,7 @@ conventions, whether that is one commit or several split by topic.
 See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md) for how `guide/`
 and `adapters/` relate to each other; this file only covers what `git` itself does.
 
-## Install
+## How to install
 
 From the repository root:
 
@@ -25,7 +25,7 @@ From the repository root:
 ~/agent-skills/install.sh git claude-code
 ```
 
-## Using it
+## How to use it
 
 Invoke the skill whenever there's something to commit or push. It:
 

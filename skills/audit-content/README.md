@@ -1,14 +1,14 @@
 # audit-content
 
 Audits a piece of content for unused, redundant, conflicting, misleading, or unclear
-material, judging it only against itself — its own stated purpose and internal
+material. It checks the content against itself only — its own purpose and internal
 consistency — never against outside facts.
 
 - Works on any piece of content: a draft, a Jira ticket, a skill, a code comment, a
   message, a PR description.
 - Resolves the target from whatever's already in the session, the clipboard, a link,
   a file, a GitHub PR/issue, a Jira ticket, or a Confluence page — asking when it's
-  ambiguous which one you mean.
+  unclear which one you mean.
 - A fixed **checklist** (`guide/CHECKLIST.md`): unused/irrelevant/unnecessary,
   redundant/repeated, conflicting, misleading/wrong, unclear/poorly worded.
 - Your **own rules** (`guide/rules/user-rules.md`) apply on top, with the highest
@@ -21,7 +21,7 @@ See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md) for how `guid
 and `adapters/` relate to each other; this file only covers what `audit-content`
 itself does.
 
-## Install
+## How to install
 
 From the repository root:
 
@@ -29,7 +29,7 @@ From the repository root:
 ~/agent-skills/install.sh audit-content claude-code
 ```
 
-## Using it
+## How to use it
 
 Invoke the skill with a piece of content in mind — a draft, a ticket, a file, a link,
 whatever needs a pass. It:

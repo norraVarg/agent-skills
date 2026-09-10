@@ -1,8 +1,8 @@
 # code-better
 
-Guides an AI coding agent toward producing code that follows industry best practice
-and your own customized principles, by reviewing the staged and unstaged changes in a
-repository against a portable coding guide.
+Guides an AI coding agent to write code that follows industry best practice and your
+own principles. It reviews staged and unstaged changes against a portable coding
+guide.
 
 - A **universal core** that applies to all languages and both frontend and backend work.
 - **Domain** rules (frontend, backend) and **language** rules (TypeScript/JavaScript
@@ -17,7 +17,7 @@ See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md) for how `guid
 and `adapters/` relate to each other; this file only covers what `code-better` itself
 does.
 
-## Install
+## How to install
 
 From the repository root:
 
@@ -25,7 +25,7 @@ From the repository root:
 ~/agent-skills/install.sh code-better claude-code
 ```
 
-## Using it
+## How to use it
 
 Invoke the skill after making changes, staged, unstaged, or both. It:
 

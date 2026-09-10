@@ -2,7 +2,7 @@
 
 A personal collection of skills for AI coding agents. Each skill is agent-neutral: the
 actual procedure and rules are plain Markdown that names no specific tool, so the same
-content works with more than one agent. A thin per-provider adapter maps that procedure
+content works with any AI agent. A thin per-provider adapter maps that procedure
 onto one platform's concrete mechanisms. Claude Code is the first provider supported.
 
 ## Skills
