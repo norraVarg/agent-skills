@@ -25,6 +25,7 @@ Every skill has two parts, and they are never mixed:
     skills/<skill-name>/
       README.md                    what this skill does, how to use it, how to extend it
       guide/                       the provider-neutral procedure and rules
+        PROCEDURE.md                the entry point: the whole procedure, step by step
       adapters/<provider>/         one directory per supported provider
         <provider's entry file>    e.g. SKILL.md for Claude Code
         install.sh                 idempotent; wires the entry point into that provider
@@ -33,6 +34,12 @@ Every skill has two parts, and they are never mixed:
 Every skill directory is fully independent. Nothing is shared between skills, and
 nothing skill-specific belongs at the repository root beyond the install dispatcher
 and each skill's one-line entry in the root `README.md`'s Skills list.
+
+`guide/PROCEDURE.md` is always the name of the entry point: the file an adapter tells
+the agent to read and follow step by step, named for what it does (the whole
+procedure), not for the skill's domain. `guide/` may hold other files — checklists,
+rule sets, reference tables the procedure loads — but only `PROCEDURE.md` runs on its
+own; give every other file a name that describes what it actually holds.
 
 ## The install contract
 

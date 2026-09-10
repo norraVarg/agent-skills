@@ -1,70 +1,106 @@
-# Procedure
+# Review procedure
 
-This file is a reference used by `REVIEW.md`: how to classify a file, and how the
-guide's layers relate to each other. It does not run on its own.
+This is the whole procedure for reviewing a set of code changes against the guide.
+It is written for any agent to follow, on any platform: it names no specific tool,
+because no specific tool exists on every platform. Each provider's entry point
+(`adapters/<provider>/`) tells you what concretely fulfils the two capabilities named
+in step 0, on that platform. Everything else below is identical everywhere.
 
-## Two kinds of rule
+## Step 0 — Detect capabilities
 
-- **Safety rules** protect correctness, security, and testability: error handling,
-  validation, secrets, injection, data integrity, tests. Phrased with *never*, *always*,
-  *must*, *every*. They hold everywhere.
-- **Style rules** shape how code looks and is organised: naming, layout, idiom choice,
-  file structure, comments. Phrased with *prefer*, *avoid*, *keep*.
+Before anything else, establish what you actually have to work with:
 
-A project's existing conventions can outweigh a style rule: matching what the
-surrounding code already does is often more valuable than enforcing this guide's
-preference. Nothing outweighs a safety rule.
+- **An independent check.** Something that did not produce a candidate finding and can
+  genuinely try to disprove it — a separate call, a separate context, a fresh pass, not
+  the same reasoning re-reading its own conclusion and agreeing with itself.
+- **A structured reporting mechanism.** A way to present findings as discrete,
+  itemised results rather than only prose.
 
-A rule may also describe workflow or conversational behaviour rather than the content
-of the code itself — something no diff can show, such as whether a developer already
-gave a go-ahead before a file was written. Such a rule has nothing for a review to
-check; it produces no finding, regardless of precedence.
+If either is unclear or unavailable, proceed as if it does not exist: do the finding
+and verifying in one careful pass instead of two, and report in a clearly labelled
+plain list. State plainly, in the final report, which mode actually ran. A weaker
+review that says so is trustworthy; a weaker review presented as if it were the full
+pipeline is not.
 
-## Precedence
+## Step 1 — Gather the diff
 
-For safety rules, existing conventions never apply — they cannot override a safety
-rule, so they are not part of this chain:
+Collect everything not yet committed: staged changes, unstaged changes to tracked
+files, and untracked files. Untracked files are included — skipping brand-new files
+would miss most of what a real change usually contains.
 
-    rules/user-rules.md  >  universal/  >  domains/  >  languages/
+If there is nothing to review, say so and stop. Do not manufacture findings to have
+something to report.
 
-For style rules, existing conventions outrank the guide's own preference, but not the
-developer's explicit instruction:
+## Step 2 — Classify and load
 
-    rules/user-rules.md  >  the project's existing conventions  >  universal/  >  domains/  >  languages/
+For each changed file, classify its language and domain using the tables in
+`CLASSIFY.md`, and load the matching layers:
 
-Higher wins on conflict; lower adds detail. Within one layer, a safety rule wins over a
-style rule.
+1. `rules/user-rules.md` — always.
+2. `universal/principles.md` — always. Then, by what the diff touches:
+   - `universal/correctness.md` — error handling, state, concurrency, or data flow
+   - `universal/simplicity.md` — new functions, modules, abstractions, or names
+   - `universal/security.md` — input, output, authentication, secrets, files, or
+     external calls
+   - `universal/testing.md` — adding, changing, or needing tests
+3. The matched `domains/*.md`.
+4. The matched `languages/*.md`.
 
-## Classify
+A diff touching several files may need several different combinations of layers, one
+per file or per small group of related files. Do not average them into one generic
+pass.
 
-Do this once per file under review; a diff can span several files needing different
-combinations of layers.
+## Step 3 — Find
 
-**Language** — from the file's extension; manifests only confirm.
+Look for violations of the loaded rules in the diff. For every candidate, quote the
+exact rule it violates, the file it lives in, and the line, not a vague description
+like "doesn't follow conventions." A finding that cannot point at a specific quoted
+rule is not a finding yet.
 
-| Signal | Language file |
-| --- | --- |
-| `.ts` `.tsx` `.mts` `.cts` `.d.ts` `.js` `.jsx` `.mjs` `.cjs`; script blocks in `.vue` `.svelte` `.astro`; `package.json`, `tsconfig.json` | `languages/typescript-javascript.md` |
-| Configuration and data: `.json` `.yml` `.yaml` `.toml` `.ini` `.env*`, `Dockerfile`, `.sh`, `.sql`, CI workflows | none — universal layer only; say nothing |
-| Any other programming language | none — say so in one line, once per review, and offer to add it from `languages/_TEMPLATE.md` |
+If independent parallel passes are available (per step 0), run at least two: one
+looking for safety-rule violations (correctness, security, testing — the rules
+`CLASSIFY.md` marks as holding everywhere), one looking for style-rule violations
+(simplicity, naming, domain and language idioms — the rules that yield to a project's
+existing conventions). If parallel passes are not available, cover both in one pass,
+safety first.
 
-**Domain** — from the dependencies of the nearest `package.json` (or equivalent) and
-the file's location and content.
+## Step 4 — Verify
 
-| Signal | Domain file |
-| --- | --- |
-| Frontend: `react`, `vue`, `svelte`, `angular`, `solid`, `preact`, `vite` as a dependency; `"jsx"` in tsconfig; `index.html`; `components/` or `pages/` folders | `domains/frontend.md` |
-| Backend: `express`, `fastify`, `@nestjs/*`, `hono`, `koa` as a dependency; a database library (`prisma`, `typeorm`, `drizzle`, `knex`, `sequelize`, `mongoose`, `pg`, `mysql2`, `mongodb`); a cloud SDK; `Dockerfile`, `serverless.yml`; folders named `routes/`, `handlers/`, `controllers/`, `api/`, `jobs/` | `domains/backend.md` |
-| Full-stack framework: `next`, `nuxt`, `remix`, `@sveltejs/kit`, `astro` as a dependency | per file — server-only code (route handlers, API routes, server actions, loaders, middleware) → `backend.md`; components and client code → `frontend.md`; a file with both → both |
-| Frontend and backend signals in separate packages (monorepo) | the package containing the file decides |
-| Both signals in one package without a full-stack framework | by the file: runs in a browser → `frontend.md`; runs on a server → `backend.md` |
-| No domain signal (library, CLI, shared package, tooling) | none — universal and language layers only; say nothing |
-| Infrastructure as code (CDK, Terraform, CloudFormation, Pulumi) | none yet — universal and language layers only |
+Every candidate finding gets checked before it is trusted.
 
-Framework-specific rules, where needed, live in the domain file under a heading named
-after the framework.
+If an independent check is available: for each candidate, have it try to refute the
+finding using only the file and the quoted rule, no prior knowledge of why the finding
+was raised. It returns one of confirmed, plausible, or refuted. Keep confirmed and
+plausible; drop refuted.
 
-## Adding a language or domain
+If no independent check is available: re-examine each candidate yourself, adopting a
+deliberately skeptical, refute-first stance, before deciding whether to keep it. State
+in the report that this weaker self-check ran instead of an independent one.
 
-Copy the `_TEMPLATE.md` in the relevant folder, fill it in, and add one row to the
-matching table above. Nothing else changes.
+## Step 5 — Report
+
+Present the surviving findings, most severe first. Use a structured, itemised
+mechanism if one exists; otherwise a clearly labelled list. Each finding states: the
+file and line, the quoted rule it violates, why it matters for this specific change,
+and its verdict from step 4.
+
+State plainly whether step 0's independent-check and structured-reporting capabilities
+were actually available, and which mode ran.
+
+## Step 6 — React
+
+Ask how to proceed: fix everything found, fix specific ones, or discuss first. Never
+apply a fix without being told to.
+
+When fixing a finding, skip it instead if the fix would change intended behaviour,
+would reach outside the files under review, or turns out on closer inspection to be a
+false positive, noting the skip plainly rather than arguing for the original finding.
+After acting, state the outcome of each finding that was addressed: fixed, skipped, or
+no change needed.
+
+## Step 7 — Learn, optionally
+
+If a finding reveals a genuine gap in the guide, the same category of issue recurring
+across separate review runs, or a disagreement with the developer that reveals a rule
+was wrong or missing, follow `LEARNING.md` to propose a rule. Most reviews will not
+reach this step; it is not required to run every time.

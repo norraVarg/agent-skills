@@ -6,9 +6,9 @@ description: Guide the agent to produce code that follows industry best practice
 # code-better
 
 The guide lives at `${CLAUDE_SKILL_DIR}/guide/`. Read
-`${CLAUDE_SKILL_DIR}/guide/REVIEW.md` and follow it exactly, step by step.
+`${CLAUDE_SKILL_DIR}/guide/PROCEDURE.md` and follow it exactly, step by step.
 
-On this platform, the two capabilities `REVIEW.md` step 0 asks you to detect are both
+On this platform, the two capabilities `PROCEDURE.md` step 0 asks you to detect are both
 available:
 
 - **Independent check (step 4).** For each candidate finding, make one separate
@@ -19,4 +19,4 @@ available:
 - **Structured report (step 5).** Call the `ReportFindings` tool once with the
   surviving findings, most severe first.
 
-Do not summarise `guide/REVIEW.md` or `guide/PROCEDURE.md` from memory. Read them.
+Do not summarise `guide/PROCEDURE.md` or `guide/CLASSIFY.md` from memory. Read them.

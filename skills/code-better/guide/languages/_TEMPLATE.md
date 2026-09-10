@@ -5,7 +5,7 @@ How to add a language:
 1. Copy this file to `languages/<language-name>.md` (lowercase, hyphenated).
 2. Replace the heading and fill the sections below. Delete sections that do not
    apply; add sections only for concerns unique to this language.
-3. Add one row to the Language table in `PROCEDURE.md` Step 1 with the manifest
+3. Add one row to the Language table in `CLASSIFY.md` Step 1 with the manifest
    files and file extensions that identify this language.
 4. Remove this comment block.
 Rules here must not contradict `universal/` or `domains/`. Keep to what is specific
