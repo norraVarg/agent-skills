@@ -9,6 +9,7 @@ onto one platform's concrete mechanisms. Claude Code is the first provider suppo
 
 - [content-audit](skills/content-audit/README.md)
 - [code-better](skills/code-better/README.md)
+- [git](skills/git/README.md)
 
 ## Install on a new computer
 
