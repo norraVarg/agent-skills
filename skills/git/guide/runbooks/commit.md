@@ -138,11 +138,17 @@ Rules:
   - **Lowercase start** — no leading capital (`rename lottie icons`, not `Rename lottie
     icons`). Acronyms and identifiers keep their natural case (e.g. `fi_FI`, `TOC`,
     `DE`).
-  - **Imperative present tense** — `add`, `fix`, `rename`, `update`; not past tense or
+  - **Imperative present tense** — `add`, `fix`, `rename`; not past tense or
     gerund. Reads as "if applied, this commit will <description>".
   - **No trailing period.**
 - Cover all the important points of the staged changes while staying short and simple —
   one clear line.
+- Describe the change itself, not where it came from or how it was produced — the
+  origin of a change (a source it was ported from, a prior investigation) belongs in
+  a body if anywhere, never the subject.
+- Avoid a generic verb that could describe almost any change (`broaden`, `improve`,
+  `enhance`, `update`) when a more specific one names what actually happened
+  (`close gaps in`, `add`, `fix`, `tighten`).
 - **Length** — target 6–10 words for the description, 12 as a hard ceiling. Name the
   core change, not an inventory of every changed aspect — if it's creeping past that
   because several things changed, name the change that matters most and let the diff
