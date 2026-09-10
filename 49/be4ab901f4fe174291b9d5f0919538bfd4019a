@@ -1,0 +1,26 @@
+skills/content-audit/adapters/claude-code/SKILL.md
+  h_c896307a0bea2a 1-37
+skills/content-audit/adapters/claude-code/guide
+  h_c896307a0bea2a 1
+skills/content-audit/adapters/claude-code/install.sh
+  h_c896307a0bea2a 1-22
+skills/content-audit/guide/CHECKLIST.md
+  h_c896307a0bea2a 1-64
+skills/content-audit/guide/PROCEDURE.md
+  h_c896307a0bea2a 1-71
+skills/content-audit/guide/SOURCES.md
+  h_c896307a0bea2a 1-34
+skills/content-audit/guide/rules/user-rules.md
+  h_c896307a0bea2a 1-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "49be4ab901f4fe174291b9d5f0919538bfd4019a",
+  "prompts": {},
+  "humans": {
+    "h_c896307a0bea2a": {
+      "author": "Yue Wang <yue.wang@qred.com>"
+    }
+  }
+}
