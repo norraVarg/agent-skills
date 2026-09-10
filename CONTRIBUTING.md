@@ -46,19 +46,19 @@ procedure), not for the skill's domain. `guide/` may hold other files — checkl
 rule sets, reference tables the procedure loads — but only `PROCEDURE.md` runs on its
 own; give every other file a name that describes what it actually holds.
 
-`PROCEDURE.md`'s step 0 must list every capability a later step actually relies on,
-each with a stated fallback for when it's unavailable. A later step that assumes a
-capability step 0 never named (or names but gives no fallback for) is a bug, not a
-stylistic choice. Never restate how many capabilities there are anywhere outside step
-0 itself — not the intro line, not an adapter's `SKILL.md`, not a skill's `README.md`.
-That count is guide content; duplicating it outside its one source of truth is exactly
-the kind of drift this file already warns adapters against, and it has already broken
-twice.
+`PROCEDURE.md`'s step 0 must list every capability a later step relies on that can
+genuinely degrade — something the procedure can still do a lesser version of
+without — each with a stated fallback for when it's unavailable. A later step that
+assumes such a capability without step 0 naming it (or naming it with no fallback)
+is a bug, not a stylistic choice. A hard requirement with no meaningful degraded
+mode (a git skill without shell access, for instance) does not belong in step 0;
+there is nothing to detect, because there is no fallback to describe.
 
-Step 0 is only for capabilities that can genuinely degrade — something the procedure
-can still do a lesser version of without. A hard requirement with no meaningful
-degraded mode (a git skill without shell access, for instance) does not belong in
-step 0; there is nothing to detect, because there is no fallback to describe.
+Never restate how many capabilities there are anywhere outside step 0 itself — not
+the intro line, not an adapter's `SKILL.md`, not a skill's `README.md`. That count
+is guide content; duplicating it outside its one source of truth is exactly the
+kind of drift this file already warns adapters against, and it has already broken
+twice.
 
 ## The install contract
 
@@ -85,6 +85,9 @@ port its actual substance into `guide/` and rebuild `adapters/claude-code/` from
 scratch to this repo's contract. Do not carry over the source's file layout, naming,
 or adapter mechanics just because that is how it arrived.
 
+The next three points apply only to that porting case — skip ahead to the numbered
+steps below if you're writing a skill fresh, with no existing source to work from.
+
 A source written for one person or one platform usually has platform mechanics (tool
 names, invocation syntax, permission lists) woven directly into its actual decision
 logic. Pull them apart: the decision logic is provider-neutral guide content; the
@@ -93,9 +96,10 @@ to reword sentences, not just move files.
 
 Scrub the source for anything the Privacy rule forbids before it lands in `guide/` —
 not only names and pronouns, but worked examples, file paths, and any state the
-source already accumulated (a learned-command table, cached values) that might carry
-real project detail. A mechanical port is the likeliest place to miss this, because
-the temptation is to copy content wholesale rather than write it fresh.
+source already accumulated (a learned-command table, cached values) that might
+carry real project detail — see the root README.md's Privacy section for the full
+rule. A mechanical port is the likeliest place to miss this, because the temptation
+is to copy content wholesale rather than write it fresh.
 
 Porting is also the moment to fix a genuine gap in the source's own logic if one turns
 up — not just to restructure files around unchanged content. If the source hard-codes
@@ -118,13 +122,3 @@ question, rather than porting the assumption as-is.
    with the developer's confirmation, any place it drifts without good reason.
    Matching an existing skill's shape is not optional polish; it is what lets a
    developer use any skill in this repo without relearning conventions per skill.
-
-## Privacy
-
-Nothing in this repository may identify a person, an employer, or a specific
-machine, in any skill, in any layer: no names, gendered pronouns describing a
-specific person, emails, employers, or machine paths — and no real project detail
-smuggled in through a worked example, a file path, a feature name, or a skill's own
-accumulated state. This applies to every skill added here, not only the ones already
-present. Before committing, search the whole repository for anything that would
-identify you.
