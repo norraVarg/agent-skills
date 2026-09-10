@@ -7,10 +7,8 @@ onto one platform's concrete mechanisms. Claude Code is the first provider suppo
 
 ## Skills
 
-- [`content-audit`](skills/content-audit/) — audits a piece of content (a draft, a
-  ticket, a skill, a code comment, a message) for unused, irrelevant, unnecessary,
-  redundant, repeated, conflicting, misleading, wrong, unclear, or poorly worded
-  material, and reports what it finds.
+- [content-audit](skills/content-audit/README.md)
+- [code-better](skills/code-better/README.md)
 
 ## Install on a new computer
 
@@ -40,8 +38,17 @@ install.sh                    ./install.sh <skill-name> <provider>
 
 ## Adding a skill
 
-1. Create `skills/<new-skill-name>/guide/` with the provider-neutral procedure and
-   rules.
-2. Add `skills/<new-skill-name>/adapters/<provider>/` with that provider's `SKILL.md`,
-   an `install.sh`, and a symlink back to `../../guide`.
-3. List it under Skills above.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the rules and structure every skill in
+this repository follows.
+
+## Keeping machines in sync
+
+Changes to any skill are ordinary commits. Commit and push from the machine where a
+change was made; on every other machine, `git pull` and re-run the install command for
+whichever skills you use there.
+
+## Privacy
+
+This repository contains no personal information, in any skill, and must stay that
+way: no names, emails, employers, or machine paths. Before committing, search the
+repository for anything that identifies you.
