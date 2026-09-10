@@ -1,0 +1,50 @@
+skills/code-better/README.md
+  h_ba9e79e0477686 1-64
+skills/code-better/adapters/claude-code/SKILL.md
+  h_ba9e79e0477686 1-22
+skills/code-better/adapters/claude-code/guide
+  h_ba9e79e0477686 1
+skills/code-better/adapters/claude-code/install.sh
+  h_ba9e79e0477686 1-22
+skills/code-better/guide/LEARNING.md
+  h_ba9e79e0477686 1-69
+skills/code-better/guide/PROCEDURE.md
+  h_ba9e79e0477686 1-70
+skills/code-better/guide/REVIEW.md
+  h_ba9e79e0477686 1-106
+skills/code-better/guide/domains/_TEMPLATE.md
+  h_ba9e79e0477686 1-34
+skills/code-better/guide/domains/backend.md
+  h_ba9e79e0477686 1-63
+skills/code-better/guide/domains/frontend.md
+  h_ba9e79e0477686 1-65
+skills/code-better/guide/languages/_TEMPLATE.md
+  h_ba9e79e0477686 1-39
+skills/code-better/guide/languages/typescript-javascript.md
+  h_ba9e79e0477686 1-80
+skills/code-better/guide/rules/candidates.md
+  h_ba9e79e0477686 1-15
+skills/code-better/guide/rules/user-rules.md
+  h_ba9e79e0477686 1-16
+skills/code-better/guide/universal/correctness.md
+  h_ba9e79e0477686 1-35
+skills/code-better/guide/universal/principles.md
+  h_ba9e79e0477686 1-43
+skills/code-better/guide/universal/security.md
+  h_ba9e79e0477686 1-38
+skills/code-better/guide/universal/simplicity.md
+  h_ba9e79e0477686 1-38
+skills/code-better/guide/universal/testing.md
+  h_ba9e79e0477686 1-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "cc534019d084095c2e89e3360f1cc3de55027389",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
