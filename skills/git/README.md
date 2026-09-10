@@ -42,5 +42,5 @@ Invoke the skill whenever there's something to commit or push. It:
 ## How to extend
 
 **Add a provider adapter.** Follow the general steps in the repository root's
-[CONTRIBUTING.md](../../CONTRIBUTING.md); map `guide/PROCEDURE.md`'s capabilities onto
+[CONTRIBUTING.md](../../CONTRIBUTING.md); map `guide/PROCEDURE.md`'s capability onto
 whatever that provider actually has.

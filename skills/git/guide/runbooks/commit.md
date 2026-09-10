@@ -185,14 +185,18 @@ show it again until they confirm. Only commit once confirmed.
 Commit, signed. If step 1 found this repo requires a feature branch and the current
 branch is the default branch, create one first.
 
-Subject only (adjust the format to step 1's convention):
+Subject only, in step 1's detected format:
 
 ```bash
+# ticket-prefixed
 git commit -S -m "type(TICKET): short description"
+
+# no ticket
+git commit -S -m "type: short description"
 ```
 
 Subject plus body — use a heredoc so the blank line and wrapping are preserved exactly
-as confirmed in step 5:
+as confirmed in step 5 (the subject line still follows step 1's convention):
 
 ```bash
 git commit -S -m "$(cat <<'EOF'

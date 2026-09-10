@@ -2,7 +2,7 @@
 name: git
 description: "Run git commit and push work following the repo's own conventions, whether that is one commit or several split by topic. Use whenever asked to commit, write/create/generate a commit message, make/create a commit, push, push changes, push to remote, push the branch, git push, git commit, commit and push, ship the current changes, or to split changes across more than one commit — 'in two commits', 'split into commits', 'a separate commit for X', 'commit X separately'. Invoke manually."
 argument-hint: "[optional: extra context about the change]"
-allowed-tools: Read, Bash
+allowed-tools: Read, Edit, Bash
 ---
 
 # git
