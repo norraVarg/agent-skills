@@ -1,0 +1,39 @@
+README.md
+  s_fdff4b3029c2eb::t_adc50232c0004a 12
+skills/git/README.md
+  s_fdff4b3029c2eb::t_532d4373a2c08c 1-46
+skills/git/adapters/claude-code/SKILL.md
+  s_fdff4b3029c2eb::t_2f5ca9e82f6d8e 1-27
+skills/git/adapters/claude-code/guide
+  s_fdff4b3029c2eb::t_eceb2030ad3724 1
+skills/git/adapters/claude-code/install.sh
+  s_fdff4b3029c2eb::t_0686bcdb92c8bd 1-22
+skills/git/guide/PROCEDURE.md
+  s_fdff4b3029c2eb::t_aeed7399d790c6 1-138
+skills/git/guide/fix-commands.md
+  s_fdff4b3029c2eb::t_f2cecf2505abc9 1-14
+skills/git/guide/runbooks/commit-fix-on-failure.md
+  s_fdff4b3029c2eb::t_7e5c50b6aa5dc9 1-46
+skills/git/guide/runbooks/commit.md
+  s_fdff4b3029c2eb::t_3f71458ec01cd0 1-219
+skills/git/guide/runbooks/multi-commit.md
+  s_fdff4b3029c2eb::t_d804ef393f03cd 1-25
+skills/git/guide/runbooks/push.md
+  s_fdff4b3029c2eb::t_18ff8d415d4c8a 1-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "788ed4fde88c898d708957c01e9e5dd2d5d7422d",
+  "prompts": {},
+  "sessions": {
+    "s_fdff4b3029c2eb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02ba4847-2b58-464e-9b51-77a9e5e845a9",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
