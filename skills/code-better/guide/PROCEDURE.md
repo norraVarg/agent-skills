@@ -3,7 +3,7 @@
 This is the whole procedure for reviewing a set of code changes against the guide.
 It is written for any agent to follow, on any platform: it names no specific tool,
 because no specific tool exists on every platform. Each provider's entry point
-(`adapters/<provider>/`) tells you what concretely fulfils the two capabilities named
+(`adapters/<provider>/`) tells you what concretely fulfils the three capabilities named
 in step 0, on that platform. Everything else below is identical everywhere.
 
 ## Step 0 — Detect capabilities
@@ -15,6 +15,9 @@ Before anything else, establish what you actually have to work with:
   the same reasoning re-reading its own conclusion and agreeing with itself.
 - **A structured reporting mechanism.** A way to present findings as discrete,
   itemised results rather than only prose.
+- **A diff or preview mechanism.** A way to show a proposed edit against the original
+  before it is applied. Optional — falls back to showing the before and after text
+  inline.
 
 If either is unclear or unavailable, proceed as if it does not exist: do the finding
 and verifying in one careful pass instead of two, and report in a clearly labelled
@@ -91,6 +94,13 @@ were actually available, and which mode ran.
 
 Ask how to proceed: fix everything found, fix specific ones, or discuss first. Never
 apply a fix without being told to.
+
+When more than one finding is being fixed, work through them one at a time: show that
+finding's diff or before/after (per step 0's diff capability), wait for explicit
+confirmation, apply it, then move to the next — rather than presenting every diff at
+once for a single round of approval. If a new issue turns up while fixing one (not
+already among the reported findings), surface it separately and ask before adding it
+to the queue, rather than folding it in silently.
 
 When fixing a finding, skip it instead if the fix would change intended behaviour,
 would reach outside the files under review, or turns out on closer inspection to be a

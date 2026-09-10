@@ -1,7 +1,7 @@
 # User rules
 
-The developer's own rules: preferences about style, workflow, and communication that
-apply everywhere. Highest precedence among the guide's layers.
+The developer's own rules: preferences about code quality and style that apply
+everywhere. Highest precedence among the guide's layers.
 
 Format (see `LEARNING.md`, "Rule format") — one bullet, one rule, provenance on the
 next line:

@@ -3,7 +3,7 @@
 This is the whole procedure for auditing a piece of content for a human reader. It is
 written for any agent to follow, on any platform: it names no specific tool, because no
 specific tool exists on every platform. Each provider's entry point
-(`adapters/<provider>/`) tells you what concretely fulfils the two capabilities named in
+(`adapters/<provider>/`) tells you what concretely fulfils the three capabilities named in
 step 0, on that platform. Everything else below is identical everywhere.
 
 ## Step 0 — Detect capabilities
@@ -61,11 +61,24 @@ An empty list is a valid outcome; report it plainly.
 Ask how to proceed: fix everything found, fix specific ones, or discuss first. Never
 apply a fix without being told to.
 
-For each finding being fixed, show the proposed edit as a diff or a clear before/after
-before applying it (per step 0's diff capability). Skip a finding instead of forcing a
-fix if applying it would change the content's intended meaning, reach outside the
-content under audit, or turns out on closer inspection to be a false positive — note the
-skip plainly rather than arguing for the original finding.
+When more than one finding is being fixed, work through them one at a time: show that
+finding's diff or before/after (per step 0's diff capability), wait for explicit
+confirmation, apply it, then move to the next — rather than presenting every diff at
+once for a single round of approval. If a new issue turns up while fixing one (not
+part of the reported findings), surface it separately and ask before adding it to the
+queue, rather than folding it in silently.
+
+Skip a finding instead of forcing a fix if applying it would change the content's
+intended meaning, reach outside the content under audit, or turns out on closer
+inspection to be a false positive — note the skip plainly rather than arguing for the
+original finding.
 
 After acting, state the outcome of each finding that was addressed: fixed, skipped, or
 no change needed.
+
+## Step 6 — Learn, optionally
+
+If a finding reveals a genuine gap in the guide, the same category of issue recurring
+across separate audit runs, or a disagreement with the developer that reveals a rule
+was wrong or missing, follow `LEARNING.md` to propose a rule. Most audits will not
+reach this step; it is not required to run every time.

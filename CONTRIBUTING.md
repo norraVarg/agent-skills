@@ -41,6 +41,11 @@ procedure), not for the skill's domain. `guide/` may hold other files — checkl
 rule sets, reference tables the procedure loads — but only `PROCEDURE.md` runs on its
 own; give every other file a name that describes what it actually holds.
 
+`PROCEDURE.md`'s step 0 must list every capability a later step actually relies on —
+its count matching what the intro line above step 0 states — each with a stated
+fallback for when it's unavailable. A later step that assumes a capability step 0
+never named (or names but gives no fallback for) is a bug, not a stylistic choice.
+
 ## The install contract
 
 Every skill must be installable the same way, through the repository's own

@@ -14,6 +14,8 @@ consistency — never against outside facts.
 - Your **own rules** (`guide/rules/user-rules.md`) apply on top, with the highest
   precedence.
 - Never applies a fix without being told to; shows a diff or before/after first.
+- A **learning loop**: when a finding recurs, or a disagreement reveals a rule was
+  wrong or missing, the skill proposes a rule. You decide whether it is kept.
 
 See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md) for how `guide/`
 and `adapters/` relate to each other; this file only covers what `content-audit`
@@ -41,11 +43,24 @@ whatever needs a pass. It:
 5. Asks how to proceed — fix everything, fix specific ones, or discuss first — and
    shows each fix as a diff before applying it. Never applies a fix without being
    told to.
+6. Occasionally proposes a rule, when a finding reveals a genuine gap.
+
+**When it proposes a rule**, it sends one short message: the rule and why — content-
+audit has only one rule layer, so there is no target to choose. Answer with one word:
+
+| Answer | Effect |
+| --- | --- |
+| `promote` | The rule is written into `rules/user-rules.md` and is in force from the next audit. |
+| `candidate` | The rule is parked in `guide/rules/candidates.md`. If the lesson recurs, the skill points at it and proposes promotion. |
+| `drop` | Nothing is written. |
+
+**To add a rule by hand**, append a bullet to `guide/rules/user-rules.md` in the format
+the file describes.
+
+**Review `guide/rules/candidates.md` occasionally.** Promote what has recurred; delete
+what has not earned its place.
 
 ## How to extend
-
-**Add or change a rule.** Append a bullet to `guide/rules/user-rules.md` in the
-format the file describes.
 
 **Add a provider adapter.** Follow the general steps in the repository root's
 [CONTRIBUTING.md](../../CONTRIBUTING.md); map `guide/PROCEDURE.md`'s three

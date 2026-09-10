@@ -8,7 +8,7 @@ description: Guide the agent to produce code that follows industry best practice
 The guide lives at `${CLAUDE_SKILL_DIR}/guide/`. Read
 `${CLAUDE_SKILL_DIR}/guide/PROCEDURE.md` and follow it exactly, step by step.
 
-On this platform, the two capabilities `PROCEDURE.md` step 0 asks you to detect are both
+On this platform, the three capabilities `PROCEDURE.md` step 0 asks you to detect are all
 available:
 
 - **Independent check (step 4).** For each candidate finding, make one separate
@@ -18,5 +18,6 @@ available:
   refuted.
 - **Structured report (step 5).** Call the `ReportFindings` tool once with the
   surviving findings, most severe first.
+- **Diff/preview (step 6).** The `Edit` tool's own diff view.
 
 Do not summarise `guide/PROCEDURE.md` or `guide/CLASSIFY.md` from memory. Read them.

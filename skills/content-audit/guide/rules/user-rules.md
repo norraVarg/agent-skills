@@ -3,7 +3,8 @@
 The developer's own rules: preferences about content quality that apply everywhere.
 Highest precedence among the guide's layers.
 
-Format — one bullet, one rule, provenance on the next line:
+Format (see `LEARNING.md`, "Rule format") — one bullet, one rule, provenance on the
+next line:
 
 - Rule stated as an instruction. *Why:* the reason, in one clause.
   <!-- added YYYY-MM-DD · lesson: <one clause> -->
