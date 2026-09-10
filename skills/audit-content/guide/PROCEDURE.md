@@ -1,4 +1,4 @@
-# Content audit procedure
+# Audit content procedure
 
 This is the whole procedure for auditing a piece of content for a human reader. It is
 written for any agent to follow, on any platform: it names no specific tool, because no

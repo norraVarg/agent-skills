@@ -1,4 +1,4 @@
-# content-audit
+# audit-content
 
 Audits a piece of content for unused, redundant, conflicting, misleading, or unclear
 material, judging it only against itself — its own stated purpose and internal
@@ -18,7 +18,7 @@ consistency — never against outside facts.
   wrong or missing, the skill proposes a rule. You decide whether it is kept.
 
 See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md) for how `guide/`
-and `adapters/` relate to each other; this file only covers what `content-audit`
+and `adapters/` relate to each other; this file only covers what `audit-content`
 itself does.
 
 ## Install
@@ -26,7 +26,7 @@ itself does.
 From the repository root:
 
 ```bash
-~/agent-skills/install.sh content-audit claude-code
+~/agent-skills/install.sh audit-content claude-code
 ```
 
 ## Using it
@@ -46,7 +46,7 @@ whatever needs a pass. It:
 6. Occasionally proposes a rule, when a finding reveals a genuine gap.
 
 **When it proposes a rule**, it sends one short message: the rule and why —
-content-audit has only one rule layer, so there is no target to choose. Answer with
+audit-content has only one rule layer, so there is no target to choose. Answer with
 one word:
 
 | Answer | Effect |

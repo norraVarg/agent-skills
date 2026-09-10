@@ -7,7 +7,7 @@ onto one platform's concrete mechanisms. Claude Code is the first provider suppo
 
 ## Skills
 
-- [content-audit](skills/content-audit/README.md)
+- [audit-content](skills/audit-content/README.md)
 - [code-better](skills/code-better/README.md)
 - [git](skills/git/README.md)
 
@@ -23,7 +23,7 @@ git clone <repository-url> ~/agent-skills
 ~/agent-skills/install.sh <skill-name> claude-code
 ```
 
-For example: `~/agent-skills/install.sh content-audit claude-code`.
+For example: `~/agent-skills/install.sh audit-content claude-code`.
 
 The installer reports what it changed. To update later: `git pull`, then re-run the
 same install command. It is idempotent.

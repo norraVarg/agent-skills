@@ -107,16 +107,23 @@ an assumption that does not hold everywhere it will now be used, replace the
 assumption with a check (inferred from evidence where possible) or an explicit
 question, rather than porting the assumption as-is.
 
-1. Write `skills/<name>/guide/` — the procedure and rules, naming no specific tool.
-2. Write `skills/<name>/adapters/claude-code/` — the entry point, the symlink, and an
+1. Pick `<name>` — where it fits, name it as the instruction a developer would
+   actually say to invoke it, verb first then what it acts on: `code-better` reads
+   as "code it better," `audit-content` as "audit the content." Verb-first names the
+   action the skill performs, not just its subject, so the name alone tells you
+   what invoking it does. Not mandatory: a skill that wraps an entire existing tool
+   or domain rather than one synthesized action can just use that domain's own name
+   instead (`git`).
+2. Write `skills/<name>/guide/` — the procedure and rules, naming no specific tool.
+3. Write `skills/<name>/adapters/claude-code/` — the entry point, the symlink, and an
    `install.sh` following the contract above. Add other providers' adapters if asked.
-3. Write `skills/<name>/README.md` — what it does, how to invoke it, how to extend it.
+4. Write `skills/<name>/README.md` — what it does, how to invoke it, how to extend it.
    Do not restate this file's content in it; link back here for the general structure.
-4. Add one line to the root `README.md`'s "Skills" list: the skill's name, linked to
+5. Add one line to the root `README.md`'s "Skills" list: the skill's name, linked to
    its own `README.md`. No description there, the skill's own README carries that.
-5. Install it (`~/agent-skills/install.sh <name> claude-code`) and invoke it once to
+6. Install it (`~/agent-skills/install.sh <name> claude-code`) and invoke it once to
    confirm it actually resolves and runs before considering it done.
-6. Compare the result against the other skills in `skills/` — file layout,
+7. Compare the result against the other skills in `skills/` — file layout,
    `PROCEDURE.md`'s capability-detection-with-fallback pattern, `rules/user-rules.md`'s
    format and header wording, `README.md`'s section order — and propose reconciling,
    with the developer's confirmation, any place it drifts without good reason.

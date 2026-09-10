@@ -1,9 +1,9 @@
 ---
-name: content-audit
+name: audit-content
 description: Audit a piece of content — a draft, a Jira ticket, a skill, a code comment, a message, a PR description — for unused, irrelevant, unnecessary, redundant, repeated, conflicting, misleading, wrong, unclear, or poorly worded material. Figures out what to audit from what is already in the session, or from the clipboard, a link, a file, a GitHub PR/issue, a Jira ticket, or a Confluence page, asking for confirmation when the target is ambiguous. Reports every finding, then fixes only what is confirmed. Invoke manually.
 ---
 
-# content-audit
+# audit-content
 
 The guide lives at `${CLAUDE_SKILL_DIR}/guide/`. Read
 `${CLAUDE_SKILL_DIR}/guide/PROCEDURE.md` and follow it exactly, step by step.

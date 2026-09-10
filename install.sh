@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Entry point: ./install.sh <skill-name> <adapter>
 # Runs the installer of the chosen skill's agent adapter, e.g.
-# ./install.sh content-audit claude-code
+# ./install.sh audit-content claude-code
 set -eu
 
 root="$(cd "$(dirname "$0")" && pwd)"

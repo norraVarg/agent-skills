@@ -32,7 +32,7 @@ Run this after the audit has been reported and reacted on, never before.
 3. **Draft the rule.** One sentence, general (not tied to one document or project),
    actionable, not in conflict with `CHECKLIST.md`. Attach a *why* that names the
    lesson, not the document it came from. It always targets `rules/user-rules.md` —
-   content-audit has no other rule layer to choose between.
+   audit-content has no other rule layer to choose between.
 4. **Propose it in one short message:** the rule, the why. Then wait. The developer
    answers:
    - **promote** — write the rule into `rules/user-rules.md`, in the rule format below.
