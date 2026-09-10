@@ -77,8 +77,10 @@ was raised. It returns one of confirmed, plausible, or refuted. Keep confirmed a
 plausible; drop refuted.
 
 If no independent check is available: re-examine each candidate yourself, adopting a
-deliberately skeptical, refute-first stance, before deciding whether to keep it. State
-in the report that this weaker self-check ran instead of an independent one.
+deliberately skeptical, refute-first stance. Score each one for confidence, 0 to
+100 — whether it is a real defect in this diff rather than a stylistic preference, a
+pre-existing condition, or a guess. Keep what scores 80 or above; drop the rest.
+State in the report that this weaker self-check ran instead of an independent one.
 
 ## Step 5 — Report
 

@@ -12,14 +12,19 @@ rules, where needed, live below under a heading named after the framework.
   from state rather than storing copies that can drift.
 - Server data and local UI state are different things. Keep them in separate
   mechanisms and never write server data into local state by hand.
+- Custom hooks are the unit of reuse for stateful logic, not a base component.
 
 ## Rendering
 - Every asynchronous view has explicit loading, empty, error, and success states.
   None of them is an afterthought.
 - Components are pure with respect to their inputs: same props and state → same
   output. Side effects live in the framework's side-effect mechanism, with cleanup.
+- Type props explicitly — they are the component's public contract, the same
+  reasoning that puts return types on exported functions.
 - Lists render with stable keys derived from the data, never from the index.
 - Avoid layout shift: reserve space for content that arrives later.
+- Wrap feature boundaries in an error boundary so one failing subtree does not take
+  the page with it.
 
 ## Accessibility
 - Semantic elements first (`button`, `nav`, `label`, headings in order). Add ARIA
@@ -50,6 +55,18 @@ rules, where needed, live below under a heading named after the framework.
 - Never store secrets or long-lived tokens in local storage. Prefer secure,
   same-site cookies managed by the server.
 - Do not expose internal identifiers or error stacks in the UI.
+- Nothing secret reaches the client bundle. Anything shipped to the browser is
+  public, including values in environment variables inlined at build time.
+- Authorization decisions belong on the server. Hiding a control in the UI is
+  presentation, not access control — the underlying request is still reachable.
+
+## Styling
+- Follow the project's existing styling approach rather than introducing a second
+  one; two competing systems cost more than either alone.
+- Use the design tokens and shared constants the project already defines — colour,
+  spacing, typography — so a token change propagates instead of needing a search.
+- Responsive by construction: relative units, flex or grid, no fixed width that
+  assumes a viewport.
 
 ## Performance and size
 - Ship what is used: code-split by route, lazy-load below-the-fold content, avoid

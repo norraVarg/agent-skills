@@ -9,6 +9,9 @@ Loaded when a change touches error handling, state, concurrency, or data flow.
   harder to debug than an early exception.
 - Catch exceptions only where you can do something meaningful; otherwise let them
   propagate. Never catch-and-continue without logging *and* a reason in a comment.
+- Catch narrowly. Before writing a broad catch, name the unrelated errors it would
+  also swallow — if that list is non-empty, narrow it or let them propagate.
+- Never fall back to a mock, stub, or fake outside test code.
 - Error messages say what went wrong, with which input, and what was expected.
   They never include secrets.
 
@@ -19,6 +22,7 @@ Loaded when a change touches error handling, state, concurrency, or data flow.
   boundary, not repeatedly through the code.
 
 ## State and data
+- Do not expose mutable internals and then rely on callers to preserve an invariant.
 - Prefer immutable values. Return new data instead of mutating arguments.
 - Do not share mutable state between units that run concurrently without a clear
   ownership rule.

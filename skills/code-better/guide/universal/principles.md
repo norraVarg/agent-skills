@@ -15,6 +15,9 @@ The core that applies to every language and every domain. Always in context.
 - Validate at boundaries (user input, network, files, environment) and trust inside.
 - Prefer immutable data and pure functions where the language allows.
 - Make operations idempotent when they can be retried.
+- Make illegal states unrepresentable rather than documenting that they are illegal.
+  A constraint the type system enforces cannot rot; a comment saying the same thing
+  can.
 
 ## Simplicity
 - Prefer the obvious solution over the clever one. Three similar lines beat a premature
@@ -41,3 +44,5 @@ The core that applies to every language and every domain. Always in context.
   and prefer well-maintained ones.
 - Respect the project's linter, formatter, and type-checker configuration. Never disable
   a rule to make a change pass; fix the cause or explain why the rule is wrong.
+- Write code already formatted to the project's rules; do not rely on a later
+  formatting pass that may not happen.

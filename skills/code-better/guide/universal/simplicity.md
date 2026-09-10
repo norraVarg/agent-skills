@@ -16,6 +16,10 @@ Loaded when a change adds structure: new functions, modules, abstractions, or na
 - Prefer pure functions. Side effects live at the edges and are named for what they do.
 - Arguments: few, in a stable order; group related ones into a single object when
   there are more than three.
+- Choose clarity over brevity. Dense one-liners and nested ternaries cost more in
+  reading time than they save in space. Wrap a complex inline expression — nested
+  min/max, a compound conditional, a multi-step calculation — in one named variable
+  describing the outcome.
 
 ## Naming
 - Names describe the thing, not its type or implementation. `users`, not `userArray`;
@@ -31,6 +35,7 @@ Loaded when a change adds structure: new functions, modules, abstractions, or na
   requirements, deliberate deviations from a rule.
 - No commented-out code, no "TODO" without an owner or reference, no comments that
   merely repeat the function name.
+- Check any comment kept near edited code still matches what the code now does.
 
 ## Files and modules
 - Group by feature or concept, not by technical kind, unless the project already does

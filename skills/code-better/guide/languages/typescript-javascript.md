@@ -44,6 +44,8 @@ live in the domain file under the framework's heading.
 - Custom error classes carry a stable machine-readable `code` so callers can branch
   on it without parsing messages.
 - `catch (error)` treats `error` as `unknown` and narrows before reading properties.
+- When rethrowing as a different error, preserve the original via `{ cause: err }`
+  so the stack does not stop at the rethrow.
 
 ## Modules and imports
 - `import type` for type-only imports.
@@ -58,7 +60,9 @@ live in the domain file under the framework's heading.
 - Prefer `map`/`filter`/`reduce` and `for…of` over index loops; never mutate the
   array being iterated.
 - Optional chaining and nullish coalescing (`?.`, `??`) instead of manual null
-  checks; `??` rather than `||` when `0` or `""` are valid values.
+  checks; `??` rather than `||` when `0` or `""` are valid values. `?.` is for a
+  value that is legitimately absent — using it to skip an operation that could fail
+  hides an error instead of handling it.
 - Objects are not mutated after creation; produce a new object with spread.
 - Dates are handled with a single library or the `Intl` and `Temporal` APIs; never
   arithmetic on milliseconds by hand for calendar concepts.
