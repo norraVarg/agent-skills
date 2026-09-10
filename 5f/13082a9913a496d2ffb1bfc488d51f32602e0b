@@ -1,0 +1,23 @@
+skills/git/README.md
+  s_fdff4b3029c2eb::t_5a45418595de10 45
+skills/git/adapters/claude-code/SKILL.md
+  s_fdff4b3029c2eb::t_3d9b5860d72a31 5
+skills/git/guide/runbooks/commit.md
+  s_fdff4b3029c2eb::t_6f3a83c2010069 188,191,193-195,199
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "5f13082a9913a496d2ffb1bfc488d51f32602e0b",
+  "prompts": {},
+  "sessions": {
+    "s_fdff4b3029c2eb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02ba4847-2b58-464e-9b51-77a9e5e845a9",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
