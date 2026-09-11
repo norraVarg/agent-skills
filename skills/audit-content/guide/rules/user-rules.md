@@ -53,3 +53,9 @@ Rules added by hand may omit the provenance comment.
   checklist judges what is written, so a hole in the content stays invisible until
   someone tries to follow it.
   <!-- added 2026-09-11 · lesson: four findings across two audits had no checklist category because the defect was absent content -->
+
+- After fixing a finding that could exist elsewhere in the set, search the whole set for
+  other instances of the same defect before moving to the next finding, and fold what
+  you find into that same fix. *Why:* fixing the instance rather than the class leaves
+  the copies disagreeing, where before they were at least consistently wrong.
+  <!-- added 2026-09-11 · lesson: a string corrected in four places and missed in two more, twice in one session -->
