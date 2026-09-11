@@ -10,7 +10,7 @@ allowed-tools: Read, Edit, Bash, AskUserQuestion
 The guide lives at `${CLAUDE_SKILL_DIR}/guide/`. Read
 `${CLAUDE_SKILL_DIR}/guide/PROCEDURE.md` and follow it exactly, step by step.
 
-On this platform, step 0's capability maps to:
+On this platform, step 0's capabilities map to:
 
 - **Ask and wait** — asking directly in a message and waiting for the reply. Use the
   `AskUserQuestion` tool for a structured choice; a plain message works for a simple

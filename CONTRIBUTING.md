@@ -26,6 +26,11 @@ Every skill has two parts, and they are never mixed:
   runs (a learned-command table, a candidate-rules file). It is plain Markdown and
   names no specific tool, so the same content works with any AI agent. This is the
   only part that carries real substance.
+
+  State that accumulates real project detail as it runs — anything keyed by repository,
+  host, or path — is machine-local: add it to the root `.gitignore` and keep its format
+  documented in the procedure that writes it, so a fresh clone can recreate it. State
+  that holds only lessons, like a candidate-rules file, is ordinary tracked content.
 - **`adapters/<provider>/`** is a thin entry point, nothing more. Its only jobs are:
   (1) sit wherever that provider looks for an invocable skill, in whatever format that
   provider expects, and (2) map the guide's abstract capabilities (an independent
@@ -132,8 +137,8 @@ question, rather than porting the assumption as-is.
    Do not restate this file's content in it; link back here for the general structure.
 5. Add one line to the root `README.md`'s "Skills" list: the skill's name, linked to
    its own `README.md`. No description there, the skill's own README carries that.
-6. Install it (`~/agent-skills/install.sh <name> claude-code`) and invoke it once to
-   confirm it actually resolves and runs before considering it done.
+6. Install it (`./install.sh <name> claude-code` from the repository root) and invoke it
+   once to confirm it actually resolves and runs before considering it done.
 7. Compare the result against the other skills in `skills/` — file layout,
    `PROCEDURE.md`'s capability-detection-with-fallback pattern, `rules/user-rules.md`'s
    format and header wording, `README.md`'s section order — and propose reconciling,
