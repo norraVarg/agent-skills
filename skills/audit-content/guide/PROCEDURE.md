@@ -25,11 +25,20 @@ the report; do not silently skip the step it enables.
 ## Step 1 — Identify the target
 
 - If the user's own words already name, paste, or link the content, that is the target.
+- A target may be one document or a set of related documents read as one body of work —
+  a directory, a skill, a guide. When the user names the set, the set is the target; do
+  not silently narrow it to the one file that looks most relevant.
+- When the target is a single document, check whether it belongs to a set before
+  auditing it alone: the other files its parent document loads alongside it, a summary
+  or index that covers it, a template it was copied from, the siblings a single reader
+  reads as a unit. If any exist, name them and ask whether to widen the target. Widen
+  only on a yes, and propose the smallest set that genuinely shares the purpose.
 - Otherwise, look at what the session has just produced or referenced — a draft message,
   a file just written, a ticket being discussed, an artifact just published. If exactly
   one such candidate exists, use it.
-- If more than one plausible candidate exists, or none is obvious, ask the user which
-  content to audit. Never guess silently.
+- If more than one plausible candidate exists — several unrelated candidates, not the
+  several files of one named set — or none is obvious, ask the user which content to
+  audit. Never guess silently.
 
 ## Step 2 — Resolve the source
 
@@ -43,6 +52,11 @@ Apply every category in `CHECKLIST.md` to the raw text, judging it against itsel
 its own stated purpose — internal consistency only, not against outside facts (see
 `CHECKLIST.md`, "Misleading, wrong"). Then load `rules/user-rules.md` and apply its
 rules on top, with the highest precedence.
+
+When the target is a set, run the checklist twice: once within each document on its own,
+then once across the set as a whole. For the second pass the set is "itself" — a claim in
+one document and a duplicate or contradicting claim in another are both in scope.
+Anything outside the set still is not.
 
 If there is nothing to audit — the content is empty, or genuinely has no issues — say so
 and stop. Do not manufacture findings to have something to report.

@@ -34,6 +34,13 @@ and padding sentences that restate what was already said.
   financing seeker" in three consecutive sentences — name it once and keep using that
   name.
 - Avoid: a closing paragraph that just repeats the opening in different words.
+- Across a set of documents, the same claim or rule in two places is not automatically a
+  defect. Establish first whether the duplication is deliberate — a digest, index,
+  summary, or quick-reference layer over a fuller one.
+- Deliberate duplication changes what the finding is: check that the relationship is
+  stated where a reader will see it, and that the copies still agree. Report a copy that
+  has fallen behind its source as drift, and prefer declaring the relationship over
+  deleting either copy.
 
 ## Conflicting
 
