@@ -1,0 +1,14 @@
+skills/git/guide/fix-commands.md
+  h_ba9e79e0477686 13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "34f589b88925483700aebe3f5aa6ce7fbc922157",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
