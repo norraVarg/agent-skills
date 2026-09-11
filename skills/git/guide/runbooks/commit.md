@@ -24,10 +24,10 @@ git rev-parse --abbrev-ref HEAD
 ```
 
 **Ticket prefix:** Look for a leading `type(TICKET): ...` pattern (e.g.
-`feat(OB-4729): ...`) in recent subjects.
+`feat(ABC-123): ...`) in recent subjects.
 - Present in most recent commits → this repo uses ticket-prefixed subjects. Extract the
   ticket for this commit from the current branch name (the leading `LETTERS-DIGITS`
-  pattern, e.g. `OB-4729-some-description` → `OB-4729`). If the branch itself carries no
+  pattern, e.g. `ABC-123-some-description` → `ABC-123`). If the branch itself carries no
   ticket pattern, ask for the ticket number before continuing.
 - Absent from recent commits → this repo does not use ticket-prefixed subjects. Drop the
   `(TICKET)` scope from the subject format in step 4 entirely.

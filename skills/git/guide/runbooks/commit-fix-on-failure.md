@@ -18,7 +18,9 @@ Capture the output and classify the cause:
 ## Step 2 — Resolve the fix command
 
 Read `../fix-commands.md` (this skill's guide-level fix-commands store) and match the repo by
-its identifier (git remote URL, else repo root folder name):
+its identifier (git remote URL, else repo root folder name). The store is machine-local and
+never committed — it names specific repositories, which skill content must not. If the file
+does not exist, treat it as empty and carry on:
 - If a row exists for this repo and failure type, **use the stored command directly**.
 - Otherwise **discover** it:
   - Detect the package manager: `yarn.lock` → `yarn`, `pnpm-lock.yaml` → `pnpm`, else `npm`.
@@ -43,4 +45,14 @@ If the cause is **other**, no fix command could be resolved, or the single retry
 
 If the fix command was discovered (not read from the store) and the retry succeeded: ask the
 developer to confirm saving it. On yes, append a row for this repo to `../fix-commands.md`
-(repo identifier, prettier fix cmd, lint fix cmd) so future runs use it directly.
+(repo identifier, prettier fix cmd, lint fix cmd) so future runs use it directly, creating the
+file if it is absent, with this shape:
+
+    # Learned fix-commands store
+
+    Machine-local, never committed: it names specific repositories, which skill content
+    must not. The repo identifier is the git remote URL, or the repository root folder
+    name when there is no remote — never an absolute path.
+
+    | Repo identifier | prettier fix | lint fix |
+    | --- | --- | --- |
