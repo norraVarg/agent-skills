@@ -1,0 +1,26 @@
+README.md
+  s_d6ba6101b47c5b::t_f49b14fc54ae5c 16,23,43,50-51
+install.sh
+  s_d6ba6101b47c5b::t_85865ba74d501a 2-3,9,11-12,18,26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d0542628debfb5d6d54610cf3ab12b0c06b5f1b7",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_d6ba6101b47c5b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b926aba5-2b43-48e5-8e03-819026650f71",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
