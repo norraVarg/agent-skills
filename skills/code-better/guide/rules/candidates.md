@@ -1,9 +1,9 @@
 # Candidate rules
 
-Rules proposed by the learning loop and parked by the developer to see whether the
-lesson recurs. Not in force. The agent consults this file only inside the learning
-loop. Review occasionally: promote rules whose lesson has recurred, delete rules that
-have not earned their place.
+Lessons parked to see whether they recur — written here by the agent on a first
+sighting, or by the developer answering `candidate` to a proposal. Not in force. The
+agent reads and writes this file only inside the learning loop. Review occasionally:
+promote rules whose lesson has recurred, delete rules that have not earned their place.
 
 Format (see `LEARNING.md`, "Rule format"):
 

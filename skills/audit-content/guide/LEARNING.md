@@ -2,7 +2,7 @@
 
 The guide improves from what an audit finds. When an audit turns up something a rule
 would have prevented, the agent proposes a rule. The agent proposes; the developer
-decides. The agent never writes a rule unasked.
+decides. The agent never puts a rule in force unasked.
 
 ## What counts as a gap worth a rule
 
@@ -16,6 +16,13 @@ decides. The agent never writes a rule unasked.
 
 A single finding accepted and fixed without complaint is not a gap. Most audits will
 not reach this loop.
+
+A first sighting is not a gap either, but it is the only evidence a later run will
+have. When a finding would clear the quality gates below as a rule and is simply too
+new to have recurred, write it into `rules/candidates.md` in the rule format below —
+no proposal, no question — and say in one line that you parked it. Nothing is in force
+until the developer promotes it, and the next run that meets the same lesson finds it
+waiting and proposes promotion (step 2).
 
 ## Procedure
 

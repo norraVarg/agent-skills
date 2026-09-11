@@ -52,7 +52,9 @@ matching language/domain/universal file for a general rule. Answer with one word
 the file describes.
 
 **Review `guide/rules/candidates.md` occasionally.** Promote what has recurred; delete
-what has not earned its place.
+what has not earned its place. The skill also parks a promising lesson there itself the
+first time it meets one — too new to propose, but recorded so a later run recognises
+the repeat.
 
 ## How to extend
 
