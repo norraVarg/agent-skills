@@ -1,0 +1,32 @@
+skills/audit-content/README.md
+  s_d6ba6101b47c5b::t_49dc38c01e3c74 3-14,32,37-38,40-41,48-49
+skills/audit-content/adapters/claude-code/SKILL.md
+  s_d6ba6101b47c5b::t_6755f60898b3a9 3,16-18,32
+skills/audit-content/guide/CHECKLIST.md
+  s_d6ba6101b47c5b::t_08d9a630a6b32b 31-34
+skills/audit-content/guide/PROCEDURE.md
+  s_d6ba6101b47c5b::t_4320cb291a8ba0 22-27
+skills/audit-content/guide/SOURCES.md
+  s_d6ba6101b47c5b::t_e99e7f4a17a35b 33-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9b87adeddc9f45e8db169fceeacecb955227fdbe",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_d6ba6101b47c5b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b926aba5-2b43-48e5-8e03-819026650f71",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
