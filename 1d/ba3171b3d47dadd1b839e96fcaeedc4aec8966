@@ -1,0 +1,28 @@
+skills/code-better/guide/domains/frontend.md
+  s_d6ba6101b47c5b::t_7e92f4c9f30d65 71-80
+skills/code-better/guide/universal/making-changes.md
+  s_d6ba6101b47c5b::t_358df7502103eb 10-12
+skills/code-better/guide/universal/simplicity.md
+  s_d6ba6101b47c5b::t_5e661235435ee0 39-41
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "1dba3171b3d47dadd1b839e96fcaeedc4aec8966",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_d6ba6101b47c5b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b926aba5-2b43-48e5-8e03-819026650f71",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
