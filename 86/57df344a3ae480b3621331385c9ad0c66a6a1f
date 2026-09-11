@@ -1,0 +1,26 @@
+.gitignore
+  s_d6ba6101b47c5b::t_645a53b7e89d83 1-2
+skills/git/guide/runbooks/commit.md
+  s_d6ba6101b47c5b::t_b2cf12205e30ea 27,30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "8657df344a3ae480b3621331385c9ad0c66a6a1f",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_d6ba6101b47c5b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b926aba5-2b43-48e5-8e03-819026650f71",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
