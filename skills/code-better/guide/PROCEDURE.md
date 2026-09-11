@@ -40,12 +40,8 @@ For each changed file, classify its language and domain using the tables in
 `CLASSIFY.md`, and load the matching layers:
 
 1. `rules/user-rules.md` — always.
-2. `universal/principles.md` — always. Then, by what the diff touches:
-   - `universal/correctness.md` — error handling, state, concurrency, or data flow
-   - `universal/simplicity.md` — new functions, modules, abstractions, or names
-   - `universal/security.md` — input, output, authentication, secrets, files, or
-     external calls
-   - `universal/testing.md` — adding, changing, or needing tests
+2. Every file in `universal/` — always. The layer is small enough to hold in full, and
+   a rule that does not apply to this diff simply produces no finding.
 3. The matched `domains/*.md`.
 4. The matched `languages/*.md`.
 

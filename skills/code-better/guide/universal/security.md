@@ -1,7 +1,6 @@
 # Security
 
-Loaded when a change handles input, output, authentication, secrets, files, or
-external calls.
+Input, output, secrets, authentication, external calls, and dependencies.
 
 ## Input
 - All external input is hostile until validated: user data, query strings, headers,

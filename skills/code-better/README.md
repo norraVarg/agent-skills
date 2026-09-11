@@ -55,6 +55,12 @@ what has not earned its place.
 
 ## How to extend
 
+**Add a universal rule file.** Drop a new `.md` into `guide/universal/`. Every file in
+that folder is loaded on every review (`guide/PROCEDURE.md`, step 2), so nothing else
+changes — no template, no table row. Give it a heading and a one-line subtitle naming
+what it covers, as the existing five do. Prefer a new section in an existing file; a new
+file earns its place only when the subject fits none of them.
+
 **Add a language.** Copy `guide/languages/_TEMPLATE.md` to `guide/languages/<name>.md`,
 fill it in, and add one row to the Language table in `guide/CLASSIFY.md`.
 

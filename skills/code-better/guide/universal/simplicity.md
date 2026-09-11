@@ -1,6 +1,6 @@
 # Simplicity
 
-Loaded when a change adds structure: new functions, modules, abstractions, or names.
+How code is shaped and named: size, functions, naming, comments, module layout.
 
 ## Size and shape
 - Delete before you add.
@@ -30,11 +30,17 @@ Loaded when a change adds structure: new functions, modules, abstractions, or na
 - No abbreviations unless they are universal (`id`, `url`, `html`).
 
 ## Comments
+- Default to no comment. Add one only where a competent reader of this language would
+  otherwise be left guessing; a correct, well-phrased comment on self-evident code is
+  still noise to read and still rots.
 - Explain *why*, never *what*. If the *what* needs a comment, rename or restructure.
 - Record decisions and constraints that are invisible in code: workarounds, external
   requirements, deliberate deviations from a rule.
 - No commented-out code, no "TODO" without an owner or reference, no comments that
   merely repeat the function name.
+- Describe the code as it stands, never the edit that produced it. No `now uses`,
+  `added for`, `changed to`, `previously`; that history belongs in the commit message
+  and is wrong the moment the code is touched again.
 - Check any comment kept near edited code still matches what the code now does.
 
 ## Files and modules

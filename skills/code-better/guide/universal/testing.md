@@ -1,12 +1,13 @@
 # Testing
 
-Loaded when a change adds, modifies, or should be accompanied by tests.
+What to test, how tests are structured, and the quality bar for test code.
 
 ## What to test
 - Behaviour visible to the caller: inputs → outputs, side effects, errors raised.
   Not private helpers, not implementation details.
 - Every branch that matters: the success path, each failure path, and the edge cases
   listed in `correctness.md`.
+- Every bug fix comes with a test that fails before the fix and passes after.
 - Do not test the framework, the language, or the library. Test your code.
 
 ## Structure

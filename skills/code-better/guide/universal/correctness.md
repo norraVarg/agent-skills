@@ -1,6 +1,6 @@
 # Correctness
 
-Loaded when a change touches error handling, state, concurrency, or data flow.
+Failure paths, boundaries, state, concurrency, and data flow.
 
 ## Failure paths
 - Every operation that can fail has a decided outcome: propagate, recover, or report.
@@ -22,6 +22,8 @@ Loaded when a change touches error handling, state, concurrency, or data flow.
   boundary, not repeatedly through the code.
 
 ## State and data
+- Make illegal states unrepresentable rather than documenting that they are illegal. A
+  constraint the type system enforces cannot rot; a comment saying the same thing can.
 - Do not expose mutable internals and then rely on callers to preserve an invariant.
 - Prefer immutable values. Return new data instead of mutating arguments.
 - Do not share mutable state between units that run concurrently without a clear
