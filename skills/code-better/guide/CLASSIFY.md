@@ -15,6 +15,8 @@ A project's existing conventions can outweigh a style rule: matching what the
 surrounding code already does is often more valuable than enforcing this guide's
 preference. Nothing outweighs a safety rule.
 
+## Rules a review cannot check
+
 A rule may also describe workflow or conversational behaviour rather than the content
 of the code itself — something no diff can show, such as whether a developer already
 gave a go-ahead before a file was written. Such a rule has nothing for a review to
@@ -63,8 +65,3 @@ the file's location and content.
 
 Framework-specific rules, where needed, live in the domain file under a heading named
 after the framework.
-
-## Adding a language or domain
-
-Copy the `_TEMPLATE.md` in the relevant folder, fill it in, and add one row to the
-matching table above. Nothing else changes.

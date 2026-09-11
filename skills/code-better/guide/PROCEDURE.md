@@ -19,9 +19,10 @@ Before anything else, establish what you actually have to work with:
   before it is applied. Optional — falls back to showing the before and after text
   inline.
 
-If either is unclear or unavailable, proceed as if it does not exist: do the finding
-and verifying in one careful pass instead of two, and report in a clearly labelled
-plain list. State plainly, in the final report, which mode actually ran. A weaker
+If a capability is unclear or unavailable, proceed as if it does not exist: without an
+independent check, do the finding and verifying in one careful pass instead of two;
+without a structured reporting mechanism, report in a clearly labelled plain list.
+State plainly, in the final report, which mode actually ran. A weaker
 review that says so is trustworthy; a weaker review presented as if it were the full
 pipeline is not.
 
@@ -56,12 +57,11 @@ exact rule it violates, the file it lives in, and the line, not a vague descript
 like "doesn't follow conventions." A finding that cannot point at a specific quoted
 rule is not a finding yet.
 
-If independent parallel passes are available (per step 0), run at least two: one
-looking for safety-rule violations (correctness, security, testing — the rules
+If step 0's independent check can also run separate finding passes, run at least two:
+one looking for safety-rule violations (correctness, security, testing — the rules
 `CLASSIFY.md` marks as holding everywhere), one looking for style-rule violations
 (simplicity, naming, domain and language idioms — the rules that yield to a project's
-existing conventions). If parallel passes are not available, cover both in one pass,
-safety first.
+existing conventions). If it cannot, cover both in one pass, safety first.
 
 ## Step 4 — Verify
 

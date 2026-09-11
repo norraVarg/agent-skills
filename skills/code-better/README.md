@@ -1,15 +1,16 @@
 # code-better
 
 Guides an AI coding agent to write code that follows industry best practice and your
-own principles. It reviews staged and unstaged changes against a portable coding
-guide.
+own principles. It reviews everything not yet committed — staged, unstaged, and
+untracked — against a portable coding guide.
 
 - A **universal core** that applies to all languages and both frontend and backend work.
 - **Domain** rules (frontend, backend) and **language** rules (TypeScript/JavaScript
   today), selected automatically from the files under review.
 - Your **own rules** on top, with the highest precedence.
-- Every finding is checked by an independent pass before it is trusted, not just
-  accepted from a single read.
+- Every finding is checked before it is trusted, not just accepted from a single read —
+  by an independent pass where the platform has one, otherwise by a deliberately
+  skeptical second look that the report says it used.
 - A **learning loop**: when a finding recurs, or a disagreement reveals a rule was
   wrong or missing, the skill proposes a rule. You decide whether it is kept.
 
@@ -22,7 +23,7 @@ how `guide/` and `adapters/` relate to each other; this file only covers what
 From the repository root:
 
 ```bash
-~/agent-skills/install.sh code-better claude-code
+./install.sh code-better claude-code
 ```
 
 ## How to use it
