@@ -13,14 +13,14 @@ onto one platform's concrete mechanisms. Claude Code is the first provider suppo
 
 ## How to install a skill
 
-Two commands:
+Two commands, the second from the repository root:
 
 ```bash
 git clone <repository-url> ~/agent-skills
 ```
 
 ```bash
-~/agent-skills/install.sh <skill-name> claude-code
+./install.sh <skill-name> claude-code
 ```
 
 The installer reports what it changed.
@@ -40,12 +40,12 @@ Updates any skill already installed on a machine — `install.sh` symlinks rathe
 copies.
 
 ```bash
-~/agent-skills/install.sh <skill-name> claude-code
+./install.sh <skill-name> claude-code
 ```
 
 Also run this for a skill that machine doesn't have yet.
 
 ## Privacy
 
-See [CONTRIBUTING.md](CONTRIBUTING.md#privacy)'s Privacy section for what may not appear in
-this repository.
+See [CONTRIBUTING.md's Privacy section](CONTRIBUTING.md#privacy) for what may not appear
+in this repository.
