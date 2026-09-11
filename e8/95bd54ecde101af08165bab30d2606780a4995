@@ -1,0 +1,34 @@
+skills/audit-content/README.md
+  s_d6ba6101b47c5b::t_fe2ea04e4a277c 66-68
+skills/audit-content/guide/LEARNING.md
+  s_d6ba6101b47c5b::t_edc0f0ab4eef99 5,20-26
+skills/audit-content/guide/rules/candidates.md
+  s_d6ba6101b47c5b::t_36417e09b12993 3-6
+skills/code-better/README.md
+  s_d6ba6101b47c5b::t_a566acde5273c7 55-57
+skills/code-better/guide/LEARNING.md
+  s_d6ba6101b47c5b::t_6a4f2efe6e578a 5,20-26
+skills/code-better/guide/rules/candidates.md
+  s_d6ba6101b47c5b::t_e0f515f8ee34f0 3-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "e895bd54ecde101af08165bab30d2606780a4995",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_d6ba6101b47c5b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b926aba5-2b43-48e5-8e03-819026650f71",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
