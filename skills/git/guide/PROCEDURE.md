@@ -36,6 +36,10 @@ and stop there for the developer to run themselves.
 
 ## Step 1 — Work out what to commit and whether to push
 
+Load `rules/user-rules.md` first. Those rules outrank this procedure's own defaults on
+any judgment call — how to group, how to word a subject, when to split. They never
+relax a confirmation gate or a constraint above; those hold regardless.
+
 Inspect repo state and combine it with the developer's own wording:
 
 ```bash
@@ -139,3 +143,9 @@ Report what was done: each commit message created, in order, and the push result
 pushed). If a runbook stopped early (nothing to commit/push, an unfixable failure, or
 awaiting confirmation), relay that. Stop there — no closing remarks beyond this
 report.
+
+## Step 4 — Learn, optionally
+
+If a commit run reveals a genuine gap — the same kind of correction to a message or a
+grouping recurring across runs, or a disagreement showing a rule here was wrong or
+missing — follow `LEARNING.md`. Most runs will not reach this step.

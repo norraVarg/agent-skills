@@ -47,6 +47,9 @@ Every skill has two parts, and they are never mixed:
       README.md                    what this skill does, how to use it, how to extend it
       guide/                       the provider-neutral procedure and rules
         PROCEDURE.md                the entry point: the whole procedure, step by step
+        LEARNING.md                 how a lesson becomes a rule: propose, park, promote
+        rules/user-rules.md         the developer's own rules, highest precedence
+        rules/candidates.md         lessons parked until they recur
       adapters/<provider>/         one directory per supported provider
         <provider's entry file>    e.g. SKILL.md for Claude Code
         install.sh                 idempotent; wires the entry point into that provider
@@ -131,6 +134,13 @@ question, rather than porting the assumption as-is.
    or domain rather than one synthesized action can just use that domain's own name
    instead (`git`).
 2. Write `skills/<name>/guide/` — the procedure and rules, naming no specific tool.
+   Include the learning loop: `LEARNING.md`, `rules/user-rules.md`,
+   `rules/candidates.md`, and a final "Learn, optionally" step in `PROCEDURE.md` that
+   defers to it. Copy the shape from an existing skill and change only what the new
+   domain requires — what counts as a lesson, and which file a rule lands in. Every
+   skill here encodes judgment that can turn out wrong; the loop is how that gets
+   corrected instead of rediscovered. A skill whose procedure never loads its own
+   rules is a skill that cannot improve from being used.
 3. Write `skills/<name>/adapters/claude-code/` — the entry point, the symlink, and an
    `install.sh` following the contract above. Add other providers' adapters if asked.
 4. Write `skills/<name>/README.md` — what it does, how to invoke it, how to extend it.
@@ -140,8 +150,9 @@ question, rather than porting the assumption as-is.
 6. Install it (`./install.sh <name> claude-code` from the repository root) and invoke it
    once to confirm it actually resolves and runs before considering it done.
 7. Compare the result against the other skills in `skills/` — file layout,
-   `PROCEDURE.md`'s capability-detection-with-fallback pattern, `rules/user-rules.md`'s
-   format and header wording, `README.md`'s section order — and propose reconciling,
+   `PROCEDURE.md`'s capability-detection-with-fallback pattern, `LEARNING.md`'s stages
+   and answer words, `rules/user-rules.md`'s format and header wording, `README.md`'s
+   section order — and propose reconciling,
    with the developer's confirmation, any place it drifts without good reason.
    Matching an existing skill's shape is not optional polish; it is what lets a
    developer use any skill in this repo without relearning conventions per skill.
