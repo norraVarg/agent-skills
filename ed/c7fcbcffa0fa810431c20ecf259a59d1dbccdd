@@ -1,0 +1,24 @@
+README.md
+  s_d6ba6101b47c5b::t_a0d2a6c5e2d1d6 40,46-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "edc7fcbcffa0fa810431c20ecf259a59d1dbccdd",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_d6ba6101b47c5b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b926aba5-2b43-48e5-8e03-819026650f71",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
