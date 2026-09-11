@@ -36,6 +36,9 @@ How code is shaped and named: size, functions, naming, comments, module layout.
 - Explain *why*, never *what*. If the *what* needs a comment, rename or restructure.
 - Record decisions and constraints that are invisible in code: workarounds, external
   requirements, deliberate deviations from a rule.
+- A comment that earns its place is as short as its point allows: one idea, plain
+  words, no repeating what a nearby comment already says and no contradicting one.
+  Shortening a comment must not drop a constraint it was carrying.
 - No commented-out code, no "TODO" without an owner or reference, no comments that
   merely repeat the function name.
 - Describe the code as it stands, never the edit that produced it. No `now uses`,

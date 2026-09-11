@@ -7,6 +7,9 @@ The scope of an edit, and the project it lands in.
   "while I am here".
 - Match the surrounding code: naming, structure, formatting, error style. Consistency
   beats personal preference.
+- Matching a convention is not endorsing it. When the surrounding pattern has a real
+  drawback — not merely differing from this guide — say what the drawback is and let
+  the developer decide, rather than propagating it silently in one more file.
 - Do not reformat, reorder, or rename code you were not asked to change.
 
 ## Dependencies and tooling

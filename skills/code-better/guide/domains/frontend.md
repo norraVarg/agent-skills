@@ -68,6 +68,16 @@ rules, where needed, live below under a heading named after the framework.
 - Responsive by construction: relative units, flex or grid, no fixed width that
   assumes a viewport.
 
+## Implementing a provided design
+- A design is a specification, not a reference: spacing, colour, typography, and
+  breakpoints come from the project's tokens matched to it, never from values eyeballed
+  into the component.
+- Every state the design shows exists in the code — hover, focus, disabled, loading,
+  empty, error. A state drawn but not built is an unfinished implementation, not a
+  detail.
+- Where the design is silent, or conflicts with an accessibility or responsiveness
+  rule, raise it rather than deciding alone.
+
 ## Performance and size
 - Ship what is used: code-split by route, lazy-load below-the-fold content, avoid
   importing whole libraries for one function.
