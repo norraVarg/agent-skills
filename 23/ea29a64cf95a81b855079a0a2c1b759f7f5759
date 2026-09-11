@@ -1,0 +1,30 @@
+CONTRIBUTING.md
+  s_d6ba6101b47c5b::t_e2ba7b84caac1f 152-163
+skills/audit-content/adapters/claude-code/SKILL.md
+  s_d6ba6101b47c5b::t_fa2d70d1558540 3-4,40-42
+skills/code-better/adapters/claude-code/SKILL.md
+  s_d6ba6101b47c5b::t_a7793ea11cf2a6 3-5,26-28
+skills/code-better/guide/PROCEDURE.md
+  s_d6ba6101b47c5b::t_b7756e0eb4bc10 9-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "23ea29a64cf95a81b855079a0a2c1b759f7f5759",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_d6ba6101b47c5b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b926aba5-2b43-48e5-8e03-819026650f71",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
