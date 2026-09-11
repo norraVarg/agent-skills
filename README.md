@@ -37,13 +37,17 @@ git pull
 ```
 
 Updates any skill already installed on a machine — `install.sh` symlinks rather than
-copies.
+copies, so a pulled change is live immediately.
 
 ```bash
 ./install.sh <skill-name> claude-code
 ```
 
-Also run this for a skill that machine doesn't have yet.
+Run this for a skill this machine doesn't have yet, including one a pull just added.
+Safe to re-run at any time.
+
+The link points into this clone, not at a remote: a local edit is live the moment it's
+saved, committed or not.
 
 ## Privacy
 
