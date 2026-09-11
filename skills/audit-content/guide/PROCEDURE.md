@@ -19,8 +19,12 @@ Before anything else, establish what you actually have to work with:
   before it is applied. Optional — falls back to showing the before and after text
   inline.
 
-If a capability is unclear or unavailable, proceed as if it does not exist and say so in
-the report; do not silently skip the step it enables.
+If one of the optional capabilities is unclear or unavailable, use its stated fallback
+and say so in the report; do not silently skip the step it enables.
+
+Ask and wait is not optional. Without it, steps 1 and 5 cannot be honoured: never guess
+a target and never apply a fix. Report the findings, say what you would have asked, and
+stop there.
 
 ## Step 1 — Identify the target
 

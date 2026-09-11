@@ -40,3 +40,16 @@ Rules added by hand may omit the provenance comment.
   question at a time, options laid out as a short list rather than buried in prose.
   *Why:* a hard-to-parse question is itself a piece of unclear content.
   <!-- added 2026-09-10 · lesson: migrated from ~/.claude/CLAUDE.md, "Proposals & Questions" -->
+
+- When a set pairs an abstract core with per-implementation adapters, check that every
+  capability, source, or step the core names has a matching entry in each adapter.
+  *Why:* an adapter missing an entry sends the reader to a generic fallback instead of
+  the intended mechanism, and nothing in the core reveals the gap.
+  <!-- added 2026-09-11 · lesson: two audits found an adapter missing an entry the portable core named -->
+
+- Flag an instruction that cannot be carried out as written because a detail it depends
+  on appears nowhere in the content — a step naming no value to use, a table missing a
+  row its own list requires, a summary omitting a stage the reader needs. *Why:* the
+  checklist judges what is written, so a hole in the content stays invisible until
+  someone tries to follow it.
+  <!-- added 2026-09-11 · lesson: four findings across two audits had no checklist category because the defect was absent content -->

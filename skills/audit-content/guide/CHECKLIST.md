@@ -28,7 +28,10 @@ knows from context.
 
 The same point made more than once, in the same words or different ones. Includes
 elegant variation (cycling synonyms for the same thing instead of just naming it once)
-and padding sentences that restate what was already said.
+and padding sentences that restate what was already said. On a set of documents it also
+covers the same point made in two different files, where the question is not only
+whether it repeats but whether the repetition was meant and whether the copies still
+agree.
 
 - Avoid: calling the same entity "the lender," then "the applicant," then "the
   financing seeker" in three consecutive sentences — name it once and keep using that

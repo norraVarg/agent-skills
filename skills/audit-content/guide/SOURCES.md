@@ -15,11 +15,6 @@ fulfils each one on that platform.
 - **A set of related documents** — a directory, a skill, a guide, a docs tree: several
   files read as one body of work. Read all of them, not a sample. The set is the target,
   so both the documents and the relationships between them are in scope.
-  Two documents belong to the same set when they serve the same purpose or are read by
-  the same consumer: files one procedure loads together, a summary or index and the
-  documents it covers, a template and the files copied from it, a README and the guide
-  it describes. Sharing a folder is a weak signal on its own; a shared reader or a
-  shared job is the test.
 - **A GitHub pull request or issue, and its comments** — a PR/issue number or URL. Fetch
   the description and, if the user's ask concerns them, the comment thread.
 - **A Jira ticket** — a ticket key or link. Fetch its description and comments.
@@ -34,6 +29,14 @@ fulfils each one on that platform.
 If the source needed is not actually reachable (no access to the ticket system, a broken
 link, a file that does not exist), say so and stop rather than fabricating content to
 audit.
+
+## What belongs to a set
+
+Two documents belong to the same set when they serve the same purpose or are read by the
+same consumer: files one procedure loads together, a summary or index and the documents
+it covers, a template and the files copied from it, a README and the guide it describes.
+Sharing a folder is a weak signal on its own; a shared reader or a shared job is the
+test.
 
 ## Disambiguation
 
