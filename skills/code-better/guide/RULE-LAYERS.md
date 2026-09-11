@@ -1,7 +1,7 @@
-# Classify
+# Rule layers
 
-This file is a reference used by `PROCEDURE.md`: how to classify a file, and how the
-guide's layers relate to each other. It does not run on its own.
+This file is a reference used by `PROCEDURE.md`: what kinds of rule exist, how the
+layers rank, and which layers a given file gets. It does not run on its own.
 
 ## Two kinds of rule
 

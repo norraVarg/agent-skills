@@ -21,4 +21,4 @@ available:
   surviving findings, most severe first.
 - **Diff/preview (step 6).** The `Edit` tool's own diff view.
 
-Do not summarise `guide/PROCEDURE.md` or `guide/CLASSIFY.md` from memory. Read them.
+Do not summarise `guide/PROCEDURE.md` or `guide/RULE-LAYERS.md` from memory. Read them.

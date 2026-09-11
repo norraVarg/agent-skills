@@ -38,7 +38,7 @@ something to report.
 ## Step 2 — Classify and load
 
 For each changed file, classify its language and domain using the tables in
-`CLASSIFY.md`, and load the matching layers:
+`RULE-LAYERS.md`, and load the layers it ranks:
 
 1. `rules/user-rules.md` — always.
 2. Every file in `universal/` — always. The layer is small enough to hold in full, and
@@ -59,7 +59,7 @@ rule is not a finding yet.
 
 If step 0's independent check can also run separate finding passes, run at least two:
 one looking for safety-rule violations (correctness, security, testing — the rules
-`CLASSIFY.md` marks as holding everywhere), one looking for style-rule violations
+`RULE-LAYERS.md` marks as holding everywhere), one looking for style-rule violations
 (simplicity, naming, domain and language idioms — the rules that yield to a project's
 existing conventions). If it cannot, cover both in one pass, safety first.
 

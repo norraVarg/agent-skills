@@ -63,7 +63,7 @@ what it covers, as the existing five do. Prefer a new section in an existing fil
 file earns its place only when the subject fits none of them.
 
 **Add a language.** Copy `guide/languages/_TEMPLATE.md` to `guide/languages/<name>.md`,
-fill it in, and add one row to the Language table in `guide/CLASSIFY.md`.
+fill it in, and add one row to the Language table in `guide/RULE-LAYERS.md`.
 
 **Add a domain.** Same with `guide/domains/_TEMPLATE.md` and the Domain table.
 
