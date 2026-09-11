@@ -1,0 +1,34 @@
+skills/code-better/README.md
+  s_d6ba6101b47c5b::t_dd53d855d69006 66
+skills/code-better/adapters/claude-code/SKILL.md
+  s_d6ba6101b47c5b::t_c0397b378f8d6c 24
+skills/code-better/guide/PROCEDURE.md
+  s_d6ba6101b47c5b::t_6afb1970dbaa97 41,62
+skills/code-better/guide/RULE-LAYERS.md
+  s_d6ba6101b47c5b::t_0a3694c0add23d 1,3-4
+skills/code-better/guide/domains/_TEMPLATE.md
+  s_d6ba6101b47c5b::t_62a90964f5194f 8
+skills/code-better/guide/languages/_TEMPLATE.md
+  s_d6ba6101b47c5b::t_e549a8a90b1350 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "d39a309d6f689fd135fb08f4ce894dca80b367dd",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_d6ba6101b47c5b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b926aba5-2b43-48e5-8e03-819026650f71",
+        "model": "unknown"
+      },
+      "human_author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
