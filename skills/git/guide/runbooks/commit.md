@@ -153,8 +153,9 @@ Rules:
   core change, not an inventory of every changed aspect — if it's creeping past that
   because several things changed, name the change that matters most and let the diff
   carry the rest.
-- **Never** add a `[FE]` / `[BE]` prefix — the repo is already one or the other, so it
-  is redundant.
+- **Never** add a `[FE]` / `[BE]` prefix, or any other bracketed tag — the subject
+  format above is the whole format, and the repository itself already says which
+  codebase a commit is in.
 
 ### When to add a body
 
@@ -189,7 +190,11 @@ show it again until they confirm. Only commit once confirmed.
 ## Step 6 — Commit, with prettier/lint auto-fix
 
 Commit, signed. If step 1 found this repo requires a feature branch and the current
-branch is the default branch, create one first.
+branch is the default branch, create one first: take the name from the format the
+repo's recent branches already use (`git branch -a --sort=-committerdate | head`), and
+ask for it when that format needs something you do not have, such as a ticket key. Do
+not invent a name — `push.md` step 5 forbids renaming the branch if the push is later
+rejected for its format.
 
 Subject only, in step 1's detected format:
 

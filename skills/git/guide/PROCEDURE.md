@@ -9,7 +9,9 @@ Everything else below is identical everywhere.
 
 **Constraints:** No emojis in any output. Never run tests, lint, Prettier, or
 typecheck as part of this procedure — not before composing, not before committing,
-not to verify afterwards.
+not to verify afterwards. The one exception is `runbooks/commit-fix-on-failure.md`:
+once a pre-commit hook has already failed, running that repo's own fix command a single
+time to unblock the commit is part of the retry, not a check of your own initiative.
 
 **Re-run this procedure from the start for every commit or push request**, even when
 it was already followed earlier in this session. A prior run does not cover a later
@@ -27,9 +29,10 @@ Before anything else, establish what you actually have to work with:
   get their answer back before continuing — needed to confirm a commit grouping, a
   commit message, or a push (step 1a, and the runbooks' confirmation gates).
 
-If unavailable, proceed conservatively instead of guessing: treat everything
-uncommitted as one group, never push, and state plainly that no confirmation was
-possible.
+If unavailable, do not guess and do not proceed: confirmation gates every commit
+(`runbooks/commit.md` step 5) and every push. Work out what you would commit, treat
+everything uncommitted as one group, show the grouping and the message you would use,
+and stop there for the developer to run themselves.
 
 ## Step 1 — Work out what to commit and whether to push
 

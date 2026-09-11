@@ -22,4 +22,5 @@ commit.
 
 Everything else in `commit.md` — the convention detection, the message conventions, the comment
 check, the signed commit, the prettier/lint retry — applies unchanged to each group. Convention
-detection (step 1) only needs to run once for the whole run, not once per group.
+detection (step 1) is already once-per-run rather than once-per-group; `commit.md` step 1 is the
+rule, this file does not change it.

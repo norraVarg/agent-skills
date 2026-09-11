@@ -23,7 +23,7 @@ itself does.
 From the repository root:
 
 ```bash
-~/agent-skills/install.sh git claude-code
+./install.sh git claude-code
 ```
 
 ## How to use it
@@ -36,7 +36,9 @@ Invoke the skill whenever there's something to commit or push. It:
    you to confirm the grouping.
 3. Follows `guide/runbooks/commit.md` for each commit group — detecting the repo's
    own convention, checking for stale comments, composing the message, confirming it,
-   then committing (with an auto-fix-and-retry on a failed prettier/lint hook).
+   then committing (with an auto-fix-and-retry on a failed prettier/lint hook). With
+   more than one group, `guide/runbooks/multi-commit.md` layers on the staging and
+   one-confirmation-for-all adjustments first.
 4. Follows `guide/runbooks/push.md` if a push was asked for.
 5. Reports what was done.
 
