@@ -149,10 +149,15 @@ question, rather than porting the assumption as-is.
    its own `README.md`. No description there, the skill's own README carries that.
 6. Install it (`./install.sh <name> claude-code` from the repository root) and invoke it
    once to confirm it actually resolves and runs before considering it done.
-7. Compare the result against the other skills in `skills/` — file layout,
-   `PROCEDURE.md`'s capability-detection-with-fallback pattern, `LEARNING.md`'s stages
-   and answer words, `rules/user-rules.md`'s format and header wording, `README.md`'s
-   section order — and propose reconciling,
-   with the developer's confirmation, any place it drifts without good reason.
-   Matching an existing skill's shape is not optional polish; it is what lets a
-   developer use any skill in this repo without relearning conventions per skill.
+7. Compare the result against the other skills in `skills/`:
+
+   - file layout
+   - `PROCEDURE.md`'s capability-detection-with-fallback pattern
+   - `LEARNING.md`'s stages and answer words
+   - `rules/user-rules.md`'s format and header wording
+   - the adapter entry file's frontmatter keys
+   - `README.md`'s section order
+
+   Propose reconciling, with the developer's confirmation, any place it drifts without
+   good reason. Matching an existing skill's shape is not optional polish; it is what
+   lets a developer use any skill in this repo without relearning conventions per skill.

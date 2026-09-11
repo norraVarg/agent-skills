@@ -1,6 +1,8 @@
 ---
 name: code-better
-description: Guide the agent to produce code that follows industry best practice and your own customized coding principles. Reviews everything not yet committed — staged, unstaged, and untracked files — against your coding guide, universal correctness/security/testing rules, frontend/backend conventions, language idioms, and your personal rules, verifies each finding independently before trusting it, then helps fix what you approve. Invoke manually after making changes.
+description: "Guide the agent to produce code that follows industry best practice and your own customized coding principles. Reviews everything not yet committed — staged, unstaged, and untracked files — against your coding guide, universal correctness/security/testing rules, frontend/backend conventions, language idioms, and your personal rules, verifies each finding independently before trusting it, then helps fix what you approve. Invoke manually after making changes."
+argument-hint: "[optional: a concern to focus on, or files to limit the review to]"
+allowed-tools: Read, Edit, Bash, Agent, ReportFindings
 ---
 
 # code-better
@@ -20,5 +22,8 @@ available:
 - **Structured report (step 5).** Call the `ReportFindings` tool once with the
   surviving findings, most severe first.
 - **Diff/preview (step 6).** The `Edit` tool's own diff view.
+
+**Input:** `$ARGUMENTS` is the optional extra context `PROCEDURE.md`'s intro paragraph
+refers to.
 
 Do not summarise `guide/PROCEDURE.md` or `guide/RULE-LAYERS.md` from memory. Read them.

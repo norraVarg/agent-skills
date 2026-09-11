@@ -6,6 +6,10 @@ because no specific tool exists on every platform. Each provider's entry point
 (`adapters/<provider>/`) tells you what concretely fulfils the capabilities named
 in step 0, on that platform. Everything else below is identical everywhere.
 
+If the developer supplies extra context up front — a concern to focus on, or a subset of
+the changes to look at — fold it into step 1's gather and step 3's find. It narrows what
+is reviewed; it never relaxes a rule or skips a step.
+
 ## Step 0 — Detect capabilities
 
 Before anything else, establish what you actually have to work with:
