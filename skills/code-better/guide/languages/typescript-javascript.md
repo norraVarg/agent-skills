@@ -28,6 +28,13 @@ live in the domain file under the framework's heading.
   inference work.
 - No `enum`; use a union of string literals or an `as const` object.
 
+## JSDoc
+- Use `/** ... */` only on a declaration something else will hover over or
+  import — an exported function, component, type, or interface field — since
+  that's what TypeScript surfaces in tooltips and autocomplete.
+- Use `//` for reasoning attached to a specific line or block inside a function
+  body, where there's no named symbol to document.
+
 ## Asynchrony
 - `async`/`await` over raw promise chains. Never mix the two in one function.
 - No floating promises: every promise is awaited, returned, or explicitly handled.
