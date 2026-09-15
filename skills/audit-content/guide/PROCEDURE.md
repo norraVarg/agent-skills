@@ -52,15 +52,38 @@ so and stop. Do not fabricate content to audit.
 
 ## Step 3 — Run the checklist
 
-Apply every category in `CHECKLIST.md` to the raw text, judging it against itself and
-its own stated purpose — internal consistency only, not against outside facts (see
-`CHECKLIST.md`, "Misleading, wrong"). Then load `rules/user-rules.md` and apply its
-rules on top, with the highest precedence.
+Run the checklist in two separate passes over each document, rather than one
+unified read — a single read tends to under-apply the wording-focused categories,
+since attention gravitates toward the more consequential structural ones.
 
-When the target is a set, run the checklist twice: once within each document on its own,
-then once across the set as a whole. For the second pass the set is "itself" — a claim in
-one document and a duplicate or contradicting claim in another are both in scope.
-Anything outside the set still is not.
+- **Structural pass**: check only for categories 1 (unused, irrelevant,
+  unnecessary), 3 (conflicting), and 4 (misleading, wrong).
+- **Wording pass**: check only for categories 2 (redundant, repeated) and 5
+  (unclear, poorly worded) — sentence by sentence. Test each individual sentence
+  against "could this be deleted or shortened without losing information the
+  reader needs," not the comment or paragraph as a whole. A comment can pass as a
+  whole (it contains a real, non-obvious reason) while still having one
+  sentence — often a lead-in restating what's already inferable from context —
+  that fails this test on its own.
+
+This split is a finding-completeness fix (catching more real issues on the first
+pass), not a verification/refutation step — it does not need a second independent
+check of each candidate the way `code-better`'s step 4 does, since the gap it
+targets is under-recall (real issues missed), not over-reporting (false positives
+flagged). Do not port `code-better`'s per-finding refutation mechanism here; it
+solves a different failure mode than the one observed.
+
+Judge both passes against the content itself and its own stated purpose —
+internal consistency only, not against outside facts (see `CHECKLIST.md`,
+"Misleading, wrong"). Then load `rules/user-rules.md` and apply its rules on top,
+with the highest precedence.
+
+When the target is a set, run the two passes above within each document on its
+own, then run a separate, unsplit pass across the set as a whole — comparing
+claims and sections between documents is not a sentence-level exercise, so the
+wording pass's technique does not transfer to it. For the set-level pass the set
+is "itself" — a claim in one document and a duplicate or contradicting claim in
+another are both in scope. Anything outside the set still is not.
 
 If there is nothing to audit — the content is empty, or genuinely has no issues — say so
 and stop. Do not manufacture findings to have something to report.
