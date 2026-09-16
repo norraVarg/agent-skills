@@ -117,6 +117,10 @@ original finding.
 After acting, state the outcome of each finding that was addressed: fixed, skipped, or
 no change needed.
 
+When any fixes were applied, also report an approximate token-cost reduction for the
+content, e.g. `💰 ~150 tokens saved per use (~12% shorter)`. Estimate from before/after
+content length (not an exact tokenizer count) and label it clearly as approximate.
+
 ## Step 6 — Learn, optionally
 
 If a finding reveals a genuine gap in the guide, the same category of issue recurring
