@@ -1,0 +1,24 @@
+skills/audit-content/guide/CHECKLIST.md
+  s_2ea921d28a30a9::t_421229dcd20774 47-50
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "c620b05ad6cba71dd7897102d66176ed5064b8cf",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_2ea921d28a30a9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3fbe46f1-87c6-400e-bbde-00e0ca4603e5",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
