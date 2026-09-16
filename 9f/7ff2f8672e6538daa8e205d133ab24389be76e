@@ -1,0 +1,24 @@
+skills/audit-content/guide/PROCEDURE.md
+  s_86c85ef34c27ca::t_a6de4e18a41edf 120-123
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "9f7ff2f8672e6538daa8e205d133ab24389be76e",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_86c85ef34c27ca": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7ce55986-c4bd-4eb4-96b8-22cc2ccc8fb2",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
