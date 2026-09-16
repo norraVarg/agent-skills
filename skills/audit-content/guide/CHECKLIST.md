@@ -44,6 +44,10 @@ agree.
   stated where a reader will see it, and that the copies still agree. Report a copy that
   has fallen behind its source as drift, and prefer declaring the relationship over
   deleting either copy.
+- When trimming a redundant passage, cut to the shortest version that still stands on
+  its own rather than replacing it with a bare cross-reference to the other copy — keep
+  whatever local content the passage still needs to serve its own immediate purpose
+  (e.g. explaining adjacent examples).
 
 ## Conflicting
 
