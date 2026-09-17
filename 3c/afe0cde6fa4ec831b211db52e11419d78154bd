@@ -1,0 +1,24 @@
+skills/code-better/guide/PROCEDURE.md
+  s_07617ab3752e5b::t_16121431868564 87-107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3cafe0cde6fa4ec831b211db52e11419d78154bd",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_07617ab3752e5b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3ff4c3ac-1534-4f7c-ba22-e330de49a885",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
