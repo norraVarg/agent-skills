@@ -20,7 +20,19 @@ available:
   return exactly one of `CONFIRMED`, `PLAUSIBLE`, or `REFUTED`. Keep confirmed and
   plausible; drop refuted.
 - **Structured report (step 5).** Call the `ReportFindings` tool once with the
-  surviving findings, most severe first.
+  surviving findings, ordered most severe first. For each finding: `short_summary`
+  is the compressed plain-language hook, ending with the severity tag in brackets
+  ("... [High]", "... [Medium]", "... [Low]") — keep the hook itself to roughly
+  45-50 characters so the tag still fits inside the tool's 60-character limit;
+  `summary` is one plain sentence stating the defect, with jargon glossed inline on
+  first use, no quoted rule text, and no severity prefix (the tag already lives in
+  `short_summary`, so it isn't repeated here); `failure_scenario` is the short,
+  plain-language real-world consequence;
+  `category` stays the finding-type slug as the tool defines it; `verdict` stays
+  `CONFIRMED`/`PLAUSIBLE` from step 4 — the tool already renders this as a visible
+  badge, which is what keeps plausible findings visibly distinct from confirmed
+  ones. An empty findings list is a valid, complete call — don't skip it or pad it
+  with a manufactured finding.
 - **Diff/preview (step 6).** The `Edit` tool's own diff view.
 
 **Input:** `$ARGUMENTS` is the optional extra context `PROCEDURE.md`'s intro paragraph

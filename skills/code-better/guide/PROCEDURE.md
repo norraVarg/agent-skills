@@ -84,10 +84,27 @@ State in the report that this weaker self-check ran instead of an independent on
 
 ## Step 5 — Report
 
-Present the surviving findings, most severe first. Use a structured, itemised
-mechanism if one exists; otherwise a clearly labelled list. Each finding states: the
-file and line, the quoted rule it violates, why it matters for this specific change,
-and its verdict from step 4.
+Assign each surviving finding a severity: **High** (breaks something now, or is
+exploitable in production), **Medium** (fine today but will silently break under a
+plausible future change or edge case), or **Low** (style, clarity, or non-functional
+— docs/tests/comments — with no runtime impact). Present findings ordered by
+severity, most severe first.
+
+Use a structured, itemised mechanism if one exists; otherwise a clearly labelled
+list. Each finding states the file and line, its severity, and a short
+plain-language paragraph covering the concrete defect and its real-world
+consequence — not a rule citation (step 3's quoted rule is for grounding the finding
+internally, not for the report). Front-load the defect, keep one idea per sentence,
+and gloss any technical term the first time it appears, e.g. "prop drilling (passing
+a value through several components that don't use it themselves)".
+
+Whether the finding was independently confirmed or only plausible must stay visibly
+distinct in the presentation — a badge, a prefix, or whatever mechanism the platform
+gives you — rather than a fixed wording, since the concrete mechanism is
+adapter-specific.
+
+An empty list is a valid outcome; report it plainly rather than treating a clean
+review as incomplete.
 
 State plainly whether step 0's independent-check and structured-reporting capabilities
 were actually available, and which mode ran.
