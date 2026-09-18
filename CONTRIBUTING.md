@@ -65,19 +65,19 @@ procedure), not for the skill's domain. `guide/` may hold other files — checkl
 rule sets, reference tables the procedure loads — but only `PROCEDURE.md` runs on its
 own; give every other file a name that describes what it actually holds.
 
-`PROCEDURE.md`'s step 0 must list every capability a later step relies on that can
-genuinely degrade — something the procedure can still do a lesser version of
-without — each with a stated fallback for when it's unavailable. A later step that
-assumes such a capability without step 0 naming it (or naming it with no fallback)
-is a bug, not a stylistic choice. A hard requirement with no meaningful degraded
-mode (a git skill without shell access, for instance) does not belong in step 0;
-there is nothing to detect, because there is no fallback to describe.
+A capability can genuinely degrade when the procedure can still do a lesser
+version of the step without it. `PROCEDURE.md`'s step 0 must list every such
+capability a later step relies on, each with a stated fallback for when it's
+unavailable. A later step that assumes such a capability without step 0 naming it
+(or naming it with no fallback) is a bug, not a stylistic choice. A hard
+requirement with no meaningful degraded mode (a git skill without shell access,
+for instance) does not belong in step 0; there is nothing to detect, because
+there is no fallback to describe.
 
 Never restate how many capabilities there are anywhere outside step 0 itself — not
 the intro line, not an adapter's `SKILL.md`, not a skill's `README.md`. That count
 is guide content; duplicating it outside its one source of truth is exactly the
-kind of drift this file already warns adapters against, and it has already broken
-twice.
+kind of drift this file already warns adapters against.
 
 ## The install contract
 
