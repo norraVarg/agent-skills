@@ -15,8 +15,13 @@ On this platform, step 0's capabilities map to:
   and confirming fixes (step 5). For a plain yes/no or open question, asking directly in
   a message and waiting for the reply also satisfies this.
 - **Structured reporting** — the `ReportFindings` tool, called once with every finding,
-  most severe first. There is no verification stage to survive; an empty list is a valid
-  call.
+  most severe first. There is no verification stage to survive, so `verdict` stays
+  unset; an empty list is a valid call. For each finding: `category` is the checklist
+  category as a kebab-case slug (`unused-irrelevant`, `redundant-repeated`,
+  `conflicting`, `misleading-wrong`, `unclear-poorly-worded`); `short_summary` is the
+  compressed plain-language hook; `summary` is one plain sentence stating what's
+  wrong, front-loaded, with jargon glossed inline on first use; `failure_scenario`
+  is the short, plain-language cost to a reader of leaving it as-is.
 - **Diff/preview** — the `Edit` tool's own diff view for local files; for content that
   lives elsewhere (a Jira ticket, a Confluence page, a PR description), show the
   proposed before/after as text before calling that platform's own update mechanism

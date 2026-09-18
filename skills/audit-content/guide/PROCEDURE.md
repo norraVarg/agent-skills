@@ -92,8 +92,15 @@ and stop. Do not manufacture findings to have something to report.
 
 Present every finding, most severe first. Use a structured, itemised mechanism if one
 exists; otherwise a clearly labelled list. Each finding states: the category from
-`CHECKLIST.md`, the exact location or a short quoted excerpt, why it is a problem for
-this specific content, and — when there is an obvious one — a proposed fix.
+`CHECKLIST.md`, the exact location or a short quoted excerpt, and — when there is an
+obvious one — a proposed fix.
+
+State why it's a problem in the same plain style `CHECKLIST.md`'s own "unclear,
+poorly worded" category asks of the audited content itself: front-load the point,
+keep one idea per sentence, and gloss any technical or domain term the first time
+it appears, e.g. "prop drilling (passing a value through several components that
+don't use it themselves)". The quoted excerpt grounds the finding in the actual
+text; it is not a substitute for saying in plain words what's wrong with it.
 
 An empty list is a valid outcome; report it plainly.
 
