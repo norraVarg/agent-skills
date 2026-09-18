@@ -1,0 +1,32 @@
+CONTRIBUTING.md
+  s_c104d4d972f66b::t_ce256ac9271a65 20-36
+skills/audit-content/guide/CHECKLIST.md
+  s_c104d4d972f66b::t_59a0e2741a3af3 77-79,85-95
+skills/audit-content/guide/PROCEDURE.md
+  s_c104d4d972f66b::t_4ebe2b444a868d 98-106
+skills/code-better/guide/PROCEDURE.md
+  s_c104d4d972f66b::t_15660a5a05c10e 94-107
+skills/git/guide/runbooks/commit.md
+  s_c104d4d972f66b::t_f4af4c0a538cf8 127-131,183-184
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "ff78152617f86d6b9b9a810c5cd53227facc8adf",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_c104d4d972f66b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "03ad7409-dc45-4ae6-b46a-768950a70efe",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
