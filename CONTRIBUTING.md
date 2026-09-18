@@ -17,6 +17,23 @@ any edit, not only adding a new one. It matters most right here, though, at the
 moment new content enters the repo. Before committing, search the whole repository
 for anything that would identify you or your organization.
 
+## Writing for the reader
+
+Any skill that produces prose a human reads — a findings report, a commit message, a
+proposed edit, any text a step hands back to the user — writes it to ASD-STE100
+(Simplified Technical English) first: front-load the point, one idea per sentence,
+active voice with a stated actor, short sentences (roughly 20-25 words), one
+consistent term per concept, and jargon glossed on first use. Avoid idioms, phrasal
+verbs, slang, and culturally-specific references ("hit the ground running," "give it
+a shot") — say the same thing in plain, literal words instead. The goal is text a
+competent reader can follow regardless of whether English is their first language,
+not text that only reads well to a native speaker. This is the baseline, not one
+rule among several. Whatever else that skill's own guide asks of the same output — a
+severity tag, a category label, a length ceiling, a field a future edit adds —
+composes on top of ASD-STE100-compliant wording; it never licenses relaxing it back
+to passive, jargon-heavy, idiomatic, or multi-idea-per-sentence prose. This applies
+to every skill added here, not only the ones already present, and to any edit.
+
 ## The core split
 
 Every skill has two parts, and they are never mixed:

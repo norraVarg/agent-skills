@@ -124,6 +124,11 @@ Otherwise, drop the scope entirely:
 type: short description
 ```
 
+ASD-STE100 is the wording baseline for the description, and for the body when there
+is one: every rule below — the Conventional Commit type, the ticket prefix, the
+length ceiling — adds structure on top of ASD-STE100-compliant wording, not a
+substitute for it. Any future rule added here follows the same order.
+
 Rules:
 - **Conventional Commit type** from the actual changes: `feat` (new behaviour), `fix`
   (bug fix), `chore` (maintenance, deps, config), `refactor`, `docs`, `test`, `style`,
@@ -175,6 +180,8 @@ When a body genuinely is warranted:
 - **Length** — target 15–25 words, 35 as a hard ceiling. State the single reason that
   matters most; do not list every one.
 - Explain why, not what or how — the diff already shows those.
+- Write it to ASD-STE100 conventions: active voice with a stated actor, one idea per
+  sentence, no idioms or phrasal verbs, no jargon left unglossed.
 - No bullet points, no restating the subject, no emojis.
 
 ---

@@ -91,12 +91,20 @@ plausible future change or edge case), or **Low** (style, clarity, or non-functi
 severity, most severe first.
 
 Use a structured, itemised mechanism if one exists; otherwise a clearly labelled
-list. Each finding states the file and line, its severity, and a short
-plain-language paragraph covering the concrete defect and its real-world
-consequence — not a rule citation (step 3's quoted rule is for grounding the finding
-internally, not for the report). Front-load the defect, keep one idea per sentence,
-and gloss any technical term the first time it appears, e.g. "prop drilling (passing
-a value through several components that don't use it themselves)".
+list. Each finding states the file and line, its severity, and a short paragraph
+covering the concrete defect and its real-world consequence — not a rule citation
+(step 3's quoted rule is for grounding the finding internally, not for the report).
+
+Word that paragraph to ASD-STE100 (Simplified Technical English) conventions
+first: front-load the defect, keep one idea per sentence, prefer active voice with
+a stated actor, keep each sentence under roughly 20-25 words, use one consistent
+term for a given concept rather than cycling synonyms, avoid idioms and phrasal
+verbs so the finding reads clearly for a non-native English speaker, and gloss any
+technical term the first time it appears, e.g. "prop drilling (passing a value
+through several components that don't use it themselves)". The file/line citation,
+the severity tag, and the verdict badge are structure added on top of that
+wording — and so is any field this step gains later: it must still produce
+ASD-STE100-compliant prose, not trade that discipline away for a new requirement.
 
 Whether the finding was independently confirmed or only plausible must stay visibly
 distinct in the presentation — a badge, a prefix, or whatever mechanism the platform

@@ -74,12 +74,25 @@ content.
 
 Wording that makes a competent reader work harder than the content warrants: a buried
 lead, multiple ideas chained into one sentence, walls of text, inconsistent structure
-across parallel sections, unexplained abbreviations or jargon.
+across parallel sections, unexplained abbreviations or jargon. Judge this category
+against ASD-STE100 (Simplified Technical English), a controlled-language standard for
+clear technical writing — the rules below are its core points, not an invented style.
 
 - Front-load the point: the most important fact should not be the last sentence of a
   paragraph.
 - One idea per sentence: split sentences chained together with "and," "but," or "which"
   if they are really two separate points.
+- Keep sentences short: flag one running past roughly 20-25 words as a candidate to
+  split, even if it is grammatically correct.
+- Prefer active voice, with a stated actor doing the action: "the update removes the
+  old field," not "the old field is removed by the update" or, worse, "the old field
+  is removed" with no actor at all.
+- Avoid stringing three or more nouns together as a single label (e.g. "account
+  status change notification") when an unpacked phrase reads faster ("a notification
+  that account status changed").
+- Avoid idioms, phrasal verbs, and culturally-specific references ("hit the ground
+  running," "give it a shot") — say it in plain, literal words so a non-native
+  English reader isn't left guessing.
 - Break up any block of prose that runs past a natural reading pause without a paragraph
   break or a list.
 - List three or more items as bullets, not comma-separated prose.
