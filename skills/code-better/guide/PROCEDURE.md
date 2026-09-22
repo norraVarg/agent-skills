@@ -36,6 +36,19 @@ Collect everything not yet committed: staged changes, unstaged changes to tracke
 files, and untracked files. Untracked files are included — skipping brand-new files
 would miss most of what a real change usually contains.
 
+If the target is remote — a pull request, a branch, a commit range — fetch its
+unified diff directly rather than cloning the repository; fetch a file's full content
+only when a hunk's surrounding lines are not enough to judge a rule, and fetch it once,
+not once per later step that needs it.
+
+Read the diff into the context that will do the finding in step 3. By default that
+is this same context — step 3 finds directly here, so read it once, now, and reuse
+it. Only gather a by-reference hand-off instead (file paths, per-file change stats,
+not full content) when step 3 actually shards the diff out to delegated contexts
+because of its size — in that case each shard fetches its own slice once. Content
+read into one context and then handed to another gets read twice for no benefit;
+read it once, in whichever context ends up doing the finding.
+
 If there is nothing to review, say so and stop. Do not manufacture findings to have
 something to report.
 
@@ -54,6 +67,11 @@ A diff touching several files may need several different combinations of layers,
 per file or per small group of related files. Do not average them into one generic
 pass.
 
+When step 3 delegates to a fresh context, hand it these files' paths rather than
+pasting their contents into the prompt — the guide already exists on disk, and
+copying it into every delegated prompt duplicates content the delegate can read
+itself for free.
+
 ## Step 3 — Find
 
 Look for violations of the loaded rules in the diff. For every candidate, quote the
@@ -61,20 +79,70 @@ exact rule it violates, the file it lives in, and the line, not a vague descript
 like "doesn't follow conventions." A finding that cannot point at a specific quoted
 rule is not a finding yet.
 
-If step 0's independent check can also run separate finding passes, run at least two:
-one looking for safety-rule violations (correctness, security, testing — the rules
-`RULE-LAYERS.md` marks as holding everywhere), one looking for style-rule violations
-(simplicity, naming, domain and language idioms — the rules that yield to a project's
-existing conventions). If it cannot, cover both in one pass, safety first.
+**Do this in the current context by default.** The diff and the loaded guide layers
+are already here from steps 1-2; reasoning over them again in this same context
+costs only output tokens, not another content load. Delegating to a fresh context
+(a subagent, a separate session) is not free — it pays a new context's fixed cost
+(system prompt, tool schemas) and must re-fetch whatever diff and guide layers it
+needs, so reserve it for when it earns that cost.
+
+**Delegate, sharded by size, only when the diff genuinely does not fit one context.**
+A rough ceiling: a few thousand changed lines, or enough files that holding them all
+together would crowd out careful reasoning — adjust to the platform's actual context
+budget. Below that ceiling, do the whole find pass right here, in one combined pass
+covering every loaded rule, safety rules first (correctness, security, testing — the
+rules `RULE-LAYERS.md` marks as holding everywhere) before style rules (simplicity,
+naming, domain and language idioms — the rules a project's existing conventions can
+outweigh). At or above the ceiling, split the diff into shards at that size, grouping
+by Step 2's layer signature where convenient so a shard doesn't mix unrelated rule
+sets, and run each shard as its own delegated call — one call per shard, each still
+covering every rule that shard's files loaded in a single pass, issued in parallel
+rather than in sequence. Do not add a second delegated call over the same shard for a
+different rule category: that re-pays the fixed cost of a new context to re-read
+content the first call already has open, for no benefit over reasoning through both
+categories in the pass it's already running.
+
+Find by reading and reasoning, not by running code. Writing and executing a script to
+prove a hypothesis is verification-grade work — it belongs to step 4, not here, and
+doing it during find is why a pass can quietly balloon to many tool calls and minutes
+of runtime over a single diff.
+
+A delegated shard reads only its own slice of the diff and the files it names — it
+does not explore the rest of the repository unless a specific rule requires checking
+a caller or a config file the diff doesn't show.
+
+Safety-rule scrutiny belongs to files that execute — source and test code.
+Documentation, changesets, and lockfiles cannot violate a correctness or security
+rule; give them only the style layer's own doc-accuracy check (a comment or doc that
+no longer matches the code it now describes), and do that lightly — skim for drift,
+not line-by-line.
 
 ## Step 4 — Verify
 
-Every candidate finding gets checked before it is trusted.
+Every candidate finding gets checked before it is trusted, in a context separate
+from whichever one found it. Unlike step 3, this delegation is not a size
+trade-off — independence is the actual requirement, so this step always uses
+step 0's independent check when one exists.
 
-If an independent check is available: for each candidate, have it try to refute the
-finding using only the file and the quoted rule, no prior knowledge of why the finding
-was raised. It returns one of confirmed, plausible, or refuted. Keep confirmed and
+**Batch by file, cap by count, run batches in parallel.** A candidate's file has to
+be read to judge it; when several candidates land in the same file, reading it once
+per candidate is pure waste. Group candidates by file — several small files can
+share a batch — cap each batch at roughly ten candidates so no single call gets
+overloaded, and issue the batches as parallel calls to the independent check rather
+than one call per candidate. A lone candidate is simply a batch of one; nothing
+about a small diff changes.
+
+If an independent check is available: give each batch the file(s) and, for every
+candidate in it, the quoted rule and line — never the reasoning that produced it —
+and have it try to refute each one, judging every candidate on its own terms so a
+verdict on one does not colour its verdict on another in the same batch. It returns
+one verdict per candidate: confirmed, plausible, or refuted. Keep confirmed and
 plausible; drop refuted.
+
+Reasoning from the file and the quoted rule is the default here too. Reach for
+actually executing a small, self-contained script only when that reasoning is
+genuinely inconclusive — not as a matter of course — since running code costs far
+more time and tokens than reading it.
 
 If no independent check is available: re-examine each candidate yourself, adopting a
 deliberately skeptical, refute-first stance. Score each one for confidence, 0 to

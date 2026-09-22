@@ -13,12 +13,21 @@ The guide lives at `${CLAUDE_SKILL_DIR}/guide/`. Read
 On this platform, the capabilities `PROCEDURE.md` step 0 asks you to detect are all
 available:
 
-- **Independent check (steps 3 and 4).** The `Agent` tool. In step 3, run the safety
-  pass and the style pass as two separate `Agent` calls. In step 4, make one separate
-  `Agent` call per candidate finding, giving it only the file and the quoted rule, not
-  the reasoning that produced the finding. Ask it to try to refute the finding and
-  return exactly one of `CONFIRMED`, `PLAUSIBLE`, or `REFUTED`. Keep confirmed and
-  plausible; drop refuted.
+- **Independent check (step 4).** The `Agent` tool, batched by file, capped
+  (~10 candidates per batch), run as parallel calls — see `PROCEDURE.md` step 4.
+  This is the one step that always delegates: independence is the point, not a
+  matter of size. Each call gets only the file(s) and, per candidate, the quoted
+  rule and line — never the reasoning that produced it. Ask each batch to judge
+  every candidate independently and return one verdict per candidate:
+  `CONFIRMED`, `PLAUSIBLE`, or `REFUTED`. Keep confirmed and plausible; drop
+  refuted.
+- **Finding (step 3).** Do this directly in this conversation by default — the
+  diff and guide layers loaded in steps 1-2 are already here, so a find pass over
+  them costs no extra reads. Reach for the `Agent` tool here only when the diff
+  crosses `PROCEDURE.md` step 3's size ceiling; if it does, shard the diff and
+  run one `Agent` call per shard (parallel), each covering every loaded rule in a
+  single pass — never a second call over the same shard for a different rule
+  category.
 - **Structured report (step 5).** Call the `ReportFindings` tool once with the
   surviving findings, ordered most severe first. For each finding: `short_summary`
   is the compressed plain-language hook, ending with the severity tag in brackets

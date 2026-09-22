@@ -58,6 +58,28 @@ Every skill has two parts, and they are never mixed:
   procedure must already say what to do instead, that is the guide's job to handle,
   not the adapter's to work around.
 
+## Delegating to a fresh context
+
+A step that spawns a subagent, a separate session, or any other fresh context pays a
+fixed cost before it does any useful work: that context has to load whatever content
+it needs — a diff, a document, the guide layers — even when the delegating context
+already has that same content loaded. Only pay that cost where it buys something the
+current context cannot provide on its own:
+
+- **Independence.** A check that has to genuinely try to disprove a candidate, not
+  reread its own reasoning and agree with itself, must run somewhere separate — the
+  one legitimate reason to delegate regardless of content size.
+- **Capacity.** Content too large for one context to reason about carefully. This is
+  a real limit, not a routine parallelization technique; delegate by size only once
+  content actually crosses it, and reason in the current context otherwise.
+
+Neither reason justifies delegating the same content twice for two different lenses
+(a safety-focused pass and a style-focused pass, say): content already loaded in one
+context can be reasoned about a second time for the cost of extra output tokens, not
+another read. A guide's own `PROCEDURE.md` states this distinction explicitly
+wherever it asks a later step to delegate, rather than leaving "when to spawn a fresh
+context" to be rediscovered per skill.
+
 ## Structure
 
     skills/<skill-name>/
@@ -170,6 +192,8 @@ question, rather than porting the assumption as-is.
 
    - file layout
    - `PROCEDURE.md`'s capability-detection-with-fallback pattern
+   - any step that delegates to a fresh context — only for independence or genuine
+     capacity limits, never as routine parallelization
    - `LEARNING.md`'s stages and answer words
    - `rules/user-rules.md`'s format and header wording
    - the adapter entry file's frontmatter keys
