@@ -1,0 +1,17 @@
+skills/git/guide/rules/user-rules.md
+  h_2fa6c16ca81eb4 18-21
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "812236817965325279b6acea5f7f147925982ca2",
+  "prompts": {},
+  "humans": {
+    "h_2fa6c16ca81eb4": {
+      "author": "norraVarg <wolf.se2015@gmail.com>"
+    },
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
