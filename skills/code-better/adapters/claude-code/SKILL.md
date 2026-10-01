@@ -1,7 +1,7 @@
 ---
 name: code-better
-description: "Guide the agent to produce code that follows industry best practice and your own customized coding principles. Reviews everything not yet committed — staged, unstaged, and untracked files — against your coding guide, universal correctness/security/testing rules, frontend/backend conventions, language idioms, and your personal rules, verifies each finding independently before trusting it, then helps fix what you approve. Invoke manually after making changes."
-argument-hint: "[optional: a concern to focus on, or files to limit the review to]"
+description: "Guide the agent to produce code that follows industry best practice and your own customized coding principles. Reviews everything not yet committed — staged, unstaged, and untracked files — or a whole pull request when given its link, against your coding guide, universal correctness/security/testing rules, frontend/backend conventions, language idioms, and your personal rules, verifies each finding independently before trusting it, then helps fix what you approve. Invoke manually after making changes."
+argument-hint: "[optional: a PR link to review the whole PR, a concern to focus on, or files to limit the review to]"
 allowed-tools: Read, Edit, Bash, Agent, ReportFindings
 ---
 
@@ -43,8 +43,15 @@ available:
   ones. An empty findings list is a valid, complete call — don't skip it or pad it
   with a manufactured finding.
 - **Diff/preview (step 6).** The `Edit` tool's own diff view.
+- **PR comments (step 6).** Post every confirmed comment in one call to
+  `gh api repos/<owner>/<repo>/pulls/<n>/reviews --method POST`, with event
+  `COMMENT`, the PR's head SHA as `commit_id`, and each comment's `path`, `line`
+  and `side: RIGHT`. Never use `APPROVE` or `REQUEST_CHANGES`. Ask in the closing
+  question with `AskUserQuestion`, so the developer can pick "comment on the PR",
+  "apply fixes", or "discuss first" without having to type it.
 
-**Input:** `$ARGUMENTS` is the optional extra context `PROCEDURE.md`'s intro paragraph
-refers to.
+**Input:** `$ARGUMENTS` is either a review target (a PR link or number, a branch, a
+commit range — see `PROCEDURE.md` step 1) or the optional extra context its intro
+paragraph refers to, or both.
 
 Do not summarise `guide/PROCEDURE.md` or `guide/RULE-LAYERS.md` from memory. Read them.

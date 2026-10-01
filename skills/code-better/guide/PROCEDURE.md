@@ -32,9 +32,14 @@ pipeline is not.
 
 ## Step 1 — Gather the diff
 
-Collect everything not yet committed: staged changes, unstaged changes to tracked
-files, and untracked files. Untracked files are included — skipping brand-new files
-would miss most of what a real change usually contains.
+If the input names a target — a pull request link or number, a branch, or a commit
+range — review that target's whole diff instead of the uncommitted changes. A bare
+PR link means exactly that: review the entire PR. Anything given alongside the
+target still narrows the review, as the intro describes.
+
+Otherwise, collect everything not yet committed: staged changes, unstaged changes to
+tracked files, and untracked files. Untracked files are included — skipping
+brand-new files would miss most of what a real change usually contains.
 
 If the target is remote — a pull request, a branch, a commit range — fetch its
 unified diff directly rather than cloning the repository; fetch a file's full content
@@ -187,8 +192,17 @@ were actually available, and which mode ran.
 
 ## Step 6 — React
 
-Ask how to proceed: fix everything found, fix specific ones, or discuss first. Never
-apply a fix without being told to.
+Ask how to proceed: fix everything found, fix specific ones, or discuss first. When
+the target is a remote pull request, also offer to comment on the PR instead of
+fixing it — for all findings or specific ones. Never apply a fix or post a comment
+without being told to.
+
+When commenting, draft one comment per finding, written as the developer in the
+first person. Keep each comment to two or three sentences of plain, conversational
+wording a reviewer can read at a glance, and add a one-line suggested fix where one
+exists. Show every draft first, and post only after the developer confirms. A
+finding on a line outside the PR's diff cannot carry an inline comment: pin it to
+the nearest changed line it relates to, and name the real file and line in its text.
 
 When more than one finding is being fixed, work through them one at a time: show that
 finding's diff or before/after (per step 0's diff capability), wait for explicit
