@@ -1,0 +1,19 @@
+skills/code-better/adapters/claude-code/SKILL.md
+  h_2fa6c16ca81eb4 3-4,46-51,53-55
+skills/code-better/guide/PROCEDURE.md
+  h_2fa6c16ca81eb4 35-42,195-205
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "069422739b3caa7103f087cc59d825ff8da8ccf6",
+  "prompts": {},
+  "humans": {
+    "h_2fa6c16ca81eb4": {
+      "author": "norraVarg <wolf.se2015@gmail.com>"
+    },
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  }
+}
