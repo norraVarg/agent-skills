@@ -155,9 +155,10 @@ Rules:
   `enhance`, `update`) when a more specific one names what actually happened
   (`close gaps in`, `add`, `fix`, `tighten`).
 - **Length** — target 6–10 words for the description, 12 as a hard ceiling. Name the
-  core change, not an inventory of every changed aspect — if it's creeping past that
-  because several things changed, name the change that matters most and let the diff
-  carry the rest.
+  core change, not an inventory of every changed aspect. Let the diff carry the rest
+  only when the rest is tests, fixtures, docs, types or formatting that the core
+  change required. If several unrelated changes push the subject past the ceiling,
+  the group holds more than one topic. Run the coverage check below.
 - **Never** add a `[FE]` / `[BE]` prefix, or any other bracketed tag — the subject
   format above is the whole format, and the repository itself already says which
   codebase a commit is in.
@@ -183,6 +184,18 @@ When a body genuinely is warranted:
 - Write it to ASD-STE100 conventions: active voice with a stated actor, one idea per
   sentence, no idioms or phrasal verbs, no jargon left unglossed.
 - No bullet points, no restating the subject, no emojis.
+
+### Check that the subject covers the whole group
+
+Before step 5, map each staged path to the change the subject names. A path maps when
+it is that change, or a test, fixture, doc, type or formatting change that the change
+required. A path that maps to nothing means the group holds another topic. A body that
+has to list other changes ("also ...") is the same signal.
+
+- If the agent formed the group (step 1a found one topic), stop. Return to
+  `PROCEDURE.md` step 1a with the unmapped paths as a second topic.
+- If the developer set the grouping, do not regroup. In step 5, name the unmapped
+  paths and let the developer choose: widen the subject, or split.
 
 ---
 

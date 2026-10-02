@@ -19,7 +19,10 @@ request, and working from what was already read drops steps — step 1's fresh
 repo-state read is the usual casualty.
 
 If the developer supplies extra context about the change up front (commit intent the
-diff alone can't show), fold it into step 1's judgment.
+diff alone can't show), fold it into step 1's judgment. That context settles the
+grouping only when it states one ("in two commits", "X on its own"). A summary of the
+work or a list of changes is not a grouping, so step 1a still runs. This also applies
+when the agent wrote the context itself.
 
 ## Step 0 — Detect capabilities
 
@@ -83,9 +86,11 @@ they described the grouping themselves, when a single path changed, and when the
 have already staged a subset of the changes — a deliberate index is their grouping,
 and `runbooks/commit.md` step 2's staged/unstaged question handles the remainder.
 
-Judge topics from the paths and the stat first. When they suggest more than one
-topic, read the full diff (`git diff HEAD`) before proposing — a grouping built on
-filenames alone gets the topics wrong.
+Judge topics from the paths and the stat first. Then read the full diff
+(`git diff HEAD`) before you decide either way when the stat shows more than 3 files
+or more than 2 top-level directories. A grouping built on filenames alone gets the
+topics wrong. A "one topic" verdict from the stat alone is how a mixed commit gets
+through.
 
 **Separate topics** are changes with different reasons behind them, each of which
 would still make sense as a commit on its own. The signals worth trusting:
@@ -101,8 +106,18 @@ types, fixtures, or docs that same change required; a rename or signature change
 rippling across directories; formatting the edit itself produced. These are not
 candidates for a split.
 
-Default to one commit on a close call. A split the developer did not want costs them
-a rebase to undo; a split missed costs a slightly broad subject line.
+A shared cause is not a shared topic. "Review fixes", "follow-ups after a merge" or
+"a cleanup pass" say why the changes happened, not what they change. Judge each
+change on its own against the signals above.
+
+When two topics touch the same file, put that file in one group and say so in that
+group's label. Do not merge the topics into one commit to avoid the overlap.
+
+Default to one commit on a close call. A close call is a single signal that is weak
+or arguable. Two signals, or one signal plus a change with no causal link to the
+rest, is not a close call: propose the split. An unwanted split costs the developer
+one answer, because nothing is committed until they reply. A missed split costs a
+subject that hides changes.
 
 **When the changes are separate topics**, put the proposal to the developer and
 wait — stage nothing and commit nothing until they answer. Label each group with the
