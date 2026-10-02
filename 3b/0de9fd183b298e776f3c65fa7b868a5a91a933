@@ -1,0 +1,26 @@
+skills/git/guide/PROCEDURE.md
+  s_bd32ef3740742d::t_9666d2c26758b6 22-25,89-93,109-120
+skills/git/guide/runbooks/commit.md
+  s_bd32ef3740742d::t_89954a7eb31231 158-161,188-199
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "3b0de9fd183b298e776f3c65fa7b868a5a91a933",
+  "prompts": {},
+  "humans": {
+    "h_ba9e79e0477686": {
+      "author": "Yue Wang <wolf.se2015@gmail.com>"
+    }
+  },
+  "sessions": {
+    "s_bd32ef3740742d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_bd32ef3740742d",
+        "model": "unknown"
+      },
+      "human_author": "norraVarg <wolf.se2015@gmail.com>"
+    }
+  }
+}
