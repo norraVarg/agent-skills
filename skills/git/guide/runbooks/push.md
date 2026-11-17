@@ -9,6 +9,10 @@ commits; the commit runbook handles that.
 
 ## Step 1 — Determine state
 
+Run the repo's Prettier fix command once, as in `commit.md` step 2. If it changes any
+tracked file, stop and hand back to `commit.md`: those changes have to be committed
+before the push.
+
 ```bash
 git rev-parse --abbrev-ref HEAD
 git status -sb

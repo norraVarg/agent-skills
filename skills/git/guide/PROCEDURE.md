@@ -7,9 +7,12 @@ exists on every platform. Each provider's entry point (`adapters/<provider>/`) t
 you what concretely fulfils the capabilities named in step 0, on that platform.
 Everything else below is identical everywhere.
 
-**Constraints:** No emojis in any output. Never run tests, lint, Prettier, or
-typecheck as part of this procedure — not before composing, not before committing,
-not to verify afterwards. The one exception is `runbooks/commit-fix-on-failure.md`:
+**Constraints:** No emojis in any output. Never run tests, lint, typecheck, or a
+Prettier check as part of this procedure — not before composing, not before
+committing, not to verify afterwards. Two exceptions. Run the repo's Prettier fix
+command once before every commit and every push (`runbooks/commit.md` step 2,
+`runbooks/push.md` step 1): the pre-commit hook rejects unformatted files, so the
+fix is needed anyway. And `runbooks/commit-fix-on-failure.md`:
 once a pre-commit hook has already failed, running that repo's own fix command a single
 time to unblock the commit is part of the retry, not a check of your own initiative.
 
