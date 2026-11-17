@@ -50,11 +50,11 @@ Keep both answers for the rest of this run; do not re-derive them per commit gro
 
 ## Step 2 — Inspect the staged changes
 
-Before inspecting, run the repo's Prettier fix command once: the
-`package.json` script whose command contains `prettier --write`, run with the lockfile's
-package manager. Skip it when the repo has neither. Re-stage any path in this group that
-it reformatted. If it reformatted files outside this group, list them to the developer
-instead of staging them.
+Before inspecting, run the repo's Prettier fix command once, found as
+`commit-fix-on-failure.md` step 2 describes for a prettier failure. Skip it when the
+repo has no such script. Re-stage any path in this group that it reformatted. If it
+reformatted files outside this group, list them to the developer instead of staging
+them.
 
 Run together:
 

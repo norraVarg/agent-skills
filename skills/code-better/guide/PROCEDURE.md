@@ -194,7 +194,7 @@ were actually available, and which mode ran.
 Ask how to proceed: fix everything found, fix specific ones, or discuss first. When
 the target is a remote pull request, also offer to comment on the PR instead of
 fixing it — for all findings or specific ones. Never apply a fix or post a comment
-without being told to.
+without being told to. Post comments only: never approve the PR or request changes on it.
 
 When commenting, draft one comment per finding, written as the developer in the
 first person. Keep each comment to two or three sentences of plain, conversational

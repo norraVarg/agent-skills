@@ -1,8 +1,8 @@
 # code-better
 
-Guides an AI coding agent to write code that follows industry best practice and your
-own principles. It reviews everything not yet committed — staged, unstaged, and
-untracked — against a portable coding guide.
+Guides an AI coding agent to write code that follows industry best practice. It
+reviews everything not yet committed — staged, unstaged, and untracked — or a whole
+pull request given its link, against a portable coding guide.
 
 - A **universal core** that applies to all languages and both frontend and backend work.
 - **Domain** rules (frontend, backend) and **language** rules (TypeScript/JavaScript
@@ -27,12 +27,14 @@ From the repository root:
 
 Invoke the skill after making changes, staged, unstaged, or both. It:
 
-1. Gathers everything not yet committed.
+1. Gathers the diff: everything not yet committed, or the whole diff of a pull request,
+   branch, or commit range you name.
 2. Classifies each changed file (language, domain) and loads the matching guide layers.
 3. Finds candidate rule violations, quoting the exact rule for each.
 4. Checks every candidate independently before trusting it.
 5. Reports the survivors, most severe first.
-6. Asks how to proceed, never applies a fix without being told to.
+6. Asks how to proceed — fix, discuss, or (for a pull request) comment on it — and
+   never applies a fix or posts a comment without being told to.
 
 ## How to extend
 

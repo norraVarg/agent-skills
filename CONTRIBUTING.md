@@ -11,9 +11,9 @@ and do not invent a different structure.
 Nothing in this repository may identify a person, an employer, or a specific
 machine, in any skill, in any layer: no names, gendered pronouns describing a
 specific person, emails, employers, or machine paths — and no real project detail
-smuggled in through a worked example, a file path, a feature name, or a skill's own
-accumulated state. This applies to every skill added here, not only the ones already present, and to
-any edit, not only adding a new one. It matters most right here, though, at the
+smuggled in through a worked example, a file path, or a feature name. This applies to
+every skill added here, not only the ones already present, and to any edit, not only
+adding a new one. It matters most right here, though, at the
 moment new content enters the repo. Before committing, search the whole repository
 for anything that would identify you or your organization.
 

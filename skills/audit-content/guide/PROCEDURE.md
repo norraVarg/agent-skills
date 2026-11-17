@@ -68,10 +68,9 @@ since attention gravitates toward the more consequential structural ones.
 
 This split is a finding-completeness fix (catching more real issues on the first
 pass), not a verification/refutation step — it does not need a second independent
-check of each candidate the way `code-better`'s step 4 does, since the gap it
-targets is under-recall (real issues missed), not over-reporting (false positives
-flagged). Do not port `code-better`'s per-finding refutation mechanism here; it
-solves a different failure mode than the one observed.
+check of each candidate, since the gap it targets is under-recall (real issues
+missed), not over-reporting (false positives flagged). Do not add a per-finding
+refutation mechanism; it solves a different failure mode than the one observed.
 
 Judge both passes against the content itself and its own stated purpose —
 internal consistency only, not against outside facts (see `CHECKLIST.md`,
@@ -115,8 +114,9 @@ When more than one finding is being fixed, work through them one at a time: show
 finding's diff or before/after (per step 0's diff capability), wait for explicit
 confirmation, apply it, then move to the next — rather than presenting every diff at
 once for a single round of approval. If a new issue turns up while fixing one (not
-part of the reported findings), surface it separately and ask before adding it to the
-queue, rather than folding it in silently.
+part of the reported findings, and a different defect from the one being fixed),
+surface it separately and ask before adding it to the queue, rather than folding it in
+silently.
 
 Skip a finding instead of forcing a fix if applying it would change the content's
 intended meaning, reach outside the content under audit, or turns out on closer
@@ -125,8 +125,9 @@ original finding.
 
 After fixing a finding that could exist elsewhere in the set, search the whole set for
 other instances of the same defect before moving to the next finding, and fold what you
-find into that same fix. Fixing only the instance leaves the copies disagreeing, where
-before they were at least consistently wrong.
+find into that same fix. Other instances of the same defect belong to the finding, so
+they need no separate question. Fixing only the instance leaves the copies disagreeing,
+where before they were at least consistently wrong.
 
 After acting, state the outcome of each finding that was addressed: fixed, skipped, or
 no change needed.

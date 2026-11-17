@@ -8,6 +8,8 @@ job. These rules hold across frameworks and runtimes.
   and versioned. Changing it is a deliberate act with a compatibility plan.
 - One consistent error format across the service: a machine-readable code, a
   human-readable message, and a correlation identifier. Never a stack trace.
+- Propagate to a central handler rather than catching in each handler. Per-endpoint
+  error handling drifts until each endpoint reports failures differently.
 - Use status codes for what they mean. A failed validation is a client error, not a
   server error and not a success with an error body. `403` versus `404` is chosen
   deliberately — the difference discloses whether the resource exists.
@@ -53,8 +55,6 @@ job. These rules hold across frameworks and runtimes.
 ## Observability
 - Structured logging (key–value, not free text), with a correlation identifier that
   follows a request across services.
-- Propagate to a central handler rather than catching in each handler. Per-endpoint
-  error handling drifts until each endpoint reports failures differently.
 - Log at the boundary: what came in, what went out, how long it took, what failed.
   Not every function call.
 - Use the levels honestly: `error` for something needing attention, `warn` for

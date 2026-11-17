@@ -58,17 +58,14 @@ contradictory instructions.
 
 - Example: a ticket's acceptance criteria says "must support both email and SMS," while
   an earlier paragraph says "email only for this phase."
-- When a set pairs an abstract core with per-implementation adapters, check that every
-  capability, source, or step the core names has a matching entry in each adapter. An
-  adapter missing an entry sends the reader to a generic fallback instead of the
-  intended mechanism, and nothing in the core reveals the gap.
 
 ## Misleading, wrong
 
 A claim the content itself does not support: an absolute statement ("this fixes X,"
 "this ensures Y") with nothing in the content backing it up, a vague attribution ("teams
 generally agree"), or a claim that contradicts something else stated as fact in the same
-content.
+content. It also covers content that cannot be used as written because something it
+depends on is absent.
 
 - An absolute claim needs a reason, a mechanism, or a citation present in the content
   itself. If none is there, flag it — do not assume it is true, and do not verify it
@@ -79,6 +76,10 @@ content.
   on appears nowhere in the content — a step naming no value to use, a table missing a
   row its own list requires, a summary omitting a stage the reader needs. Judging only
   what is written leaves such a hole invisible until someone tries to follow it.
+- When a set pairs an abstract core with per-implementation adapters, check that every
+  capability, source, or step the core names has a matching entry in each adapter. An
+  adapter missing an entry sends the reader to a generic fallback instead of the
+  intended mechanism, and nothing in the core reveals the gap.
 
 ## Unclear, poorly worded
 

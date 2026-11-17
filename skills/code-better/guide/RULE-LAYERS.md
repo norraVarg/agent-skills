@@ -33,8 +33,9 @@ For style rules, existing conventions outrank the guide's own preference:
 
     the project's existing conventions  >  universal/  >  domains/  >  languages/
 
-Higher wins on conflict; lower adds detail. Within one layer, a safety rule wins over a
-style rule.
+Higher wins on conflict; lower adds detail. A domain or language rule may restate a
+universal rule for its own setting; that repeat is deliberate, and the higher layer wins
+if the two ever differ. Within one layer, a safety rule wins over a style rule.
 
 ## Classify
 
