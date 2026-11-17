@@ -14,11 +14,7 @@ outside facts.
   summary that has drifted from what it summarises, two files that contradict.
 - A fixed **checklist** (`guide/CHECKLIST.md`): unused/irrelevant/unnecessary,
   redundant/repeated, conflicting, misleading/wrong, unclear/poorly worded.
-- Your **own rules** (`guide/rules/user-rules.md`) apply on top, with the highest
-  precedence.
 - Never applies a fix without being told to; shows a diff or before/after first.
-- A **learning loop**: when a finding recurs, or a disagreement reveals a rule was
-  wrong or missing, the skill proposes a rule. You decide whether it is kept.
 
 See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md#the-core-split) for
 how `guide/` and `adapters/` relate to each other; this file only covers what
@@ -41,31 +37,11 @@ set of files. It:
    offers to widen a single file to the set it belongs to.
 2. Resolves it to raw text, and stops rather than fabricating content if the source
    isn't reachable.
-3. Runs `guide/CHECKLIST.md`'s categories against the text, then applies
-   `guide/rules/user-rules.md` on top, with the highest precedence.
+3. Runs `guide/CHECKLIST.md`'s categories against the text.
 4. Reports every finding, most severe first.
 5. Asks how to proceed — fix everything, fix specific ones, or discuss first — and
    shows each fix as a diff or before/after before applying it. Never applies a fix
    without being told to.
-6. Occasionally proposes a rule, when a finding reveals a genuine gap.
-
-**When it proposes a rule**, it sends one short message: the rule and why —
-audit-content has only one rule layer, so there is no target to choose. Answer with
-one word:
-
-| Answer | Effect |
-| --- | --- |
-| `promote` | The rule is written into `rules/user-rules.md` and is in force from the next audit. |
-| `candidate` | The rule is parked in `guide/rules/candidates.md`. If the lesson recurs, the skill points at it and proposes promotion. |
-| `drop` | Nothing is written. |
-
-**To add a rule by hand**, append a bullet to `guide/rules/user-rules.md` in the format
-the file describes.
-
-**Review `guide/rules/candidates.md` occasionally.** Promote what has recurred; delete
-what has not earned its place. The skill also parks a promising lesson there itself the
-first time it meets one — too new to propose, but recorded so a later run recognises
-the repeat.
 
 ## How to extend
 

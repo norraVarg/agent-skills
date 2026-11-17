@@ -39,15 +39,8 @@ to every skill added here, not only the ones already present, and to any edit.
 Every skill has two parts, and they are never mixed:
 
 - **`guide/`** is the actual content: the procedure the skill follows and the rules
-  it checks or applies, plus any state the procedure itself reads and writes as it
-  runs (a learned-command table, a candidate-rules file). It is plain Markdown and
-  names no specific tool, so the same content works with any AI agent. This is the
-  only part that carries real substance.
-
-  State that accumulates real project detail as it runs — anything keyed by repository,
-  host, or path — is machine-local: add it to the root `.gitignore` and keep its format
-  documented in the procedure that writes it, so a fresh clone can recreate it. State
-  that holds only lessons, like a candidate-rules file, is ordinary tracked content.
+  it checks or applies. It is plain Markdown and names no specific tool, so the same
+  content works with any AI agent. This is the only part that carries real substance.
 - **`adapters/<provider>/`** is a thin entry point, nothing more. Its only jobs are:
   (1) sit wherever that provider looks for an invocable skill, in whatever format that
   provider expects, and (2) map the guide's abstract capabilities (an independent
@@ -86,9 +79,6 @@ context" to be rediscovered per skill.
       README.md                    what this skill does, how to use it, how to extend it
       guide/                       the provider-neutral procedure and rules
         PROCEDURE.md                the entry point: the whole procedure, step by step
-        LEARNING.md                 how a lesson becomes a rule: propose, park, promote
-        rules/user-rules.md         the developer's own rules, highest precedence
-        rules/candidates.md         lessons parked until they recur
       adapters/<provider>/         one directory per supported provider
         <provider's entry file>    e.g. SKILL.md for Claude Code
         install.sh                 idempotent; wires the entry point into that provider
@@ -153,11 +143,10 @@ platform mechanics belong in the adapter. This is a real rewrite, not a copy —
 to reword sentences, not just move files.
 
 Scrub the source for anything the Privacy rule forbids before it lands in `guide/` —
-not only names and pronouns, but worked examples, file paths, and any state the
-source already accumulated (a learned-command table, cached values) that might
-carry real project detail — see the Privacy section above for the full rule. A
-mechanical port is the likeliest place to miss this, because the temptation
-is to copy content wholesale rather than write it fresh.
+not only names and pronouns, but worked examples, file paths, and any cached values
+the source already accumulated that might carry real project detail — see the Privacy
+section above for the full rule. A mechanical port is the likeliest place to miss this,
+because the temptation is to copy content wholesale rather than write it fresh.
 
 Porting is also the moment to fix a genuine gap in the source's own logic if one turns
 up — not just to restructure files around unchanged content. If the source hard-codes
@@ -173,13 +162,8 @@ question, rather than porting the assumption as-is.
    or domain rather than one synthesized action can just use that domain's own name
    instead (`git`).
 2. Write `skills/<name>/guide/` — the procedure and rules, naming no specific tool.
-   Include the learning loop: `LEARNING.md`, `rules/user-rules.md`,
-   `rules/candidates.md`, and a final "Learn, optionally" step in `PROCEDURE.md` that
-   defers to it. Copy the shape from an existing skill and change only what the new
-   domain requires — what counts as a lesson, and which file a rule lands in. Every
-   skill here encodes judgment that can turn out wrong; the loop is how that gets
-   corrected instead of rediscovered. A skill whose procedure never loads its own
-   rules is a skill that cannot improve from being used.
+   Copy the shape from an existing skill and change only what the new domain
+   requires.
 3. Write `skills/<name>/adapters/claude-code/` — the entry point, the symlink, and an
    `install.sh` following the contract above. Add other providers' adapters if asked.
 4. Write `skills/<name>/README.md` — what it does, how to invoke it, how to extend it.
@@ -194,8 +178,6 @@ question, rather than porting the assumption as-is.
    - `PROCEDURE.md`'s capability-detection-with-fallback pattern
    - any step that delegates to a fresh context — only for independence or genuine
      capacity limits, never as routine parallelization
-   - `LEARNING.md`'s stages and answer words
-   - `rules/user-rules.md`'s format and header wording
    - the adapter entry file's frontmatter keys
    - `README.md`'s section order
 

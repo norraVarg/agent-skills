@@ -1,6 +1,6 @@
 ---
 name: code-better
-description: "Guide the agent to produce code that follows industry best practice and your own customized coding principles. Reviews everything not yet committed — staged, unstaged, and untracked files — or a whole pull request when given its link, against your coding guide, universal correctness/security/testing rules, frontend/backend conventions, language idioms, and your personal rules, verifies each finding independently before trusting it, then helps fix what you approve. Invoke manually after making changes."
+description: "Guide the agent to produce code that follows industry best practice and your own customized coding principles. Reviews everything not yet committed — staged, unstaged, and untracked files — or a whole pull request when given its link, against your coding guide, universal correctness/security/testing rules, frontend/backend conventions, and language idioms, verifies each finding independently before trusting it, then helps fix what you approve. Invoke manually after making changes."
 argument-hint: "[optional: a PR link to review the whole PR, a concern to focus on, or files to limit the review to]"
 allowed-tools: Read, Edit, Bash, Agent, ReportFindings
 ---

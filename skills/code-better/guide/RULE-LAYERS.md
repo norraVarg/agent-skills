@@ -27,12 +27,11 @@ check; it produces no finding, regardless of precedence.
 For safety rules, existing conventions never apply — they cannot override a safety
 rule, so they are not part of this chain:
 
-    rules/user-rules.md  >  universal/  >  domains/  >  languages/
+    universal/  >  domains/  >  languages/
 
-For style rules, existing conventions outrank the guide's own preference, but not the
-developer's explicit instruction:
+For style rules, existing conventions outrank the guide's own preference:
 
-    rules/user-rules.md  >  the project's existing conventions  >  universal/  >  domains/  >  languages/
+    the project's existing conventions  >  universal/  >  domains/  >  languages/
 
 Higher wins on conflict; lower adds detail. Within one layer, a safety rule wins over a
 style rule.

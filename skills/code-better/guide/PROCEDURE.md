@@ -62,11 +62,10 @@ something to report.
 For each changed file, classify its language and domain using the tables in
 `RULE-LAYERS.md`, and load the layers it ranks:
 
-1. `rules/user-rules.md` — always.
-2. Every file in `universal/` — always. The layer is small enough to hold in full, and
+1. Every file in `universal/` — always. The layer is small enough to hold in full, and
    a rule that does not apply to this diff simply produces no finding.
-3. The matched `domains/*.md`.
-4. The matched `languages/*.md`.
+2. The matched `domains/*.md`.
+3. The matched `languages/*.md`.
 
 A diff touching several files may need several different combinations of layers, one
 per file or per small group of related files. Do not average them into one generic
@@ -216,10 +215,3 @@ would reach outside the files under review, or turns out on closer inspection to
 false positive, noting the skip plainly rather than arguing for the original finding.
 After acting, state the outcome of each finding that was addressed: fixed, skipped, or
 no change needed.
-
-## Step 7 — Learn, optionally
-
-If a finding reveals a genuine gap in the guide, the same category of issue recurring
-across separate review runs, or a disagreement with the developer that reveals a rule
-was wrong or missing, follow `LEARNING.md` to propose a rule. Most reviews will not
-reach this step; it is not required to run every time.

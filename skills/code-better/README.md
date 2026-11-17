@@ -7,12 +7,9 @@ untracked — against a portable coding guide.
 - A **universal core** that applies to all languages and both frontend and backend work.
 - **Domain** rules (frontend, backend) and **language** rules (TypeScript/JavaScript
   today), selected automatically from the files under review.
-- Your **own rules** on top, with the highest precedence.
 - Every finding is checked before it is trusted, not just accepted from a single read —
   by an independent pass where the platform has one, otherwise by a deliberately
   skeptical second look that the report says it used.
-- A **learning loop**: when a finding recurs, or a disagreement reveals a rule was
-  wrong or missing, the skill proposes a rule. You decide whether it is kept.
 
 See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md#the-core-split) for
 how `guide/` and `adapters/` relate to each other; this file only covers what
@@ -36,25 +33,6 @@ Invoke the skill after making changes, staged, unstaged, or both. It:
 4. Checks every candidate independently before trusting it.
 5. Reports the survivors, most severe first.
 6. Asks how to proceed, never applies a fix without being told to.
-7. Occasionally proposes a rule, when a finding reveals a genuine gap.
-
-**When it proposes a rule**, it sends one short message: the rule, the target file,
-and why — the target is `rules/user-rules.md` for a personal preference, or the
-matching language/domain/universal file for a general rule. Answer with one word:
-
-| Answer | Effect |
-| --- | --- |
-| `promote` | The rule is written into the target file and is in force from the next review. |
-| `candidate` | The rule is parked in `guide/rules/candidates.md`. If the lesson recurs, the skill points at it and proposes promotion. |
-| `drop` | Nothing is written. |
-
-**To add a rule by hand**, append a bullet to `guide/rules/user-rules.md` in the format
-the file describes.
-
-**Review `guide/rules/candidates.md` occasionally.** Promote what has recurred; delete
-what has not earned its place. The skill also parks a promising lesson there itself the
-first time it meets one — too new to propose, but recorded so a later run recognises
-the repeat.
 
 ## How to extend
 

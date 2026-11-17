@@ -75,8 +75,7 @@ solves a different failure mode than the one observed.
 
 Judge both passes against the content itself and its own stated purpose —
 internal consistency only, not against outside facts (see `CHECKLIST.md`,
-"Misleading, wrong"). Then load `rules/user-rules.md` and apply its rules on top,
-with the highest precedence.
+"Misleading, wrong").
 
 When the target is a set, run the two passes above within each document on its
 own, then run a separate, unsplit pass across the set as a whole — comparing
@@ -124,16 +123,14 @@ intended meaning, reach outside the content under audit, or turns out on closer
 inspection to be a false positive — note the skip plainly rather than arguing for the
 original finding.
 
+After fixing a finding that could exist elsewhere in the set, search the whole set for
+other instances of the same defect before moving to the next finding, and fold what you
+find into that same fix. Fixing only the instance leaves the copies disagreeing, where
+before they were at least consistently wrong.
+
 After acting, state the outcome of each finding that was addressed: fixed, skipped, or
 no change needed.
 
 When any fixes were applied, also report an approximate token-cost reduction for the
 content, e.g. `💰 ~150 tokens saved per use (~12% shorter)`. Estimate from before/after
 content length (not an exact tokenizer count) and label it clearly as approximate.
-
-## Step 6 — Learn, optionally
-
-If a finding reveals a genuine gap in the guide, the same category of issue recurring
-across separate audit runs, or a disagreement with the developer that reveals a rule
-was wrong or missing, follow `LEARNING.md` to propose a rule. Most audits will not
-reach this step; it is not required to run every time.

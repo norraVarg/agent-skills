@@ -3,7 +3,6 @@
 Five categories, checked in this order — covering content that is unused,
 irrelevant, unnecessary, redundant, repeated, conflicting, misleading, wrong,
 unclear, or written in a way that's hard for a human reader to follow.
-`rules/user-rules.md` applies on top of all of them, with the highest precedence.
 
 ## Unused, irrelevant, unnecessary
 
@@ -37,6 +36,9 @@ agree.
   financing seeker" in three consecutive sentences — name it once and keep using that
   name.
 - Avoid: a closing paragraph that just repeats the opening in different words.
+- Avoid: a comment that only restates the code next to it. Re-read every comment as a
+  stranger would; a comment that repeats what the code already says adds nothing and
+  clutters the read.
 - Across a set of documents, the same claim or rule in two places is not automatically a
   defect. Establish first whether the duplication is deliberate — a digest, index,
   summary, or quick-reference layer over a fuller one.
@@ -56,6 +58,10 @@ contradictory instructions.
 
 - Example: a ticket's acceptance criteria says "must support both email and SMS," while
   an earlier paragraph says "email only for this phase."
+- When a set pairs an abstract core with per-implementation adapters, check that every
+  capability, source, or step the core names has a matching entry in each adapter. An
+  adapter missing an entry sends the reader to a generic fallback instead of the
+  intended mechanism, and nothing in the core reveals the gap.
 
 ## Misleading, wrong
 
@@ -69,6 +75,10 @@ content.
   against outside sources; that is out of scope for this pass (`PROCEDURE.md`, step 3).
 - A hedge with no content is also a smell: "this should probably work in most cases"
   says nothing verifiable.
+- Flag an instruction that cannot be carried out as written because a detail it depends
+  on appears nowhere in the content — a step naming no value to use, a table missing a
+  row its own list requires, a summary omitting a stage the reader needs. Judging only
+  what is written leaves such a hole invisible until someone tries to follow it.
 
 ## Unclear, poorly worded
 
@@ -98,4 +108,14 @@ clear technical writing — the rules below are its core points, not an invented
 - List three or more items as bullets, not comma-separated prose.
 - Keep parallel sections in parallel form; do not mix prose and bullets arbitrarily for
   sections that are otherwise doing the same job.
-- Spell out abbreviations that are not widely known.
+- Do not use abbreviations unless they are widely known; spell out terms in full when in
+  doubt. An unexplained abbreviation makes content harder to understand than it needs to
+  be.
+- Flag a proposal or message that bundles multiple asks, buries the actual question in
+  surrounding analysis, or makes the reader review several findings, tables, or
+  trade-offs at once instead of deciding one thing.
+- Flag related fixes or changes presented as several separate asks when they could be
+  one bundled unit; enumerating each for separate approval is more friction than one
+  combined decision.
+- Flag a question that is not simple, clear, and well structured: plain wording, one
+  question at a time, options laid out as a short list rather than buried in prose.

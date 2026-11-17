@@ -50,11 +50,11 @@ Keep both answers for the rest of this run; do not re-derive them per commit gro
 
 ## Step 2 — Inspect the staged changes
 
-Before inspecting, run the repo's Prettier fix command once: this repo's prettier row in
-`../fix-commands.md`, else the `package.json` script whose command contains
-`prettier --write`, run with the lockfile's package manager. Skip it when the repo has
-neither. Re-stage any path in this group that it reformatted. If it reformatted files
-outside this group, list them to the developer instead of staging them.
+Before inspecting, run the repo's Prettier fix command once: the
+`package.json` script whose command contains `prettier --write`, run with the lockfile's
+package manager. Skip it when the repo has neither. Re-stage any path in this group that
+it reformatted. If it reformatted files outside this group, list them to the developer
+instead of staging them.
 
 Run together:
 
@@ -160,6 +160,10 @@ Rules:
 - Avoid a generic verb that could describe almost any change (`broaden`, `improve`,
   `enhance`, `update`) when a more specific one names what actually happened
   (`close gaps in`, `add`, `fix`, `tighten`).
+- Ground the verb in the exact operation the diff performs, not an approximate or
+  euphemistic description of the outcome. A vague-but-plausible verb misrepresents what
+  the code does. Check the diff's own vocabulary first: an explicit `.remove()` call is
+  `remove`, not `hide`.
 - **Length** — target 6–10 words for the description, 12 as a hard ceiling. Name the
   core change, not an inventory of every changed aspect. Let the diff carry the rest
   only when the rest is tests, fixtures, docs, types or formatting that the core
@@ -246,8 +250,8 @@ EOF
 
 **If the commit fails** (e.g. a pre-commit prettier/lint check), read
 `commit-fix-on-failure.md` (in this same `runbooks/` directory) and follow it — it
-covers classifying the failure, resolving a fix command, retrying once, and offering to
-store a newly-discovered fix command. It expects the staged paths recorded in step 2.
+covers classifying the failure, resolving a fix command, and retrying once. It expects
+the staged paths recorded in step 2.
 
 ---
 
