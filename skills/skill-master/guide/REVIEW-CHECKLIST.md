@@ -23,6 +23,13 @@ a single line. Most of the defects this catches are introduced by small edits, n
   actually says, a question back is answered and the original asked again, a vague answer gets a
   follow-up, and new information re-opens any earlier answer it changes. A skill without it moves on
   past unanswered questions.
+- **Working identifiers stay out of deliverables.** If the skill invents identifiers for its own
+  bookkeeping — requirement or finding numbers, question numbers, step names, working-file paths —
+  no instruction writes them into what it delivers to others: code, tests and their titles or IDs,
+  comments, fixtures, commit messages, pull requests, tickets. The same holds for this procedure's
+  own stage names and question numbers in the skills it writes. An instruction such as "name each
+  test after its requirement ID" is a defect, because the next reader cannot look the ID up; the
+  skill keeps that mapping in its working file instead.
 - **When a change touches a recurring element — a template, a field name, a table format, a step
   reference, an output format — revisit every step and update all occurrences.** Leaving one section
   updated and its siblings stale is the most common way skills rot, and it is invisible in a small

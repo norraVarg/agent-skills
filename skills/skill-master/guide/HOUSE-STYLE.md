@@ -112,6 +112,17 @@ Other rules that hold up:
 - Draft, then reread with fresh eyes and cut what does not add value. Length is a cost paid on
   every invocation.
 
+## Keep working files out of the deliverable
+
+Many skills keep working files of their own — a spec, a plan, a findings list, a workspace — and
+invent identifiers to organise them: requirement numbers, finding numbers, question numbers, step
+names, file paths. Those identifiers mean nothing outside the session. A skill that keeps working
+files therefore says, in its own body, that their identifiers never appear in what it delivers:
+code, tests, test titles and IDs, comments, fixtures, commit messages, pull requests, tickets, or
+documents for other people. Deliverables name things by what they do. When the skill needs
+traceability — which test covers which requirement — it keeps that mapping in its working file,
+linking each identifier to the deliverable's own name.
+
 ## Defining output formats
 
 Show the shape rather than describing it:
