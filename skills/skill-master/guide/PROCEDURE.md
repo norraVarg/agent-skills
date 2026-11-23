@@ -1,12 +1,11 @@
 # Skill authoring procedure
 
 This is the whole procedure for creating a skill, updating one, auditing the skills a user already
-has, and — on request — measuring a skill empirically. It is written for any agent to follow, on any
-platform: it names no specific tool, because no specific tool exists on every platform. Each
-provider's entry point (`adapters/<provider>/`) tells you what concretely fulfils the capabilities
-named in Stage 0, on that platform. What a finished skill must look like for a given agent — its entry
-file, metadata keys, permission model, where it is installed — lives in a format file under
-`formats/`, chosen in Stage 0. Everything else below is identical everywhere.
+has, and — on request — measuring a skill empirically. It names no specific tool, so any agent can
+follow it: each provider's entry point (`adapters/<provider>/`) maps the capabilities named in Stage 0
+onto that platform's tools. What a finished skill must look like for a given agent — entry file,
+metadata keys, permission model, install location — lives in a format file under `formats/`, chosen
+in Stage 0.
 
 Stages 1–5 are the everyday path and should stay fast. Stages 6–8 measure a skill empirically — they
 use fresh contexts and take real wall-clock time, so they run only when the user asks for them. Offer
@@ -184,8 +183,8 @@ the answers, then continue to Stage 3.
 A name on its own means audit, not edit. No skill file is written in this stage.
 
 Run the mechanical passes first — they execute without loading into context, so they are nearly free.
-`<format>`'s "Validation" section gives each command for this format: the validator on the target, and
-the body audit and overlap report across every skill.
+`<format>`'s "Validation" section gives each command for this format: the validator and the
+reference check on the target, and the body audit and overlap report across every skill.
 
 The body audit and overlap report cover every skill: read only the rows for this one, plus any overlap
 pair it appears in. Overlap is the failure mode a large collection of skills in one domain actually
@@ -246,9 +245,7 @@ fine.
 ## Stage 3R — Review before showing
 
 Mandatory in create and update mode, even for a one-line change. Read `REVIEW-CHECKLIST.md` and apply
-it end to end. It stays a separate file even though nearly every run reads it: keeping it here would
-load the review rules onto audit runs too, which review no skill at all. Density in this file, not
-token count, is what justifies that split.
+it end to end.
 
 The validator reads metadata from disk, so it needs a file to point at — and in create mode the real
 directory does not exist until Stage 5. Write the draft to `<workspace>/draft/` and run `<format>`'s
@@ -316,9 +313,8 @@ then.
 Every update, whether it came from an audit or from the user, ends here once Stage 5 has written it.
 Edits are reviewed line by line in Stage 3R, but breakage usually lands in the lines they did not touch
 — a step that now runs before its input exists, a pointer to a renamed section. **Read
-`REGRESSION-CHECK.md` and follow it.** It holds the mechanical passes against the snapshot, the
-change-impact sweep, the scenario trace, and the report block. Nothing is written in this stage; fixes
-go back through Stages 2U → 5.
+`REGRESSION-CHECK.md` and follow it.** Nothing is written in this stage; fixes go back through
+Stages 2U → 5.
 
 ---
 
@@ -328,11 +324,7 @@ A health check across everything the user has. One named skill goes to Stage 2A 
 for the whole collection, and its value is the cross-skill checks that a single-skill audit cannot
 make.
 
-**Read `AUDIT.md` and follow it.** It holds the per-skill metadata pass, the body-level audit and how
-to read its advisory findings, a size pass that ranks every entry file for judgement against its
-complexity, the bulk description-quoting pass, the privacy pass for shareable skills, and the
-cross-skill checks that only make sense in aggregate — trigger overlap, metadata fragility, dead
-metadata keys.
+**Read `AUDIT.md` and follow it.**
 
 Two things hold regardless: **removing a tool permission needs evidence from the skill's own files**,
 because a missing permission breaks the skill while a spare one only widens it. And **fix findings
@@ -346,10 +338,8 @@ is not a licence to batch-edit.
 Only when the user asks, or accepts the offer in Stage 5. Needs fresh contexts and the evaluation
 harness (Stage 0).
 
-Read `EVALS.md` and follow it. In outline: write test prompts, run each one twice in fresh contexts —
-once with the skill and once against the baseline — grade assertions, aggregate the benchmark, and put
-the results in front of the user in the harness's viewer before forming your own opinion. The baseline
-is no skill at all for a new skill, and the Stage 2U snapshot for an update.
+Read `EVALS.md` and follow it. The baseline is no skill at all for a new skill, and the Stage 2U
+snapshot for an update.
 
 ---
 
