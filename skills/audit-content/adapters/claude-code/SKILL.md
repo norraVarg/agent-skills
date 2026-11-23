@@ -38,7 +38,7 @@ Step 2's sources (`guide/SOURCES.md`) map to these concrete mechanisms:
 | A set of related documents | `find`/`ls` via the Bash tool to enumerate the set, then the `Read` tool on every file in it — not a sample |
 | A GitHub PR/issue and its comments | The `gh` CLI via the Bash tool (`gh pr view`, `gh issue view`, `gh api .../comments`) |
 | A Jira ticket | `mcp__atlassian__getJiraIssue` and related Atlassian MCP tools |
-| A Confluence page | `mcp__atlassian__getConfluencePage` and related Atlassian MCP tools |
+| A Confluence page | `mcp__atlassian__getConfluenceContent` with `content_url` (or `content_id`), `detail: "full"` and `content_format: "markdown"` — the default `detail` returns only an excerpt |
 | An artifact already published in this session | The `Artifact` tool, action `read` |
 | The agent's own not-yet-sent draft | The draft text itself, before it is sent |
 
