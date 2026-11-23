@@ -1,7 +1,7 @@
 # Stage A — audit the skills you already have
 
-Read this when the run is an audit: the request said `audit`, or the user asked to review or check
-their skills generally. A create or update run never needs it.
+Read this when the run is an audit: the request said `audit` without naming a skill, or the user asked
+to review or check their skills generally. A create or update run never needs it.
 
 An audit is a health check across everything at once, which is what makes it different from Stage 3R.
 3R reviews one skill against itself; the cross-skill checks below catch failures that are invisible from

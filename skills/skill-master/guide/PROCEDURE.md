@@ -15,9 +15,9 @@ them; do not impose them. Eight stages routing three modes justify the length of
 **Constraints:**
 
 - Never write or overwrite a skill file until the user has confirmed the draft. This is a hard gate.
-- Do not emit emojis, with two exceptions: audit reports (Stage 2A and Stage A) use the status markers
-  defined in Stage 2A, and Stage 5's size report uses the trend markers in `SIZE-REPORT.md`. Nothing
-  else.
+- Do not emit emojis, with two exceptions: audit reports (Stage 2A and Stage A) and the Stage 5V
+  regression report use the status markers defined in Stage 2A, and Stage 5's size report uses the
+  trend markers in `SIZE-REPORT.md`. Nothing else.
 - Use fresh contexts only in Stages 6–8, and only after the user has agreed to that stage — they are
   the one place an independent run buys something this context cannot provide.
 - Write only inside the target skill's directory and `<workspace>`, plus `<private-terms>` when the
@@ -51,11 +51,11 @@ Before anything else, establish what you actually have to work with:
   ideally with a structured-choice form. Without the structured form, ask in a plain message with
   numbered questions and wait for the reply.
 - **Run scripts.** A shell with `python3`. The scripts in `<guide>/scripts/` need PyYAML except
-  `check_refs.py`. Test `python3 -c 'import yaml'`: if it works, `<py>` is `python3`; if not and `uv`
-  is available, `<py>` is `uv run --no-project --with pyyaml python3`, which supplies PyYAML for that
-  run only. Do not install packages into a system or externally managed interpreter. With no shell, or
-  neither option, apply the same checks by hand from `REVIEW-CHECKLIST.md` and say in every report that
-  the mechanical passes did not run.
+  `check_refs.py` and `scan_private.py`. Test `python3 -c 'import yaml'`: if it works, `<py>` is
+  `python3`; if not and `uv` is available, `<py>` is `uv run --no-project --with pyyaml python3`, which
+  supplies PyYAML for that run only. Do not install packages into a system or externally managed
+  interpreter. With no shell, or neither option, apply the same checks by hand from
+  `REVIEW-CHECKLIST.md` and say in every report that the mechanical passes did not run.
 - **A diff or preview.** A way to show a proposed edit against the original. Without it, show the
   before and after text inline.
 - **Fresh contexts.** A way to run a task in a separate context that starts without this
@@ -87,8 +87,10 @@ procedure on its platform; follow that note when one exists.
 
 Route on what the request contains:
 
-- **`audit`, or a request to review or check skills generally** → Stage A, across every skill.
-- **A skill name and nothing else** → audit that one skill. Read its entry file, then Stage 2A.
+- **`audit` with no skill name, or a request to review or check skills generally** → Stage A, across
+  every skill.
+- **A skill name alone, or `audit` plus a skill name** → audit that one skill. Read its entry file,
+  then Stage 2A.
 - **A skill name plus a change request** → update. Read its entry file, then Stage 2U.
 - **A skill name that does not exist** → create. Stage 1.
 - **Nothing usable** → ask, in one message, as a structured choice: "Creating a new skill, updating an
@@ -147,7 +149,7 @@ the answers, then continue to Stage 3.
 
 ## Stage 2A — (Audit one skill) Report before changing anything
 
-A name on its own means audit, not edit. Nothing is written in this stage.
+A name on its own means audit, not edit. No skill file is written in this stage.
 
 Run the mechanical passes first — they execute without loading into context, so they are nearly free.
 `<format>`'s "Validation" section gives each command for this format: the validator on the target, and

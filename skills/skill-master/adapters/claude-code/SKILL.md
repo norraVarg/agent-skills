@@ -26,10 +26,10 @@ On this platform, `PROCEDURE.md`'s placeholders and Stage 0 capabilities map to:
 - **An evaluation harness** — as the format file's "Evaluation harness" section describes.
 
 **How a typed skill name arrives.** Claude Code expands `/other-skill` into an invocation of that
-skill, so the token is consumed before `$ARGUMENTS` exists — `/skill-master /other-skill` loads both
-bodies and leaves the arguments empty. Recognise that case by what got loaded, not by what was typed:
-if another skill's body was loaded into this turn and carried no instruction of its own, that skill is
-the audit target (Stage 2A). Do not ask which mode was meant; a bare name means audit.
+skill, so the token is consumed before the skill's arguments exist — `/skill-master /other-skill`
+loads both bodies and leaves the arguments empty. Recognise that case by what got loaded, not by what
+was typed: if another skill's body was loaded into this turn and carried no instruction of its own,
+that skill is the audit target (Stage 2A). Do not ask which mode was meant; a bare name means audit.
 
 **Input:** `$ARGUMENTS` is the request `PROCEDURE.md` routes in Stage 0.
 
