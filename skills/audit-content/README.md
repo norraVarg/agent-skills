@@ -45,6 +45,11 @@ set of files. It:
 
 ## How to extend
 
+**Keep the two-pass checklist run** (`guide/PROCEDURE.md`, step 3). The separate
+structural and wording passes exist to catch more real issues on the first read; they
+are not a verification step. Do not add a per-finding refutation pass — it addresses
+false positives, a different problem from the missed issues the split targets.
+
 **Add a provider adapter.** Follow the general steps in the repository root's
 [CONTRIBUTING.md](../../CONTRIBUTING.md#steps-to-add-or-adopt-a-skill); map
 `guide/PROCEDURE.md`'s capabilities onto whatever that provider actually has.

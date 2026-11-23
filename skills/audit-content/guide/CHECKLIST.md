@@ -32,9 +32,8 @@ covers the same point made in two different files, where the question is not onl
 whether it repeats but whether the repetition was meant and whether the copies still
 agree.
 
-- Avoid: calling the same entity "the lender," then "the applicant," then "the
-  financing seeker" in three consecutive sentences — name it once and keep using that
-  name.
+- Avoid: calling the same entity "the customer," then "the account holder," then "the
+  buyer" in three consecutive sentences — name it once and keep using that name.
 - Avoid: a closing paragraph that just repeats the opening in different words.
 - Avoid: a comment that only restates the code next to it. Re-read every comment as a
   stranger would; a comment that repeats what the code already says adds nothing and
@@ -115,8 +114,12 @@ clear technical writing — the rules below are its core points, not an invented
 - Flag a proposal or message that bundles multiple asks, buries the actual question in
   surrounding analysis, or makes the reader review several findings, tables, or
   trade-offs at once instead of deciding one thing.
-- Flag related fixes or changes presented as several separate asks when they could be
-  one bundled unit; enumerating each for separate approval is more friction than one
-  combined decision.
+- Flag related changes split into several separate approval questions when one decision
+  would cover them — which items to apply is one question. Confirming each exact edit
+  before it is written is a different, deliberate step, not this defect.
 - Flag a question that is not simple, clear, and well structured: plain wording, one
-  question at a time, options laid out as a short list rather than buried in prose.
+  decision per question, options laid out as a short list rather than buried in prose.
+  Several questions may share one message or dialog when they are numbered, grouped by
+  topic, and announced with their count first.
+- Flag an interview that moves on while an answer is still open: a reply that asks
+  something back, or a vague reply, left without an answer or a follow-up.

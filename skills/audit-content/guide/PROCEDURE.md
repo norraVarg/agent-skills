@@ -26,6 +26,11 @@ Ask and wait is not optional. Without it, steps 1 and 5 cannot be honoured: neve
 a target and never apply a fix. Report the findings, say what you would have asked, and
 stop there.
 
+Every question this procedure asks stays open until it is answered. A reply that asks
+something back gets an answer first, then the question is asked again. A vague reply gets
+a follow-up, not an interpretation. Several questions asked together are numbered and
+grouped, and each one must be resolved before the procedure moves on.
+
 ## Step 1 — Identify the target
 
 - If the user's own words already name, paste, or link the content, that is the target.
@@ -66,12 +71,6 @@ since attention gravitates toward the more consequential structural ones.
   sentence — often a lead-in restating what's already inferable from context —
   that fails this test on its own.
 
-This split is a finding-completeness fix (catching more real issues on the first
-pass), not a verification/refutation step — it does not need a second independent
-check of each candidate, since the gap it targets is under-recall (real issues
-missed), not over-reporting (false positives flagged). Do not add a per-finding
-refutation mechanism; it solves a different failure mode than the one observed.
-
 Judge both passes against the content itself and its own stated purpose —
 internal consistency only, not against outside facts (see `CHECKLIST.md`,
 "Misleading, wrong").
@@ -99,24 +98,24 @@ itself: front-load the point, keep one idea per sentence, prefer active voice, a
 gloss any technical or domain term the first time it appears, e.g. "prop drilling
 (passing a value through several components that don't use it themselves)". The
 category label, the quoted excerpt, and the proposed fix are structure added on top
-of that wording, not a substitute for it — and the same holds for any field or
-requirement added to this step later: it composes with ASD-STE100, it does not
-relax it.
+of that wording, not a substitute for it.
 
 An empty list is a valid outcome; report it plainly.
 
 ## Step 5 — React
 
-Ask how to proceed: fix everything found, fix specific ones, or discuss first. Never
-apply a fix without being told to.
+Ask once how to proceed: fix everything found, fix specific ones, or discuss first.
+Never apply a fix without being told to.
 
 When more than one finding is being fixed, work through them one at a time: show that
 finding's diff or before/after (per step 0's diff capability), wait for explicit
 confirmation, apply it, then move to the next — rather than presenting every diff at
-once for a single round of approval. If a new issue turns up while fixing one (not
-part of the reported findings, and a different defect from the one being fixed),
-surface it separately and ask before adding it to the queue, rather than folding it in
-silently.
+once for a single round of approval. Each confirmation approves one exact edit; the
+choice of which findings to fix was already made in one question above.
+
+If a new issue turns up while fixing one (not part of the reported findings, and a
+different defect from the one being fixed), surface it separately and ask before adding
+it to the queue, rather than folding it in silently.
 
 Skip a finding instead of forcing a fix if applying it would change the content's
 intended meaning, reach outside the content under audit, or turns out on closer
