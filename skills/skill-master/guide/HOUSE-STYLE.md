@@ -8,7 +8,8 @@ Stage 0).
 ## Gather the behaviour (Stage 2)
 
 Six questions, one group. Announce `6 questions`, ask 1 as a structured choice (it has fixed options),
-then list 2–6 as `[n/6]` plain text under `Need your input`, following "Asking the user" below:
+then list 2–6 as `[n/6]` plain text under `Need your input`, following PROCEDURE.md's
+"Asking the user":
 
 1. **Verification** — is the output objectively checkable (a file transform, a created ticket, a fixed
    sequence of steps), or is it a judgement call (tone, layout, wording)? Stages 6–7 can measure checkable
@@ -104,37 +105,12 @@ Other rules that hold up:
 - Steps must be numbered and unambiguous, and every cross-reference must point at a step that exists.
 - Never ship a placeholder or a TODO.
 - Reference the user's input with the one placeholder `<format>` defines, consistently.
-- Ask questions the way "Asking the user" below describes.
+- A skill that asks more than a single yes/no confirm writes PROCEDURE.md's "Asking the user" rules
+  into its own body, because its body is all the model has at run time.
 - Write the skill general, not narrow to the examples that prompted it. A skill tuned to three
   examples is worthless on the fourth.
 - Draft, then reread with fresh eyes and cut what does not add value. Length is a cost paid on
   every invocation.
-
-## Asking the user
-
-A question is only as good as how easily it can be answered. Any skill that asks more than a single
-yes/no confirm writes these rules into its own body, because its body is all the model has at run
-time:
-
-- **Questions apart from information.** Only items that need a decision become questions. Findings the
-  user merely needs to know go into the skill's output, not the question list, or the user has to hunt
-  for what actually needs an answer.
-- **Announce the size first**, in one line: `7 questions in 3 groups — requirements (4), design (1),
-  tests (2).` An interview of unknown length feels endless.
-- **Choices go through the structured-choice mechanism**: 2–4 options, the recommended one first and
-  labelled "(Recommended)", each with a one-line consequence. Open-ended questions (a name, a path, how
-  to reach a screen) follow as numbered plain text under the heading `Need your input`.
-- **Number and label each question** `[n/N] Topic —` and keep it self-contained in two sentences:
-  what was found, then the question. A dialog may hide earlier text.
-- **One group per dialog, in dependency order**, within the mechanism's per-call limit (`<format>`
-  names it), with the next group written only after the previous one is answered, so it builds on
-  those decisions.
-- **Close a group before the next.** A clear answer is resolved. A vague one gets a follow-up rather
-  than an interpretation. A question back gets answered, then the original is asked again. New
-  information triggers a fresh ask of any earlier answer it changes. Re-ask open questions labelled
-  `(follow-up)` with their original numbers, and update the count out loud.
-
-A single confirm gate ("Does this look right?") needs none of this.
 
 ## Defining output formats
 

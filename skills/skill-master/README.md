@@ -15,8 +15,9 @@ Creates, updates, audits and measures agent skills, and keeps them from breaking
   addresses and secrets, then a manual review of examples. Your private-terms list stays outside every
   repository.
 - Shows every draft and waits for confirmation before it writes a skill file.
-- A **house style** (`guide/HOUSE-STYLE.md`) for shape, size, writing and asking the user, and a
-  **format file** per target agent (`guide/formats/`) for that agent's skill format.
+- A **house style** (`guide/HOUSE-STYLE.md`) for shape, size and writing, rules for **asking the user**
+  that `skill-master` follows itself and builds into every skill it writes, and a **format file** per
+  target agent (`guide/formats/`) for that agent's skill format.
 
 See the repository root's [CONTRIBUTING.md](../../CONTRIBUTING.md#the-core-split) for how `guide/` and
 `adapters/` relate to each other; this file only covers what `skill-master` itself does.

@@ -36,7 +36,8 @@ the skill's main path. For each, walk the skill step by step as the model would 
 - every input a step needs has been gathered by the time the step runs;
 - every pointer it follows (file, section, step, script) exists and says what the step expects;
 - no branch dead-ends, loops without exit, or contradicts another instruction;
-- questions follow the house style for asking, and every gate still waits where it should.
+- questions follow PROCEDURE.md's "Asking the user" — no group moves on with an answer still
+  open — and every gate still waits where it should.
 
 State each scenario in one line and its verdict, naming the step where it fails.
 

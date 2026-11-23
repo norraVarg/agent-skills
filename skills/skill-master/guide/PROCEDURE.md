@@ -41,6 +41,40 @@ them; do not impose them. Eight stages routing three modes justify the length of
 
 ---
 
+## Asking the user
+
+Every question this procedure asks, in every stage, follows these rules — and `HOUSE-STYLE.md` has
+every skill that asks more than a single yes/no confirm carry them in its own body. A question is only
+as good as how easily it can be answered.
+
+- **Questions apart from information.** Only items that need a decision become questions. Findings the
+  user merely needs to know go into the output, not the question list, or the user has to hunt for what
+  actually needs an answer.
+- **Announce the size first**, in one line: `7 questions in 3 groups — requirements (4), design (1),
+  tests (2).` An interview of unknown length feels endless.
+- **Choices go through the structured-choice mechanism**: 2–4 options, the recommended one first and
+  labelled "(Recommended)", each with a one-line consequence. Open-ended questions (a name, a path, how
+  to reach a screen) follow as numbered plain text under the heading `Need your input`.
+- **Number and label each question** `[n/N] Topic —` and keep it self-contained in two sentences:
+  what was found, then the question. A dialog may hide earlier text.
+- **One group per dialog, in dependency order**, within the mechanism's per-call limit (`<format>`
+  names it), with the next group written only after the previous one is answered, so it builds on
+  those decisions.
+- **Close a group before the next.** The group stays open until every answer in it is resolved:
+  - a clear choice, or free text ("Other") that clearly answers → resolved;
+  - free text that asks something back → answer it first, then ask the original again, re-worded if
+    the answer changed its options;
+  - a vague answer → a follow-up, never an interpretation;
+  - new information → re-ask every earlier answer it changes, in this group or an earlier one.
+
+  Re-ask only the open questions, together, labelled `(follow-up)` with their original numbers, and
+  update the count out loud: `1 follow-up added — 3 questions left.`
+
+A single confirm gate ("Does this look right?") needs only the closing rule: a reply that asks
+something or requests a change is answered or applied, and the gate is asked again.
+
+---
+
 ## Stage 0 — Detect capabilities, format, intent and sharing
 
 ### Capabilities
@@ -93,10 +127,8 @@ Route on what the request contains:
   then Stage 2A.
 - **A skill name plus a change request** → update. Read its entry file, then Stage 2U.
 - **A skill name that does not exist** → create. Stage 1.
-- **Nothing usable** → ask, in one message, as a structured choice: "Creating a new skill, updating an
-  existing one, or auditing what you already have? If updating, which skill?" Later questions follow
-  the same split: a structured choice for a fixed set of options, numbered plain text for open-ended
-  ones.
+- **Nothing usable** → ask as a structured choice: "Creating a new skill, updating an existing one, or
+  auditing what you already have? If updating, which skill?"
 
 **Read-only locations.** If `<format>` marks the target's location as read-only — a plugin or package
 cache, for instance — edit and validate a copy in `<workspace>`, then tell the user the change has to

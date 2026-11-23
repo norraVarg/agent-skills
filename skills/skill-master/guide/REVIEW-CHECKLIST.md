@@ -15,6 +15,14 @@ a single line. Most of the defects this catches are introduced by small edits, n
 - The user's input is referenced with `<format>`'s one placeholder, consistently.
 - No step depends on information that has not been gathered by the time control reaches it.
 - No placeholders, no TODOs, no template braces left unfilled.
+- **A skill that asks more than a single confirm carries PROCEDURE.md's "Asking the user" rules in its
+  own body**: questions kept apart from information, the count announced first, choices through a
+  structured-choice mechanism with a recommended option, `[n/N] Topic —` numbering, and one
+  dependency-ordered group per dialog. Above all, check the closing rule, because it is the one most
+  often missing: a group stays open until every answer is resolved — free text is read for what it
+  actually says, a question back is answered and the original asked again, a vague answer gets a
+  follow-up, and new information re-opens any earlier answer it changes. A skill without it moves on
+  past unanswered questions.
 - **When a change touches a recurring element — a template, a field name, a table format, a step
   reference, an output format — revisit every step and update all occurrences.** Leaving one section
   updated and its siblings stale is the most common way skills rot, and it is invisible in a small
@@ -50,10 +58,6 @@ a single line. Most of the defects this catches are introduced by small edits, n
 
 Do not over-engineer. A skill that works is better than a skill that is elegant.
 
-- A skill that asks more than a single confirm follows the house style for asking: questions kept
-  apart from information, the count announced first, choices through a structured-choice mechanism with
-  a recommended option, `[n/N] Topic —` numbering, one dependency-ordered group per dialog, and each
-  group closed (follow-ups included) before the next.
 - Every "wait for the user" gate genuinely needs to be there. Remove gates that only add round trips —
   but never remove the confirm-before-write gate.
 - Output formatting is consistent throughout rather than drifting between prose and code blocks.
