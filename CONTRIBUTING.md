@@ -14,8 +14,26 @@ specific person, emails, employers, or machine paths — and no real project det
 smuggled in through a worked example, a file path, or a feature name. This applies to
 every skill added here, not only the ones already present, and to any edit, not only
 adding a new one. It matters most right here, though, at the
-moment new content enters the repo. Before committing, search the whole repository
-for anything that would identify you or your organization.
+moment new content enters the repo.
+
+The repository checks this mechanically. Enable its hooks once per clone:
+
+    git config core.hooksPath .githooks
+
+Before every commit they scan the staged files and the commit message with
+`skills/skill-master/guide/scripts/scan_private.py`, and block the commit on a hit. The
+scan matches built-in patterns — email addresses, home-directory paths with a username,
+IP addresses, secret-shaped tokens — and your own list of private terms: your names and
+usernames, employer, clients, teams, ticket-project prefixes, internal domains and
+repository names. The list lives at `~/.config/skill-master/private-terms.txt`, or
+wherever `AGENT_SKILLS_PRIVATE_TERMS` points, and never inside this repository, because
+the list is private itself. `skills/skill-master/guide/PRIVACY.md` describes its format.
+
+A hit is fixed, not bypassed: replace it with a neutral stand-in (`user@example.com`,
+`ABC-123`, `example-org/example-repo`, "a team", "the user") everywhere it occurs, and do
+not commit with `--no-verify`. A scan cannot recognise real project detail inside an example —
+a feature name, a file path, an error message — so read the change once more for that
+before committing.
 
 ## Writing for the reader
 
@@ -85,8 +103,9 @@ context" to be rediscovered per skill.
         guide -> ../../guide       relative symlink back into this skill's own guide/
 
 Every skill directory is fully independent. Nothing is shared between skills, and
-nothing skill-specific belongs at the repository root beyond the install dispatcher
-and each skill's one-line entry in the root `README.md`'s Skills list.
+nothing skill-specific belongs at the repository root beyond the install dispatcher,
+the repository-wide privacy hooks in `.githooks/`, and each skill's one-line entry in
+the root `README.md`'s Skills list.
 
 `guide/PROCEDURE.md` is always the name of the entry point: the file an adapter tells
 the agent to read and follow step by step, named for what it does (the whole
@@ -148,6 +167,14 @@ the source already accumulated that might carry real project detail — see the 
 section above for the full rule. A mechanical port is the likeliest place to miss this,
 because the temptation is to copy content wholesale rather than write it fresh.
 
+Make it generic, not only private. A skill written for one team usually assumes that
+team's tools and setup. Move every tool- or company-specific part into a variant file
+the guide chooses by detection — one file per issue tracker, design tool, test runner or
+framework — so supporting another one is one new file. Replace real examples with
+invented but realistic ones, and descriptions of the author's own setup ("this machine
+has", "our team uses") with a condition the skill detects or a question it asks. Drop
+any personal or team prefix from the skill's name.
+
 Porting is also the moment to fix a genuine gap in the source's own logic if one turns
 up — not just to restructure files around unchanged content. If the source hard-codes
 an assumption that does not hold everywhere it will now be used, replace the
@@ -170,9 +197,25 @@ question, rather than porting the assumption as-is.
    Do not restate this file's content in it; link back here for the general structure.
 5. Add one line to the root `README.md`'s "Skills" list: the skill's name, linked to
    its own `README.md`. No description there, the skill's own README carries that.
-6. Install it (`./install.sh <name> claude-code` from the repository root) and invoke it
+6. Review it before the first commit, in this order — each pass catches what the
+   previous one cannot:
+
+   1. **Structure and privacy** — run `skill-master`'s audit on the new skill
+      (`/skill-master audit <name>` on Claude Code). It checks the metadata, tool
+      permissions, cross-references and size, and runs the privacy scan. Without it, run
+      the scanner on its own:
+      `python3 skills/skill-master/guide/scripts/scan_private.py skills/<name> --terms <your list>`.
+   2. **Content** — run `audit-content` on the skill's whole directory as one set. It
+      finds rules that conflict across files, stale or redundant passages, and unclear
+      wording — problems a structural check does not examine.
+   3. **Real project detail** — reread the skill once more for examples, file paths and
+      feature names that came from real work. No scan recognises them.
+
+   Fix what each pass finds before moving to the next. The commit hooks still run the
+   privacy scan on every later change.
+7. Install it (`./install.sh <name> claude-code` from the repository root) and invoke it
    once to confirm it actually resolves and runs before considering it done.
-7. Compare the result against the other skills in `skills/`:
+8. Compare the result against the other skills in `skills/`:
 
    - file layout
    - `PROCEDURE.md`'s capability-detection-with-fallback pattern
