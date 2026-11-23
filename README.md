@@ -10,6 +10,7 @@ onto one platform's concrete mechanisms. Claude Code is the first provider suppo
 - [audit-content](skills/audit-content/README.md)
 - [code-better](skills/code-better/README.md)
 - [git](skills/git/README.md)
+- [skill-master](skills/skill-master/README.md)
 
 ## How to install a skill
 

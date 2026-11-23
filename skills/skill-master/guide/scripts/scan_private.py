@@ -1,0 +1,145 @@
+#!/usr/bin/env python3
+"""Scan a skill for private information before it is shared.
+
+Usage:
+  scan_private.py <skill-dir> [--terms <private-terms-file>] [--baseline <snapshot-dir>]
+
+Reads every text file in the skill, following symlinked directories, and reports each line that
+contains:
+  - a term from the private-terms file (case-insensitive; '#' comments, '!' lines allow exact text)
+  - an email address (example.com, example.org and example.net addresses are ignored)
+  - a home-directory path with a username (/Users/<name>, /home/<name>, C:\\Users\\<name>)
+  - an IPv4 address other than 127.0.0.1 and 0.0.0.0
+  - a secret-shaped token: AWS access key, GitHub token, Slack token, private-key block, JWT, or an
+    'sk-' style API key
+
+Matched terms are shown in full; secrets are shown masked. With --baseline, each hit is tagged NEW or
+old, and only NEW hits fail. Exit code 1 when a failing hit exists, 0 otherwise. Standard library only.
+"""
+
+import os
+import re
+import sys
+from pathlib import Path
+
+TEXT = {".md", ".py", ".sh", ".json", ".txt", ".yml", ".yaml", ".html", ".js", ".ts", ".toml", ".csv"}
+PATTERNS = [
+    ("email", re.compile(r"\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b")),
+    ("home path", re.compile(r"(?:/Users/|/home/|[Cc]:\\Users\\)([A-Za-z0-9._-]+)")),
+    ("ip address", re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b")),
+]
+SECRETS = [
+    ("aws key", re.compile(r"\bAKIA[0-9A-Z]{16}\b")),
+    ("github token", re.compile(r"\bgh[pousr]_[A-Za-z0-9]{30,}\b")),
+    ("slack token", re.compile(r"\bxox[abprs]-[A-Za-z0-9-]{10,}\b")),
+    ("private key", re.compile(r"-----BEGIN [A-Z ]*PRIVATE KEY-----")),
+    ("jwt", re.compile(r"\beyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\b")),
+    ("api key", re.compile(r"\bsk-[A-Za-z0-9_-]{20,}\b")),
+]
+SAFE_EMAIL = re.compile(r"@(?:example\.(?:com|org|net))$", re.I)
+SAFE_IP = {"127.0.0.1", "0.0.0.0"}
+PLACEHOLDER_USER = {"<name>", "name", "username", "user", "you", "me", "runner", "example"}
+
+
+def load_terms(path):
+    terms, allow = [], set()
+    if not path:
+        return terms, allow
+    for line in Path(path).expanduser().read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("!"):
+            allow.add(line[1:].strip().lower())
+        else:
+            terms.append(line)
+    return terms, allow
+
+
+def text_files(root):
+    for dirpath, _, names in os.walk(root, followlinks=True):
+        if "/.git" in dirpath or "__pycache__" in dirpath:
+            continue
+        for n in names:
+            p = Path(dirpath) / n
+            if p.suffix.lower() in TEXT:
+                yield p
+
+
+def mask(s):
+    return s[:4] + "…" + s[-2:] if len(s) > 8 else "…"
+
+
+def hits(root, terms, allow):
+    root = Path(root)
+    out, count = set(), 0
+    # Word boundaries apply only on a side where the term itself ends in a letter or digit, so a
+    # prefix term such as "ABC-" still matches "ABC-123".
+    term_res = [(t, re.compile((r"(?<![A-Za-z0-9])" if t[0].isalnum() else "") + re.escape(t) +
+                               (r"(?![A-Za-z0-9])" if t[-1].isalnum() else ""), re.I))
+                for t in terms]
+    for p in text_files(root):
+        count += 1
+        rel = os.path.relpath(p, root)
+        try:
+            lines = p.read_text(encoding="utf-8").splitlines()
+        except (UnicodeDecodeError, OSError):
+            continue
+        for no, line in enumerate(lines, 1):
+            found = []
+            for term, rx in term_res:
+                for m in rx.finditer(line):
+                    found.append(("private term", m.group(0)))
+            for kind, rx in PATTERNS:
+                for m in rx.finditer(line):
+                    val = m.group(0)
+                    if kind == "email" and SAFE_EMAIL.search(val):
+                        continue
+                    if kind == "ip address" and (val in SAFE_IP or
+                                                 any(int(o) > 255 for o in val.split("."))):
+                        continue
+                    if kind == "home path" and m.group(1).lower() in PLACEHOLDER_USER:
+                        continue
+                    found.append((kind, val))
+            for kind, rx in SECRETS:
+                for m in rx.finditer(line):
+                    found.append((kind, mask(m.group(0))))
+            for kind, val in found:
+                if val.lower() in allow:
+                    continue
+                out.add((rel, kind, val, no))
+    return out, count
+
+
+def main(argv):
+    if not argv or argv[0].startswith("-"):
+        print(__doc__)
+        return 2
+    terms_file = argv[argv.index("--terms") + 1] if "--terms" in argv else None
+    if terms_file and not Path(terms_file).expanduser().is_file():
+        print(f"private-terms list not found: {terms_file} — only built-in patterns ran")
+        terms_file = None
+    terms, allow = load_terms(terms_file)
+    current, count = hits(argv[0], terms, allow)
+    baseline = None
+    if "--baseline" in argv:
+        # Compare hits without line numbers, so an edit above a hit does not make an old hit look new.
+        baseline = {h[:3] for h in hits(argv[argv.index("--baseline") + 1], terms, allow)[0]}
+
+    print(f"{count} files scanned; private-terms list {'used' if terms_file else 'missing'}")
+    if not current:
+        print("no hits")
+        return 0
+    new = 0
+    for rel, kind, val, no in sorted(current):
+        is_new = baseline is None or (rel, kind, val) not in baseline
+        new += is_new
+        tag = "" if baseline is None else ("NEW " if is_new else "old ")
+        print(f"{tag}{rel}:{no}: {kind}: {val}")
+    if baseline is not None:
+        print(f"\n{new} new, {len(current) - new} pre-existing")
+    return 1 if new else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))
