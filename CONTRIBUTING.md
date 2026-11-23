@@ -11,10 +11,8 @@ and do not invent a different structure.
 Nothing in this repository may identify a person, an employer, or a specific
 machine, in any skill, in any layer: no names, gendered pronouns describing a
 specific person, emails, employers, or machine paths — and no real project detail
-smuggled in through a worked example, a file path, or a feature name. This applies to
-every skill added here, not only the ones already present, and to any edit, not only
-adding a new one. It matters most right here, though, at the
-moment new content enters the repo.
+smuggled in through a worked example, a file path, or a feature name. The rule covers
+every skill and every edit, and it matters most when new content enters the repo.
 
 The repository checks this mechanically. Enable its hooks once per clone:
 
@@ -31,9 +29,9 @@ the list is private itself. `skills/skill-master/guide/PRIVACY.md` describes its
 
 A hit is fixed, not bypassed: replace it with a neutral stand-in (`user@example.com`,
 `ABC-123`, `example-org/example-repo`, "a team", "the user") everywhere it occurs, and do
-not commit with `--no-verify`. A scan cannot recognise real project detail inside an example —
-a feature name, a file path, an error message — so read the change once more for that
-before committing.
+not commit with `--no-verify`. A scan cannot recognise real project detail inside an
+example — a feature name, a file path, an error message — so read the change once more
+for that before committing.
 
 ## Writing for the reader
 
@@ -49,8 +47,8 @@ not text that only reads well to a native speaker. This is the baseline, not one
 rule among several. Whatever else that skill's own guide asks of the same output — a
 severity tag, a category label, a length ceiling, a field a future edit adds —
 composes on top of ASD-STE100-compliant wording; it never licenses relaxing it back
-to passive, jargon-heavy, idiomatic, or multi-idea-per-sentence prose. This applies
-to every skill added here, not only the ones already present, and to any edit.
+to passive, jargon-heavy, idiomatic, or multi-idea-per-sentence prose. Like the Privacy
+rule, it covers every skill and every edit.
 
 ## The core split
 
@@ -105,7 +103,9 @@ context" to be rediscovered per skill.
 Every skill directory is fully independent. Nothing is shared between skills, and
 nothing skill-specific belongs at the repository root beyond the install dispatcher,
 the repository-wide privacy hooks in `.githooks/`, and each skill's one-line entry in
-the root `README.md`'s Skills list.
+the root `README.md`'s Skills list. The hooks are the one place the repository uses a
+skill's internals: they run `skills/skill-master/guide/scripts/scan_private.py`, so a
+change that moves or renames that script updates `.githooks/` in the same commit.
 
 `guide/PROCEDURE.md` is always the name of the entry point: the file an adapter tells
 the agent to read and follow step by step, named for what it does (the whole
@@ -146,13 +146,22 @@ provider actually finds an invocable skill.
 
 ## Steps to add or adopt a skill
 
+Every skill here is generic, not only private, whether it is written fresh or ported.
+A skill written for one team usually assumes that team's tools and setup. Move every
+tool- or company-specific part into a variant file the guide chooses by detection — one
+file per issue tracker, design tool, test runner or framework — so supporting another
+one is one new file. Replace real examples with invented but realistic ones, and
+descriptions of the author's own setup ("this machine has", "our team uses") with a
+condition the skill detects or a question it asks. Drop any personal or team prefix
+from the skill's name.
+
 If the skill already exists somewhere else — a different repo, a different agent's
 format, an existing skill with no repo of its own, a rough draft the user hands over —
 port its actual substance into `guide/` and rebuild `adapters/claude-code/` from
 scratch to this repo's contract. Do not carry over the source's file layout, naming,
 or adapter mechanics just because that is how it arrived.
 
-The next three points apply only to that porting case — skip ahead to the numbered
+The next three paragraphs apply only to that porting case — skip ahead to the numbered
 steps below if you're writing a skill fresh, with no existing source to work from.
 
 A source written for one person or one platform usually has platform mechanics (tool
@@ -166,14 +175,6 @@ not only names and pronouns, but worked examples, file paths, and any cached val
 the source already accumulated that might carry real project detail — see the Privacy
 section above for the full rule. A mechanical port is the likeliest place to miss this,
 because the temptation is to copy content wholesale rather than write it fresh.
-
-Make it generic, not only private. A skill written for one team usually assumes that
-team's tools and setup. Move every tool- or company-specific part into a variant file
-the guide chooses by detection — one file per issue tracker, design tool, test runner or
-framework — so supporting another one is one new file. Replace real examples with
-invented but realistic ones, and descriptions of the author's own setup ("this machine
-has", "our team uses") with a condition the skill detects or a question it asks. Drop
-any personal or team prefix from the skill's name.
 
 Porting is also the moment to fix a genuine gap in the source's own logic if one turns
 up — not just to restructure files around unchanged content. If the source hard-codes
@@ -197,7 +198,9 @@ question, rather than porting the assumption as-is.
    Do not restate this file's content in it; link back here for the general structure.
 5. Add one line to the root `README.md`'s "Skills" list: the skill's name, linked to
    its own `README.md`. No description there, the skill's own README carries that.
-6. Review it before the first commit, in this order — each pass catches what the
+6. Install it (`./install.sh <name> claude-code` from the repository root), so the
+   review below can find it by name.
+7. Review it before the first commit, in this order — each pass catches what the
    previous one cannot:
 
    1. **Structure and privacy** — run `skill-master`'s audit on the new skill
@@ -213,9 +216,8 @@ question, rather than porting the assumption as-is.
 
    Fix what each pass finds before moving to the next. The commit hooks still run the
    privacy scan on every later change.
-7. Install it (`./install.sh <name> claude-code` from the repository root) and invoke it
-   once to confirm it actually resolves and runs before considering it done.
-8. Compare the result against the other skills in `skills/`:
+8. Invoke it once to confirm it actually resolves and runs before considering it done.
+9. Compare the result against the other skills in `skills/`:
 
    - file layout
    - `PROCEDURE.md`'s capability-detection-with-fallback pattern
