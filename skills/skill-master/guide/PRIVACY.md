@@ -32,6 +32,8 @@ any other file.
 
 One term per line, matched case-insensitively. Lines starting with `#` are comments. A line starting
 with `!` allows that exact text even if a pattern matches it — a public no-reply address, for instance.
+A term ending in `-` is a ticket prefix: it matches only when a digit follows, so `ABC-` catches
+`ABC-123` but not a hyphenated word.
 
 If `<private-terms>` does not exist, offer to create it before scanning. Ask the user for: their name and
 usernames, email addresses, employer and team names, client names, ticket-project prefixes, internal

@@ -6,7 +6,8 @@ Usage:
 
 Reads every text file in the skill, following symlinked directories, and reports each line that
 contains:
-  - a term from the private-terms file (case-insensitive; '#' comments, '!' lines allow exact text)
+  - a term from the private-terms file (case-insensitive; '#' comments, '!' lines allow exact text;
+    a term ending in '-' is a ticket prefix and matches only when a digit follows, e.g. 'ABC-123')
   - an email address (example.com, example.org and example.net addresses are ignored)
   - a home-directory path with a username (/Users/<name>, /home/<name>, C:\\Users\\<name>)
   - an IPv4 address other than 127.0.0.1 and 0.0.0.0
@@ -73,11 +74,15 @@ def mask(s):
 def hits(root, terms, allow):
     root = Path(root)
     out, count = set(), 0
-    # Word boundaries apply only on a side where the term itself ends in a letter or digit, so a
-    # prefix term such as "ABC-" still matches "ABC-123".
-    term_res = [(t, re.compile((r"(?<![A-Za-z0-9])" if t[0].isalnum() else "") + re.escape(t) +
-                               (r"(?![A-Za-z0-9])" if t[-1].isalnum() else ""), re.I))
-                for t in terms]
+    # Word boundaries apply only on a side where the term itself ends in a letter or digit. A term
+    # ending in "-" is a ticket prefix: it must be followed by a digit, so "ABC-" matches "ABC-123"
+    # but not a hyphenated word such as "abc-style".
+    def term_re(t):
+        start = r"(?<![A-Za-z0-9])" if t[0].isalnum() else ""
+        end = r"(?=\d)" if t.endswith("-") else (r"(?![A-Za-z0-9])" if t[-1].isalnum() else "")
+        return re.compile(start + re.escape(t) + end, re.I)
+
+    term_res = [(t, term_re(t)) for t in terms]
     for p in text_files(root):
         count += 1
         rel = os.path.relpath(p, root)
