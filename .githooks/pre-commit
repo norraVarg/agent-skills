@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Blocks a commit whose staged content identifies a person, an employer or a machine, or contains
+# a secret (CONTRIBUTING.md "Privacy"). Enable once per clone:  git config core.hooksPath .githooks
+# The private-terms list stays outside the repository; set AGENT_SKILLS_PRIVATE_TERMS to use another
+# path. Without the list only the built-in patterns run.
+set -eu
+
+root="$(git rev-parse --show-toplevel)"
+scanner="$root/skills/skill-master/guide/scripts/scan_private.py"
+terms="${AGENT_SKILLS_PRIVATE_TERMS:-$HOME/.config/skill-master/private-terms.txt}"
+
+if [ ! -f "$scanner" ]; then
+  echo "privacy check: scanner not found at $scanner — commit blocked" >&2
+  exit 1
+fi
+
+if ! python3 "$scanner" "$root" --staged --terms "$terms" >&2; then
+  echo "privacy check: staged content identifies someone or holds a secret — commit blocked." >&2
+  echo "Replace each hit with a neutral stand-in (see CONTRIBUTING.md \"Privacy\") and stage again." >&2
+  exit 1
+fi

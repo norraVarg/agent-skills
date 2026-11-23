@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Blocks a commit message that identifies a person, an employer or a machine, or contains a secret
+# (CONTRIBUTING.md "Privacy"). Commit messages are part of the repository's history too.
+set -eu
+
+root="$(git rev-parse --show-toplevel)"
+scanner="$root/skills/skill-master/guide/scripts/scan_private.py"
+terms="${AGENT_SKILLS_PRIVATE_TERMS:-$HOME/.config/skill-master/private-terms.txt}"
+
+if [ ! -f "$scanner" ]; then
+  echo "privacy check: scanner not found at $scanner — commit blocked" >&2
+  exit 1
+fi
+
+if ! python3 "$scanner" "$1" --terms "$terms" >&2; then
+  echo "privacy check: the commit message identifies someone or holds a secret — commit blocked." >&2
+  exit 1
+fi

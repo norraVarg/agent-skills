@@ -2,10 +2,11 @@
 """Scan a skill for private information before it is shared.
 
 Usage:
-  scan_private.py <skill-dir> [--terms <private-terms-file>] [--baseline <snapshot-dir>]
+  scan_private.py <skill-dir | file> [--terms <private-terms-file>] [--baseline <snapshot-dir>]
+  scan_private.py <repo-dir> --staged [--terms <private-terms-file>]
 
-Reads every text file in the skill, following symlinked directories, and reports each line that
-contains:
+Reads every text file in the skill, following symlinked directories — or one file, such as a commit
+message — and reports each line that contains:
   - a term from the private-terms file (case-insensitive; '#' comments, '!' lines allow exact text;
     a term ending in '-' is a ticket prefix and matches only when a digit follows, e.g. 'ABC-123')
   - an email address (example.com, example.org and example.net addresses are ignored)
@@ -14,12 +15,17 @@ contains:
   - a secret-shaped token: AWS access key, GitHub token, Slack token, private-key block, JWT, or an
     'sk-' style API key
 
+With --staged, it reads the content staged for the next commit in that repository straight from git,
+so a pre-commit hook can block a leak before it reaches history; every staged file that decodes as
+UTF-8 text is scanned, whatever its extension.
+
 Matched terms are shown in full; secrets are shown masked. With --baseline, each hit is tagged NEW or
 old, and only NEW hits fail. Exit code 1 when a failing hit exists, 0 otherwise. Standard library only.
 """
 
 import os
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -67,12 +73,33 @@ def text_files(root):
                 yield p
 
 
+def sources(root, staged):
+    """(relative path, text) for every file to scan."""
+    root = Path(root)
+    if staged:
+        git = ["git", "-C", str(root)]
+        names = subprocess.run(git + ["diff", "--cached", "--name-only", "--diff-filter=ACMR", "-z"],
+                               check=True, capture_output=True).stdout.decode().split("\0")
+        for name in filter(None, names):
+            blob = subprocess.run(git + ["show", f":{name}"], check=True, capture_output=True).stdout
+            try:
+                yield name, blob.decode("utf-8")
+            except UnicodeDecodeError:
+                continue
+        return
+    files = [root] if root.is_file() else text_files(root)
+    for p in files:
+        try:
+            yield (p.name if root.is_file() else os.path.relpath(p, root)), p.read_text(encoding="utf-8")
+        except (UnicodeDecodeError, OSError):
+            continue
+
+
 def mask(s):
     return s[:4] + "…" + s[-2:] if len(s) > 8 else "…"
 
 
-def hits(root, terms, allow):
-    root = Path(root)
+def hits(root, terms, allow, staged=False):
     out, count = set(), 0
     # Word boundaries apply only on a side where the term itself ends in a letter or digit. A term
     # ending in "-" is a ticket prefix: it must be followed by a digit, so "ABC-" matches "ABC-123"
@@ -83,14 +110,9 @@ def hits(root, terms, allow):
         return re.compile(start + re.escape(t) + end, re.I)
 
     term_res = [(t, term_re(t)) for t in terms]
-    for p in text_files(root):
+    for rel, text in sources(root, staged):
         count += 1
-        rel = os.path.relpath(p, root)
-        try:
-            lines = p.read_text(encoding="utf-8").splitlines()
-        except (UnicodeDecodeError, OSError):
-            continue
-        for no, line in enumerate(lines, 1):
+        for no, line in enumerate(text.splitlines(), 1):
             found = []
             for term, rx in term_res:
                 for m in rx.finditer(line):
@@ -125,7 +147,7 @@ def main(argv):
         print(f"private-terms list not found: {terms_file} — only built-in patterns ran")
         terms_file = None
     terms, allow = load_terms(terms_file)
-    current, count = hits(argv[0], terms, allow)
+    current, count = hits(argv[0], terms, allow, staged="--staged" in argv)
     baseline = None
     if "--baseline" in argv:
         # Compare hits without line numbers, so an edit above a hit does not make an old hit look new.

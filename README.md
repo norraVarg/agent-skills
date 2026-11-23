@@ -53,4 +53,8 @@ saved, committed or not.
 ## Privacy
 
 See [CONTRIBUTING.md's Privacy section](CONTRIBUTING.md#privacy) for what may not appear
-in this repository.
+in this repository. Enable the hooks that check it before every commit, once per clone:
+
+```bash
+git config core.hooksPath .githooks
+```
