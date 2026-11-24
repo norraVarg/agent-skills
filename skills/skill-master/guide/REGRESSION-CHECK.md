@@ -60,10 +60,15 @@ Pre-existing issues (not caused by this update)
 <list, or "none">
 
 Limits: static read-through, not a live run.
+
+DONE — the update introduced no regressions
+  or
+NOT DONE — fix first: <each ❌ row, in one line>
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-Use the status markers from PROCEDURE.md Stage 2A. If anything is ❌, ask "Fix these now?" and on a yes
-take the fixes through Stages 2U → 5 again — keep the original snapshot as the baseline rather than
-taking a new one, so the next check still measures against the pre-update skill. Pre-existing issues are
-offered separately and never fixed silently.
+Use the status markers from PROCEDURE.md Stage 2A. The last line is the verdict, so the user never
+has to work out from the table whether the update is finished. If anything is ❌, ask "Fix these
+now?" and on a yes take the fixes through Stages 2U → 5 again — keep the original snapshot as the
+baseline rather than taking a new one, so the next check still measures against the pre-update skill.
+Pre-existing issues are offered separately and never fixed silently.
