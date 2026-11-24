@@ -201,22 +201,24 @@ question, rather than porting the assumption as-is.
 6. Install it (`./install.sh <name> claude-code` from the repository root), so the
    review below can find it by name.
 7. Review it before the first commit, in this order — each pass catches what the
-   previous one cannot:
+   previous one cannot. Run each pass yourself by reading and following that skill's
+   guide; the request to add or adopt a skill is the request to review it, so do not
+   wait for the user to invoke the review skills.
 
-   1. **Structure and privacy** — run `skill-master`'s audit on the new skill
-      (`/skill-master audit <name>` on Claude Code). It checks the metadata, tool
-      permissions, cross-references and size, and runs the privacy scan. Without it, run
-      the scanner on its own:
-      `python3 skills/skill-master/guide/scripts/scan_private.py skills/<name> --terms <your list>`.
-   2. **Content** — run `audit-content` on the skill's whole directory as one set. It
-      finds rules that conflict across files, stale or redundant passages, and unclear
-      wording — problems a structural check does not examine.
+   1. **Structure and privacy** — `skills/skill-master/guide/PROCEDURE.md`, Stage 2A, on
+      the new skill. It checks the metadata, tool permissions, cross-references and size,
+      and runs the privacy pass. Without a shell, run the checklist by hand and say so.
+   2. **Content** — `skills/audit-content/guide/PROCEDURE.md` on the skill's whole
+      directory as one set. It finds rules that conflict across files, stale or redundant
+      passages, and unclear wording — problems a structural check does not examine.
    3. **Real project detail** — reread the skill once more for examples, file paths and
       feature names that came from real work. No scan recognises them.
 
-   Fix what each pass finds before moving to the next. The commit hooks still run the
-   privacy scan on every later change.
-8. Invoke it once to confirm it actually resolves and runs before considering it done.
+   Collect the findings of all three passes, then ask the user once which to fix. The
+   commit hooks still run the privacy scan on every later change.
+8. Invoke it once to confirm it actually loads and routes. A skill that needs a real task
+   or the user's answers is started on a real request and stopped at its first approval
+   gate; that proves it runs without doing the task.
 9. Compare the result against the other skills in `skills/`:
 
    - file layout
@@ -229,3 +231,23 @@ question, rather than porting the assumption as-is.
    Propose reconciling, with the developer's confirmation, any place it drifts without
    good reason. Matching an existing skill's shape is not optional polish; it is what
    lets a developer use any skill in this repo without relearning conventions per skill.
+10. Report where the adoption stands, one line per step, and end with a verdict — so
+    the user never has to work out from the conversation whether the job is finished:
+
+    ```
+    ━━━━━━━━━━━━━━━━━━━━━━━━━ ADOPTION: <name> ━━━━━━━━━━━━━━━━━━━━━━━━━
+    ✅ 1–5  Written (guide, adapter, README, root README line)
+    ✅ 6    Installed
+    ✅ 7    Reviewed — structure and privacy · content · real project detail
+    ⏳ 8    Test invocation — waiting for a real request
+    ✅ 9    Compared with the other skills
+    ⏳      Committed
+
+    NOT DONE — waiting on: <what is pending, and on whom>
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+    ```
+
+    Use ✅ for a step that is finished, ❌ for one that failed or has open findings, and
+    ⏳ for one waiting on something. The last line is either `DONE — ready to commit`
+    (or `DONE — committed`) or `NOT DONE — waiting on:` followed by exactly what is
+    pending and who has to act.
