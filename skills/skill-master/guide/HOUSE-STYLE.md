@@ -109,6 +109,10 @@ Other rules that hold up:
   into its own body, because its body is all the model has at run time.
 - Write the skill general, not narrow to the examples that prompted it. A skill tuned to three
   examples is worthless on the fourth.
+- Write only what the agent running the skill must act on. Leave out the discussion that led to
+  an edit, the reason for an edit, "not X" clarifications and change history; those belong in
+  chat or the commit message, not in the skill. A sentence that could be removed without
+  changing what the agent does stays out.
 - Draft, then reread with fresh eyes and cut what does not add value. Length is a cost paid on
   every invocation.
 
