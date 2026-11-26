@@ -53,7 +53,14 @@ as good as how easily it can be answered.
   tests (2).` An interview of unknown length feels endless.
 - **Choices go through the structured-choice mechanism**: 2–4 options, the recommended one first and
   labelled "(Recommended)", each with a one-line consequence. Open-ended questions (a name, a path, how
-  to reach a screen) follow as numbered plain text under the heading `Need your input`.
+  to reach a screen) follow as numbered plain text under the heading `Need your input`. One obvious
+  default needs no card: ask one plain line ("Use X? Reply yes, or give another.").
+- **Do not ask what has a sensible default.** Use the default, and show it only where the user acts
+  on it. A question the user nearly always answers the same way is a wasted round trip.
+- **Choosing which items to apply is one multi-select question**, not one question per item.
+- **Ask the deciding question first and alone** — one that changes every later step, such as a mode.
+  Later groups then build on it.
+- **Script the exact wording** of every question a skill asks, so each run asks it the same way.
 - **Number and label each question** `[n/N] Topic —` and keep it self-contained in two sentences:
   what was found, then the question. A dialog may hide earlier text.
 - **One group per dialog, in dependency order**, within the mechanism's per-call limit (`<format>`
@@ -234,7 +241,9 @@ Compose the full entry file to `HOUSE-STYLE.md` and `<format>`'s "Entry file" te
 loaded the house style — read it here only if control reached this stage without passing Stage 2. Its
 opening section decides the skill's shape: the directory layout, the loading levels that make bundling
 worth it, and the rule for what stays in the entry file versus what moves to a bundled file. Settle the
-shape before writing prose, not after. Then continue to Stage 3R.
+shape before writing prose, not after. If the skill asks questions, waits for the user or reports progress
+while it runs, also read `INTERACTIVE-SKILLS.md` now: it changes the shape (a run log, a report,
+shared case tables). A one-shot skill does not need it. Then continue to Stage 3R.
 
 **Do not create a skill that would surprise the user if described plainly.** No malware, no exploit
 code, no data exfiltration, nothing designed for unauthorized access. Roleplay and persona skills are
@@ -245,7 +254,8 @@ fine.
 ## Stage 3R — Review before showing
 
 Mandatory in create and update mode, even for a one-line change. Read `REVIEW-CHECKLIST.md` and apply
-it end to end.
+it end to end. If the skill asks, waits or reports during a run, also run the review checks at the
+end of `INTERACTIVE-SKILLS.md`, and read the file first if Stage 3 was skipped (update mode).
 
 The validator reads metadata from disk, so it needs a file to point at — and in create mode the real
 directory does not exist until Stage 5. Write the draft to `<workspace>/draft/` and run `<format>`'s

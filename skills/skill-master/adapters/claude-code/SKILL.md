@@ -21,6 +21,8 @@ On this platform, `PROCEDURE.md`'s placeholders and Stage 0 capabilities map to:
 - **Run scripts** — the `Bash` tool. Test `python3 -c 'import yaml'` to choose `<py>` as Stage 0
   describes.
 - **A diff or preview** — the `Edit` tool's own diff view; for a new file, show its full text.
+- **Write files** — the `Write` tool for a new file or a whole-file rewrite; the `Edit` tool for
+  targeted changes to an existing file.
 - **Fresh contexts** — the `Agent` tool, used only in Stage 6, one call per run, all runs for an
   iteration issued in the same turn.
 - **An evaluation harness** — as the format file's "Evaluation harness" section describes.
