@@ -22,6 +22,11 @@ knows from context.
   user-facing document carrying contributor or implementation detail, or the reverse.
   Accurate, well-written content can still not belong, because it's answering a
   question this document's actual reader never asked.
+- Avoid: text about the document's own making in a file the reader uses to act: the reason
+  for an edit, the discussion that led to it, "not X" clarifications, change history, or
+  notes to the author. Flag it for removal; it belongs in chat or the commit message. This
+  applies most to skills, instructions and procedures, where every sentence the agent reads
+  must change what it does. Keep a reason that explains an instruction to the reader.
 
 ## Redundant, repeated
 
