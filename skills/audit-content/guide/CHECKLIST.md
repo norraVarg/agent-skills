@@ -40,6 +40,11 @@ agree.
 - Avoid: calling the same entity "the customer," then "the account holder," then "the
   buyer" in three consecutive sentences — name it once and keep using that name.
 - Avoid: a closing paragraph that just repeats the opening in different words.
+- Avoid: a rule restated in a table cell, a heading, or a "known results" note that the
+  main rule already covers. Keep the copy only if it adds something the rule does not.
+- Avoid: new text added beside the old text it replaces, so both stay (for example a
+  rewritten rule that still carries its old list of examples). Read the whole paragraph
+  after the edit.
 - Avoid: a comment that only restates the code next to it. Re-read every comment as a
   stranger would; a comment that repeats what the code already says adds nothing and
   clutters the read.

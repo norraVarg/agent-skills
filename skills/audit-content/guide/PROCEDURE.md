@@ -82,6 +82,16 @@ wording pass's technique does not transfer to it. For the set-level pass the set
 is "itself" — a claim in one document and a duplicate or contradicting claim in
 another are both in scope. Anything outside the set still is not.
 
+When one document is long enough for its sections to repeat each other (a
+procedure, guide, or skill), run the same unsplit pass across its sections: list
+each rule, threshold, and limit once with every place that states it (a table
+cell, a heading, an intro, a note), then check each rule stated in more than one
+place for needless repetition and for copies that disagree. A sentence-by-sentence
+read cannot find these, because the copies sit far apart.
+
+When the target is a proposed edit or diff, audit the text as it will read after
+the edit, not only the added lines.
+
 If there is nothing to audit — the content is empty, or genuinely has no issues — say so
 and stop. Do not manufacture findings to have something to report.
 
